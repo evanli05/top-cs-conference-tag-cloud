@@ -3,6 +3,7 @@ Fetch paper data from DBLP API for CS conferences
 TODO:
     1. Edge case of keynotes/invited talks that is not started with "Keynote" is not elimited from the fetch results. Therefore
         the fetched results still have a little noise. Need to update this later.
+    2. Test the commit on VSCODE.
 
 """
 
