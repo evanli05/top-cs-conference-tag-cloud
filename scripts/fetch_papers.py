@@ -1,11 +1,17 @@
 """
 Fetch paper data from DBLP API for CS conferences
+TODO:
+    1. Edge case of keynotes/invited talks that is not started with "Keynote" is not elimited from the fetch results. Therefore
+        the fetched results still have a little noise. Need to update this later.
+
 """
 
 import requests
 import time
 from typing import List, Dict
 import sys
+from bs4 import BeautifulSoup
+import re
 
 # Import local modules
 import config
@@ -30,7 +36,7 @@ class DBLPFetcher:
 
     def fetch_papers_for_year(self, year: int) -> List[Dict]:
         """
-        Fetch papers for a specific conference and year
+        Fetch papers for a specific conference and year by crawling DBLP pages
 
         Args:
             year (int): Year to fetch
@@ -43,200 +49,153 @@ class DBLPFetcher:
 
         utils.log(f"Fetching {conference_name} {year} papers from DBLP...")
 
-        # Build query parameters
-        # DBLP search query: search for papers in this venue and year
-        query = f"{venue} {year}"
+        # Check if this conference year has multiple parts
+        multi_part_key = (venue, year)
+        if multi_part_key in config.DBLP_MULTI_PART_CONFERENCES:
+            suffixes = config.DBLP_MULTI_PART_CONFERENCES[multi_part_key]
+        else:
+            suffixes = ['']  # Single page
 
-        params = {
-            'q': query,
-            'format': 'json',
-            'h': config.MAX_RESULTS_PER_REQUEST  # Maximum results
-        }
+        all_papers = []
 
-        headers = {
-            'User-Agent': config.USER_AGENT
-        }
+        for suffix in suffixes:
+            # Build URL for DBLP conference page
+            # Format: https://dblp.org/db/conf/kdd/kdd2020.html
+            url = f"{config.DBLP_BASE_URL}/db/conf/{venue}/{venue}{year}{suffix}.html"
 
-        try:
-            # Rate limiting
-            self.last_request_time = utils.rate_limit(
-                self.last_request_time,
-                config.REQUEST_DELAY
-            )
+            utils.log(f"  Crawling {url}...")
 
-            # Make API request
-            response = requests.get(
-                config.DBLP_API_BASE_URL,
-                params=params,
-                headers=headers,
-                timeout=config.REQUEST_TIMEOUT
-            )
+            try:
+                # Rate limiting
+                self.last_request_time = utils.rate_limit(
+                    self.last_request_time,
+                    config.REQUEST_DELAY
+                )
 
-            response.raise_for_status()
+                # Fetch the page
+                response = requests.get(
+                    url,
+                    headers={'User-Agent': config.USER_AGENT},
+                    timeout=config.REQUEST_TIMEOUT
+                )
 
-            # Parse response
-            data = response.json()
+                response.raise_for_status()
 
-            # Extract papers from response
-            papers = self._parse_dblp_response(data, year)
+                # Parse HTML and extract papers
+                papers = self._parse_dblp_html(response.text, year)
+                all_papers.extend(papers)
 
-            utils.log(f"Fetched {len(papers)} papers for {conference_name} {year}")
+                utils.log(f"  Found {len(papers)} papers")
 
-            return papers
+            except requests.exceptions.RequestException as e:
+                utils.log(f"  Error fetching {url}: {e}", 'WARNING')
+            except Exception as e:
+                utils.log(f"  Unexpected error for {url}: {e}", 'ERROR')
 
-        except requests.exceptions.RequestException as e:
-            utils.log(f"Error fetching data for {year}: {e}", 'ERROR')
-            return []
-        except Exception as e:
-            utils.log(f"Unexpected error for {year}: {e}", 'ERROR')
-            return []
+        utils.log(f"Fetched {len(all_papers)} papers for {conference_name} {year}")
+        return all_papers
 
-    def _parse_dblp_response(self, data: Dict, year: int) -> List[Dict]:
+    def _parse_dblp_html(self, html_content: str, year: int) -> List[Dict]:
         """
-        Parse DBLP API response and extract paper information
+        Parse DBLP HTML page and extract paper information
 
         Args:
-            data (Dict): DBLP API response
-            year (int): Expected year for filtering
+            html_content (str): HTML content from DBLP page
+            year (int): Expected year
 
         Returns:
             List[Dict]: List of paper dictionaries
         """
         papers = []
+        soup = BeautifulSoup(html_content, 'html.parser')
 
-        # DBLP response structure: result -> hits -> hit[]
-        result = data.get('result', {})
-        hits = result.get('hits', {})
-        hit_list = hits.get('hit', [])
+        # Find all publication entries (class="entry")
+        # DBLP structure: <li class="entry">...</li>
+        entries = soup.find_all('li', class_='entry')
 
-        if not hit_list:
-            utils.log(f"No hits found in DBLP response", 'WARNING')
-            return papers
+        for entry in entries:
+            try:
+                # Extract title - usually in <span class="title"> or <cite>
+                title_elem = entry.find('span', class_='title')
+                if not title_elem:
+                    # Try alternate structure
+                    title_elem = entry.find('cite', itemprop='headline')
 
-        # Process each hit
-        for hit in hit_list:
-            info = hit.get('info', {})
-
-            # Extract paper information
-            title = info.get('title', '')
-            paper_year = info.get('year', '')
-            venue = info.get('venue', '')
-            authors = info.get('authors', {})
-            url = info.get('url', '')
-            doi = info.get('doi', '')
-
-            # Clean title (remove HTML tags if any)
-            if isinstance(title, str):
-                # DBLP sometimes wraps titles in HTML tags
-                import re
-                title = re.sub(r'<[^>]+>', '', title)
-                title = title.strip()
-
-            # Filter out conference proceedings metadata entries and workshops/tutorials
-            # These are NOT actual papers, but metadata about the conference itself
-            title_lower = title.lower() if title else ''
-            if title_lower:
-                # Patterns indicating proceedings/metadata/workshops (not actual research papers)
-                is_non_paper = any([
-                    # Conference proceedings metadata
-                    title_lower.startswith('kdd \'') or title_lower.startswith('kdd\''),  # "KDD '20:"
-                    title_lower.startswith('proceedings of'),  # "Proceedings of..."
-                    'virtual event' in title_lower and ',' in title,  # Has location/event info
-                    # Check for date patterns (August 23-27, 2020)
-                    re.search(r'\b(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d', title_lower),
-
-                    # Workshop/tutorial/special day titles
-                    'workshop on' in title_lower,  # "Workshop on..."
-                    'workshop:' in title_lower,  # "Workshop: ..."
-                    'workshop.' in title_lower,  # "...Workshop."
-                    ' workshop' in title_lower and ('kdd' in title_lower or 'acm' in title_lower or 'international' in title_lower),
-                    'international workshop' in title_lower,
-                    title_lower.startswith('tutorial'),  # "Tutorial on..."
-                    'tutorial:' in title_lower,  # "...Tutorial: ..."
-                    'tutorial on' in title_lower,  # "Tutorial on..."
-                    ' tutorial to' in title_lower,  # "A Tutorial to..."
-                    ' tutorial.' in title_lower or title_lower.endswith(' tutorial'),  # "...Tutorial."
-                    'a tutorial' in title_lower,  # "A Tutorial..."
-                    'hands-on tutorial' in title_lower,
-                    'kdd 20' in title_lower and 'tutorial' in title_lower,  # "KDD 2021 Tutorial..."
-                    ' day:' in title_lower or title_lower.startswith('day '),  # "Health Day:", "Special Day"
-                    'special day' in title_lower,
-                    'kdd workshop' in title_lower,
-                    'kdd tutorial' in title_lower,
-                    'acm kdd' in title_lower and 'workshop' in title_lower,
-                    'panel discussion' in title_lower,
-                    'invited talk' in title_lower,
-                    'dshealth' in title_lower,  # Specific workshop name
-                    # Specific workshop names
-                    'document intelligence workshop' in title_lower,
-                    'aiot workshop' in title_lower,
-                    'artificial intelligence of things' in title_lower and 'workshop' in title_lower,
-                ])
-
-                if is_non_paper:
+                if not title_elem:
                     continue
 
-            # Parse year
-            try:
-                paper_year = int(paper_year)
-            except (ValueError, TypeError):
-                paper_year = None
+                title = title_elem.get_text(strip=True)
 
-            # Filter by year (must match exactly)
-            if paper_year != year:
-                continue
+                # Remove trailing period if present
+                if title.endswith('.'):
+                    title = title[:-1]
 
-            # Filter by venue (should contain conference name)
-            venue_lower = str(venue).lower()
-            conf_name_lower = self.conf_config['name'].lower()
+                # Basic filtering for non-papers (proceedings pages are already clean)
+                # Only filter out obvious non-research entries
+                title_lower = title.lower()
+                conf_name_lower = self.conf_config['name'].lower()
 
-            # DBLP venue format is often "KDD" or "SIGKDD"
-            if conf_name_lower not in venue_lower and \
-               self.conf_config['dblp_venue'] not in venue_lower:
-                continue
+                # Skip proceedings metadata and non-research entries
+                if (title_lower.startswith(f"{conf_name_lower} '") or  # "KDD '20:"
+                    title_lower.startswith('proceedings of') or
+                    title_lower.startswith('keynote') or
+                    'keynote speaker:' in title_lower or  # "Keynote Speaker: Name"
+                    title_lower.startswith('invited talk')):
+                    continue
 
-            # IMPORTANT: Filter out workshop papers and non-conference publications
-            # Workshop venues have @ symbol (e.g., "DaSH@KDD", "AdKDD@KDD")
-            # We only want main conference papers (venue == "KDD")
-            if isinstance(venue, str) and '@' in venue:
-                continue
-            # Also filter if venue is a list (indicates workshop proceedings)
-            if isinstance(venue, list):
-                continue
-            # Filter out SIGKDD Explorations (newsletter/magazine, not conference)
-            if isinstance(venue, str) and 'Explor' in venue:
-                continue
+                # Extract authors - usually in <span itemprop="author">
+                author_elems = entry.find_all('span', itemprop='author')
+                if not author_elems:
+                    # Try alternate: <span class="this-person"> or just find all author spans
+                    author_elems = entry.find_all('span', class_='this-person')
 
-            # Parse authors
-            author_list = []
-            if isinstance(authors, dict):
-                author_data = authors.get('author', [])
-                if isinstance(author_data, list):
-                    author_list = [
-                        a.get('text', a) if isinstance(a, dict) else str(a)
-                        for a in author_data
-                    ]
-                elif isinstance(author_data, str):
-                    author_list = [author_data]
-            elif isinstance(authors, list):
-                author_list = [str(a) for a in authors]
+                authors = []
+                for author_elem in author_elems:
+                    # Get author name from various possible elements
+                    author_name = None
+                    author_span = author_elem.find('span', itemprop='name')
+                    if author_span:
+                        author_name = author_span.get_text(strip=True)
+                    else:
+                        # Try direct text
+                        author_name = author_elem.get_text(strip=True)
 
-            # Clean author names: remove DBLP disambiguation IDs (e.g., "John Doe 0001" -> "John Doe")
-            author_list = [re.sub(r'\s+\d{4}$', '', author).strip() for author in author_list]
+                    if author_name:
+                        # Clean author name: remove DBLP disambiguation IDs
+                        author_name = re.sub(r'\s+\d{4}$', '', author_name).strip()
+                        authors.append(author_name)
 
-            # Create paper dictionary
-            paper = {
-                'title': title,
-                'year': paper_year,
-                'authors': author_list,
-                'venue': venue,
-                'url': url if url else '',
-                'doi': doi if doi else ''
-            }
+                # Extract URL to paper details page
+                url_elem = entry.find('nav', class_='publ')
+                paper_url = ''
+                doi = ''
 
-            # Only add if has title
-            if title:
+                if url_elem:
+                    # Look for DOI link
+                    doi_link = url_elem.find('a', href=re.compile(r'doi\.org'))
+                    if doi_link:
+                        doi = doi_link.get('href', '')
+
+                    # Look for DBLP record URL
+                    dblp_link = url_elem.find('a', href=re.compile(r'dblp\.org/rec'))
+                    if dblp_link:
+                        paper_url = dblp_link.get('href', '')
+
+                # Create paper dictionary
+                paper = {
+                    'title': title,
+                    'year': year,
+                    'authors': authors,
+                    'venue': self.conf_config['name'],
+                    'url': paper_url,
+                    'doi': doi
+                }
+
                 papers.append(paper)
+
+            except Exception as e:
+                utils.log(f"    Error parsing entry: {e}", 'WARNING')
+                continue
 
         return papers
 

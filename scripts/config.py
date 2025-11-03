@@ -23,10 +23,21 @@ PROCESSED_KEYWORDS_FILE = os.path.join(PROCESSED_DATA_DIR, 'keywords_intermediat
 FINAL_DATA_FILE = os.path.join(PROCESSED_DATA_DIR, 'wordcloud_data.json')
 
 # ===================================
-# DBLP API Configuration
+# DBLP Configuration
 # ===================================
 
-DBLP_API_BASE_URL = "https://dblp.org/search/publ/api"
+# DBLP base URL for conference pages
+DBLP_BASE_URL = "https://dblp.org"
+
+# DBLP conference page URL pattern
+# Format: https://dblp.org/db/conf/{venue}/{venue}{year}.html
+DBLP_CONF_URL_PATTERN = "{base}/db/conf/{venue}/{venue}{year}.html"
+
+# Some conferences have multiple parts (e.g., KDD 2025 has -1 and -2)
+# Map of (venue, year) -> list of page suffixes
+DBLP_MULTI_PART_CONFERENCES = {
+    ('kdd', 2025): ['', '-1', '-2'],  # Will generate kdd2025.html, kdd2025-1.html, kdd2025-2.html
+}
 
 # Conference configurations
 # Format: {conference_key: {name, dblp_venue, categories}}
