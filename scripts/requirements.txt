@@ -1,0 +1,17 @@
+# Python dependencies for CS Conference Tag Cloud
+# Data Collection and Processing
+
+# HTTP requests for DBLP API
+requests>=2.31.0
+
+# JSON processing (built-in, but listed for reference)
+# json (built-in)
+
+# Date/time handling (built-in)
+# datetime (built-in)
+
+# Regular expressions (built-in)
+# re (built-in)
+
+# Collections for data structures (built-in)
+# collections (built-in)
