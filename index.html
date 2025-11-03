@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top CS Conference Tag Cloud</title>
+    <meta name="description" content="Interactive word cloud visualization showing research trends from top-tier computer science conferences">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>CS Conference Tag Cloud</h1>
+            <p class="subtitle">Visualizing Research Trends from Top-Tier Conferences</p>
+        </header>
+
+        <!-- Info Panel -->
+        <section class="info-panel">
+            <div class="info-card">
+                <h3 id="conference-name">Loading...</h3>
+                <p id="conference-category" class="category-badge">Data Mining</p>
+            </div>
+            <div class="info-card">
+                <span class="info-label">Total Papers</span>
+                <span class="info-value" id="total-papers">-</span>
+            </div>
+            <div class="info-card">
+                <span class="info-label">Keywords</span>
+                <span class="info-value" id="total-keywords">-</span>
+            </div>
+            <div class="info-card">
+                <span class="info-label">Last Updated</span>
+                <span class="info-value" id="last-updated">-</span>
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <section class="filters">
+            <div class="filter-group">
+                <label for="year-filter">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Filter by Year
+                </label>
+                <select id="year-filter" class="filter-select">
+                    <option value="all">All Years</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="category-filter">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Conference Category
+                </label>
+                <select id="category-filter" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="Data Mining">Data Mining</option>
+                    <option value="Machine Learning">Machine Learning</option>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Computer Vision">Computer Vision</option>
+                    <option value="Natural Language Processing">Natural Language Processing</option>
+                </select>
+            </div>
+
+            <button id="reset-filters" class="btn-reset">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="1 4 1 10 7 10"></polyline>
+                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                </svg>
+                Reset Filters
+            </button>
+        </section>
+
+        <!-- Word Cloud Container -->
+        <section class="wordcloud-container">
+            <div id="wordcloud" class="wordcloud"></div>
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Loading word cloud...</p>
+            </div>
+            <div id="error" class="error" style="display: none;">
+                <p>Failed to load data. Please check console for details.</p>
+            </div>
+        </section>
+
+        <!-- Legend -->
+        <section class="legend">
+            <h4>How to Read</h4>
+            <ul>
+                <li><strong>Word Size</strong>: Larger words appear more frequently in paper titles</li>
+                <li><strong>Hover</strong>: See exact frequency counts and year breakdown</li>
+                <li><strong>Filters</strong>: Narrow down by year or conference category</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                Data sourced from <a href="https://dblp.org/" target="_blank" rel="noopener">DBLP Computer Science Bibliography</a>
+                | Visualization powered by <a href="https://d3js.org/" target="_blank" rel="noopener">D3.js</a>
+            </p>
+            <p class="footer-note">
+                Made for the CS research community to understand research trends
+            </p>
+        </footer>
+    </div>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip" style="display: none;">
+        <div class="tooltip-content">
+            <strong id="tooltip-word"></strong>
+            <div class="tooltip-stats">
+                <div>Total: <span id="tooltip-total"></span></div>
+                <div id="tooltip-years"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load D3.js from CDN -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jasondavies/d3-cloud@1.2.7/build/d3.layout.cloud.min.js"></script>
+
+    <!-- Load our scripts -->
+    <script src="js/wordcloud.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

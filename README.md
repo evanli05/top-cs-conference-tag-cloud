@@ -93,23 +93,24 @@ This pipeline will:
 
 ### View the Website Locally
 
-**Option 1: Direct file open**
-```bash
-open index.html
-# or double-click index.html in your file browser
-```
-
-**Option 2: Local server (recommended)**
+**Option 1: Local server (recommended)**
 ```bash
 # Python 3
-python -m http.server 8000
+python3 -m http.server 8000
 
 # Then visit: http://localhost:8000
 ```
 
-**Option 3: Live Server (VS Code extension)**
+**Option 2: Live Server (VS Code extension)**
 - Install "Live Server" extension in VS Code
 - Right-click `index.html` and select "Open with Live Server"
+
+**Option 3: Direct file open (not recommended for development)**
+```bash
+open index.html
+# or double-click index.html in your file browser
+```
+⚠️ **Note**: Direct file open may not work due to CORS restrictions when loading JSON data. Use Option 1 or 2 for development.
 
 ### Using the Website
 
@@ -219,6 +220,104 @@ The word cloud data is stored in JSON format at `data/processed/wordcloud_data.j
 
 **Hosting:**
 - GitHub Pages (static site hosting)
+
+## Debugging & Development Notes
+
+### Local Development Server
+
+**Important**: During local development, you MUST use a local web server to avoid CORS (Cross-Origin Resource Sharing) errors when loading JSON data files.
+
+**Why is this needed?**
+- Browsers block `fetch()` requests from `file://` URLs for security reasons
+- When you open `index.html` directly (double-click or `open index.html`), the browser uses the `file://` protocol
+- This causes the error: "Failed to load data" in the word cloud section
+
+**Solution**: Start a local web server
+
+```bash
+# Navigate to project directory
+cd top-cs-conference-tag-cloud
+
+# Start Python's built-in HTTP server on port 8000
+python3 -m http.server 8000
+
+# Server output:
+# Serving HTTP on :: port 8000 (http://[::]:8000/) ...
+
+# Open browser and visit:
+# http://localhost:8000
+```
+
+**To stop the server:**
+```bash
+# Press Ctrl+C in the terminal
+```
+
+**Alternative servers:**
+```bash
+# PHP (if installed)
+php -S localhost:8000
+
+# Node.js (if installed)
+npx http-server -p 8000
+
+# VS Code Live Server extension
+# Right-click index.html → "Open with Live Server"
+```
+
+### Common Issues and Solutions
+
+**Issue 1: "Failed to load data" or "Failed to fetch"**
+- **Cause**: Opening HTML file directly without a web server
+- **Solution**: Use `python3 -m http.server 8000` and visit `http://localhost:8000`
+
+**Issue 2: Word cloud doesn't update when changing JSON file**
+- **Cause**: Browser cache
+- **Solution**: Hard refresh (Ctrl+Shift+R on Windows/Linux, Cmd+Shift+R on Mac)
+
+**Issue 3: Port 8000 already in use**
+- **Cause**: Another server is using port 8000
+- **Solution**: Use a different port: `python3 -m http.server 8001`
+
+**Issue 4: Console shows "d3 is not defined"**
+- **Cause**: D3.js CDN failed to load (network issue)
+- **Solution**: Check internet connection and refresh page
+
+### Browser Developer Tools
+
+Open Developer Tools to debug:
+- **Chrome/Edge**: F12 or Ctrl+Shift+I (Cmd+Option+I on Mac)
+- **Firefox**: F12 or Ctrl+Shift+I (Cmd+Option+I on Mac)
+- **Safari**: Cmd+Option+I (must enable Developer menu first)
+
+**Useful console commands:**
+```javascript
+// Check if data loaded
+console.log(window.app.data);
+
+// Check current filters
+console.log(window.app.filters);
+
+// Manually apply filters
+window.app.applyFilters();
+
+// Check word cloud instance
+console.log(window.wordCloudInstance);
+```
+
+### Testing Checklist for Local Development
+
+- [ ] Start local server: `python3 -m http.server 8000`
+- [ ] Open browser to `http://localhost:8000`
+- [ ] Check browser console for errors (should be none)
+- [ ] Verify word cloud renders with sample data
+- [ ] Test year filter (select 2024, 2023, etc.)
+- [ ] Test reset filters button
+- [ ] Test hover tooltips on words
+- [ ] Test responsive design (resize browser window)
+- [ ] Check info panel shows correct metadata
+
+**Note**: Once deployed to GitHub Pages, the local server is NOT needed as GitHub Pages serves files over HTTP/HTTPS automatically.
 
 ## Development
 
