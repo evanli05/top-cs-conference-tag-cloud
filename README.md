@@ -26,7 +26,7 @@ This project helps CS researchers understand trending topics and research areas 
 
 ### View Online
 
-🚀 **Live Demo**: [Coming soon - GitHub Pages deployment]
+🚀 **Live Demo**: https://evanli05.github.io/top-cs-conference-tag-cloud/
 
 ### Run Locally
 
