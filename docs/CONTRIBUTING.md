@@ -307,42 +307,22 @@ Example:
    - CVPR, ICCV, ECCV (CV)
    - ACL, EMNLP, NAACL (NLP)
 
-2. **Dark mode support**:
-   - CSS custom properties already in place
-   - Need toggle button and logic
-   - Save preference to localStorage
-
-3. **Keyword quality improvements**:
+2. **Keyword quality improvements**:
    - Better LLM prompts
    - Post-processing filters
    - Manual curation tools
 
 ### Medium Priority
 
-4. **UI/UX enhancements**:
+3. **UI/UX enhancements**:
    - Trending topics view
    - Multi-year comparison
    - Export word cloud as image
    - Search functionality
 
-5. **Performance optimizations**:
-   - Lazy loading for large datasets
-   - Service worker for offline support
-   - Optimized D3.js rendering
-
-6. **Testing**:
-   - Unit tests for Python pipeline
-   - E2E tests for frontend
-   - CI/CD setup with GitHub Actions
-
 ### Low Priority
 
-7. **Documentation**:
-   - Video tutorial
-   - API documentation
-   - Deployment guide
-
-8. **Advanced features**:
+4. **Advanced features**:
    - Author network visualization
    - Topic clustering
    - Real-time updates
@@ -350,7 +330,7 @@ Example:
 ## Questions or Issues?
 
 - **Open an issue** on GitHub for bugs or feature requests
-- **Email**: yifan.li.1112@gmail.com for questions
+- **Email**: yli05@yahoo.com for questions
 - **Discussions**: Use GitHub Discussions for general questions
 
 ## Code of Conduct

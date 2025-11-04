@@ -144,7 +144,7 @@ If you use this tool in your research or find it helpful:
 ## Contact
 
 - **Issues**: [GitHub Issues](https://github.com/yourusername/top-cs-conference-tag-cloud/issues)
-- **Email**: yifan.li.1112@gmail.com
+- **Email**: yli05@yahoo.com
 
 ---
 
