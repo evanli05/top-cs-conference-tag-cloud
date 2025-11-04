@@ -82,11 +82,11 @@ USER_AGENT = 'CS-Conference-TagCloud/1.0 (Educational Project; https://github.co
 # Keyword Extraction Settings
 # ===================================
 
-# Minimum frequency for a keyword to be included
-MIN_KEYWORD_FREQUENCY = 3
-
 # Maximum number of keywords in final output
-MAX_KEYWORDS = 100
+MAX_KEYWORDS = 200
+
+# Minimum frequency for a keyword to be included
+MIN_KEYWORD_FREQUENCY = 1
 
 # Minimum word length (characters)
 MIN_WORD_LENGTH = 3
@@ -94,8 +94,30 @@ MIN_WORD_LENGTH = 3
 # Maximum word length (to filter out very long strings)
 MAX_WORD_LENGTH = 30
 
-# Extract n-grams (1 for unigrams, 2 for bigrams, 3 for trigrams)
-NGRAM_SIZES = [1, 2]  # Extract both single words and two-word phrases
+# ===================================
+# LLM-Based Keyword Extraction
+# ===================================
+
+# LLM Backend Selection
+# Options: 'local' (Ollama/Mixtral) or 'gemini' (Google Gemini API)
+LLM_BACKEND = 'gemini'  # Use Gemini API
+
+# Local LLM Configuration (Ollama)
+OLLAMA_BASE_URL = 'http://localhost:11434'
+OLLAMA_MODEL = 'mixtral:8x7b-instruct-v0.1-q4_K_M'  # Mixtral 8x7B quantized model
+
+# Gemini API Configuration
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyCgvwAenHcvw4zDh9gbKMCkahUhj6PqGw8')
+GEMINI_MODEL = 'gemini-2.5-flash-lite'
+# Rate limits for gemini-2.5-flash-lite: 15 RPM, 250K TPM, 1K RPD
+
+# LLM extraction parameters
+LLM_KEYWORDS_PER_TITLE = 3  # Extract 2-3 high-quality keywords per title
+LLM_TEMPERATURE = 0.0  # Deterministic output (0.0 = no randomness)
+LLM_BATCH_SIZE = 50  # Number of titles to process in one API call (optimized for 250K TPM limit)
+LLM_MAX_RETRIES = 3  # Maximum retry attempts on failures
+LLM_RETRY_DELAY = 2.0  # Initial retry delay in seconds (exponential backoff)
+LLM_REQUEST_TIMEOUT = 60  # API request timeout in seconds
 
 # ===================================
 # Stopwords

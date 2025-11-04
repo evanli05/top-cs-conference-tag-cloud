@@ -1,0 +1,6 @@
+# Core dependencies
+requests>=2.31.0
+beautifulsoup4>=4.13.0
+
+# LLM-based keyword extraction
+google-generativeai>=0.3.0
