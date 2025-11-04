@@ -47,7 +47,7 @@ CONFERENCES = {
         'full_name': 'ACM SIGKDD Conference on Knowledge Discovery and Data Mining',
         'dblp_venue': 'kdd',  # DBLP venue identifier
         'categories': ['Data Mining'],
-        'years': [2020, 2021, 2022, 2023, 2024]
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
     },
     # Future conferences (commented out for now)
     # 'ijcai': {

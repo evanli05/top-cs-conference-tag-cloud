@@ -147,20 +147,55 @@ class WordCloud {
             d3.select('#tooltip-years').html(yearsHtml);
         }
 
-        // Show tooltip
-        this.tooltip
-            .style('display', 'block')
-            .style('left', `${event.pageX + 15}px`)
-            .style('top', `${event.pageY - 10}px`);
+        // Show tooltip and position it
+        this.tooltip.style('display', 'block');
+        this.positionTooltip(event);
     }
 
     /**
      * Move tooltip with cursor
      */
     moveTooltip(event) {
+        this.positionTooltip(event);
+    }
+
+    /**
+     * Position tooltip near cursor with smart positioning to avoid screen edges
+     */
+    positionTooltip(event) {
+        const tooltipNode = this.tooltip.node();
+        const tooltipRect = tooltipNode.getBoundingClientRect();
+        const offset = 10; // Distance from cursor
+
+        // Calculate initial position (to the right and slightly below cursor)
+        let left = event.pageX + offset;
+        let top = event.pageY + offset;
+
+        // Check if tooltip would go off the right edge of screen
+        if (left + tooltipRect.width > window.innerWidth) {
+            // Position to the left of cursor instead
+            left = event.pageX - tooltipRect.width - offset;
+        }
+
+        // Check if tooltip would go off the bottom edge of screen
+        if (top + tooltipRect.height > window.innerHeight + window.scrollY) {
+            // Position above cursor instead
+            top = event.pageY - tooltipRect.height - offset;
+        }
+
+        // Ensure tooltip doesn't go off the left edge
+        if (left < 0) {
+            left = offset;
+        }
+
+        // Ensure tooltip doesn't go off the top edge
+        if (top < window.scrollY) {
+            top = window.scrollY + offset;
+        }
+
         this.tooltip
-            .style('left', `${event.pageX + 15}px`)
-            .style('top', `${event.pageY - 10}px`);
+            .style('left', `${left}px`)
+            .style('top', `${top}px`);
     }
 
     /**

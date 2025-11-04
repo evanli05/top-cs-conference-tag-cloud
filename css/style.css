@@ -457,6 +457,13 @@ body {
     font-style: italic;
 }
 
+.footer-timestamp {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    margin-top: var(--spacing-sm);
+    opacity: 0.7;
+}
+
 /* ===================================
    Responsive Design
    =================================== */

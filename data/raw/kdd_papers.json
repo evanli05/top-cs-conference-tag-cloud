@@ -10,9 +10,10 @@
       2021,
       2022,
       2023,
-      2024
+      2024,
+      2025
     ],
-    "total_papers": 2640,
+    "total_papers": 3016,
     "fetched_at": "2025-11-03",
     "source": "DBLP"
   },
@@ -38483,6 +38484,5493 @@
       "venue": "KDD",
       "url": "https://dblp.org/rec/conf/kdd/ZhuG0L24.html",
       "doi": "https://doi.org/10.1145/3637528.3671479"
+    },
+    {
+      "title": "ResMoE: Space-efficient Compression of Mixture of Experts LLMs via Residual Restoration",
+      "year": 2025,
+      "authors": [
+        "Mengting Ai",
+        "Tianxin Wei",
+        "Yifan Chen",
+        "Zhichen Zeng",
+        "Ritchie Zhao",
+        "Girish Varatkar",
+        "Bita Darvish Rouhani",
+        "Xianfeng Tang",
+        "Hanghang Tong",
+        "Jingrui He"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/AiW00ZVRTTH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709196"
+    },
+    {
+      "title": "Hypergraph Motif Representation Learning",
+      "year": 2025,
+      "authors": [
+        "Alessia Antelmi",
+        "Gennaro Cordasco",
+        "Daniele De Vinco",
+        "Valerio Di Pasquale",
+        "Mirko Polato",
+        "Carmine Spagnuolo"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/AntelmiCVPPS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709274"
+    },
+    {
+      "title": "Chainlet Orbits: Topological Address Embedding for Blockchain",
+      "year": 2025,
+      "authors": [
+        "Poupak Azad",
+        "Baris Coskunuzer",
+        "Murat Kantarcioglu",
+        "Cuneyt Gurcan Akcora"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/AzadCKA25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709322"
+    },
+    {
+      "title": "Correlation-Aware Graph Convolutional Networks for Multi-Label Node Classification",
+      "year": 2025,
+      "authors": [
+        "Yuanchen Bei",
+        "Weizhi Chen",
+        "Hao Chen",
+        "Sheng Zhou",
+        "Carl Ji Yang",
+        "Jiapei Fan",
+        "Longtao Huang",
+        "Jiajun Bu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/BeiCCZYFHB25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709197"
+    },
+    {
+      "title": "Fast and Effective GNN Training through Sequences of Random Path Graphs",
+      "year": 2025,
+      "authors": [
+        "Francesco Bonchi",
+        "Claudio Gentile",
+        "Francesco Paolo Nerini",
+        "André Panisson",
+        "Fabio Vitale"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/BonchiGNPV25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709301"
+    },
+    {
+      "title": "How to use Graph Data in the Wild to Help Graph Anomaly Detection?",
+      "year": 2025,
+      "authors": [
+        "Yuxuan Cao",
+        "Jiarong Xu",
+        "Chen Zhao",
+        "Jiaan Wang",
+        "Carl Ji Yang",
+        "Chunping Wang",
+        "Yang Yang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/CaoXZWYW025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709320"
+    },
+    {
+      "title": "Safe Online Bid Optimization with Return on Investment and Budget Constraints",
+      "year": 2025,
+      "authors": [
+        "Matteo Castiglioni",
+        "Alessandro Nuara",
+        "Giulia Romano",
+        "Giorgio Spadaro",
+        "Francesco Trovò",
+        "Nicola Gatti"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/CastiglioniNRST25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709288"
+    },
+    {
+      "title": "Probabilistic Hypergraph Recurrent Neural Networks for Time-series Forecasting",
+      "year": 2025,
+      "authors": [
+        "Hongjie Chen",
+        "Ryan A. Rossi",
+        "Sungchul Kim",
+        "Kanak Mahadik",
+        "Hoda Eldardiry"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0003RKME25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709202"
+    },
+    {
+      "title": "NodeImport: Imbalanced Node Classification with Node Importance Assessment",
+      "year": 2025,
+      "authors": [
+        "Nan Chen",
+        "Zemin Liu",
+        "Bryan Hooi",
+        "Bingsheng He",
+        "Jun Hu",
+        "Jia Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChenLHHHC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709215"
+    },
+    {
+      "title": "Advancing Confidence Calibration and Quantification in Medication Recommendation",
+      "year": 2025,
+      "authors": [
+        "Qianyu Chen",
+        "Xin Li",
+        "Yujie Fang",
+        "Mingzhong Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChenLFW25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709232"
+    },
+    {
+      "title": "Locally Balancing Signed Graphs",
+      "year": 2025,
+      "authors": [
+        "Weizhe Chen",
+        "Wentao Li",
+        "Min Gao",
+        "Dong Wen",
+        "Maolin Cai",
+        "Wei Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Chen000C025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709342"
+    },
+    {
+      "title": "Scalable Link Recommendation for Influence Maximization",
+      "year": 2025,
+      "authors": [
+        "Xiaolong Chen",
+        "Jing Tang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChenT25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709190"
+    },
+    {
+      "title": "Seeing the Unseen in Micro-Video Popularity Prediction: Self-Correlation Retrieval for Missing Modality Generation",
+      "year": 2025,
+      "authors": [
+        "Zhangtao Cheng",
+        "Jian Lang",
+        "Ting Zhong",
+        "Fan Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChengLZ025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709308"
+    },
+    {
+      "title": "Modeling Time-evolving Causality over Data Streams",
+      "year": 2025,
+      "authors": [
+        "Naoki Chihara",
+        "Yasuko Matsubara",
+        "Ren Fujiwara",
+        "Yasushi Sakurai"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChiharaMFS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709283"
+    },
+    {
+      "title": "CSPI-MT: Calibrated Safe Policy Improvement with Multiple Testing for Threshold Policies",
+      "year": 2025,
+      "authors": [
+        "Brian M. Cho",
+        "Ana-Roxana Pop",
+        "Kyra Gan",
+        "Sam Corbett-Davies",
+        "Israel Nir",
+        "Ariel Evnine",
+        "Nathan Kallus"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001PGCNEK25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709176"
+    },
+    {
+      "title": "Mixing Time Matters: Accelerating Effective Resistance Estimation via Bidirectional Method",
+      "year": 2025,
+      "authors": [
+        "Guanyu Cui",
+        "Hanzhi Wang",
+        "Zhewei Wei"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Cui0W25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709298"
+    },
+    {
+      "title": "Fair Set Cover",
+      "year": 2025,
+      "authors": [
+        "Mohsen Dehghankar",
+        "Rahul Raychaudhury",
+        "Stavros Sintos",
+        "Abolfazl Asudeh"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DehghankarRSA25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709184"
+    },
+    {
+      "title": "Revisiting Synthetic Human Trajectories: Imitative Generation and Benchmarks Beyond Datasaurus",
+      "year": 2025,
+      "authors": [
+        "Bangchao Deng",
+        "Xin Jing",
+        "Tianyue Yang",
+        "Bingqing Qu",
+        "Dingqi Yang",
+        "Philippe Cudré-Mauroux"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DengJYQYC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709180"
+    },
+    {
+      "title": "Large-Scale Spectral Graph Neural Networks via Laplacian Sparsification",
+      "year": 2025,
+      "authors": [
+        "Haipeng Ding",
+        "Zhewei Wei",
+        "Yuhang Ye"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002W025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709241"
+    },
+    {
+      "title": "Personalized Language Model Learning on Text Data Without User Identifiers",
+      "year": 2025,
+      "authors": [
+        "Yucheng Ding",
+        "Yangwenjian Tan",
+        "Xiangyu Liu",
+        "Chaoyue Niu",
+        "Fandong Meng",
+        "Jie Zhou",
+        "Ning Liu",
+        "Fan Wu",
+        "Guihai Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DingTLNMZL0C25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709211"
+    },
+    {
+      "title": "Stabilizing Modality Gap & Lowering Gradient Norms Improve Zero-Shot Adversarial Robustness of VLMs",
+      "year": 2025,
+      "authors": [
+        "Junhao Dong",
+        "Piotr Koniusz",
+        "Xinghua Qu",
+        "Yew-Soon Ong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DongKQO25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709296"
+    },
+    {
+      "title": "Conditional Generative Modeling for High-dimensional Marked Temporal Point Processes",
+      "year": 2025,
+      "authors": [
+        "Zheng Dong",
+        "Zekai Fan",
+        "Shixiang Zhu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0005FZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709258"
+    },
+    {
+      "title": "Bi-Dynamic Graph ODE for Opinion Evolution",
+      "year": 2025,
+      "authors": [
+        "Bowen Duan",
+        "Henggang Deng",
+        "Jinghua Piao",
+        "Huandong Wang",
+        "Yue Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DuanDPW025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709297"
+    },
+    {
+      "title": "Thek-Trine Cohesive Subgraph and Its Efficient Algorithms",
+      "year": 2025,
+      "authors": [
+        "Jinyu Duan",
+        "Haicheng Guo",
+        "Fan Zhang",
+        "Kai Wang",
+        "Zhengping Qian",
+        "Zhihong Tian"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DuanG00QT25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709174"
+    },
+    {
+      "title": "Dynamic Localisation of Spatial-Temporal Graph Neural Network",
+      "year": 2025,
+      "authors": [
+        "Wenying Duan",
+        "Shujun Guo",
+        "Zimu Zhou",
+        "Wei Huang",
+        "Hong Rao",
+        "Xiaoxi He"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DuanGZHRH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709331"
+    },
+    {
+      "title": "IN-Flow: Instance Normalization Flow for Non-stationary Time Series Forecasting",
+      "year": 2025,
+      "authors": [
+        "Wei Fan",
+        "Shun Zheng",
+        "Pengyang Wang",
+        "Rui Xie",
+        "Kun Yi",
+        "Qi Zhang",
+        "Jiang Bian",
+        "Yanjie Fu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0010ZWX0Z0F25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709260"
+    },
+    {
+      "title": "Efficient Large-Scale Traffic Forecasting with Transformers: A Spatial Data Management Perspective",
+      "year": 2025,
+      "authors": [
+        "Yuchen Fang",
+        "Yuxuan Liang",
+        "Bo Hui",
+        "Zezhi Shao",
+        "Liwei Deng",
+        "Xu Liu",
+        "Xinke Jiang",
+        "Kai Zheng"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001L0S0LJ025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709177"
+    },
+    {
+      "title": "Forward Once for All: Structural Parameterized Adaptation for Efficient Cloud-coordinated On-device Recommendation",
+      "year": 2025,
+      "authors": [
+        "Kairui Fu",
+        "Zheqi Lv",
+        "Shengyu Zhang",
+        "Fan Wu",
+        "Kun Kuang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/FuL0WK25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709178"
+    },
+    {
+      "title": "FABind+: Enhancing Molecular Docking through Improved Pocket Prediction and Pose Generation",
+      "year": 2025,
+      "authors": [
+        "Kaiyuan Gao",
+        "Qizhi Pei",
+        "Gongbo Zhang",
+        "Jinhua Zhu",
+        "Kun He",
+        "Lijun Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GaoPZ00025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709253"
+    },
+    {
+      "title": "Wedjat: Detecting Sophisticated Evasion Attacks via Real-time Causal Analysis",
+      "year": 2025,
+      "authors": [
+        "Li Gao",
+        "Chuanpu Fu",
+        "Xinhao Deng",
+        "Ke Xu",
+        "Qi Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GaoFD0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709218"
+    },
+    {
+      "title": "Denoising Programming Knowledge Tracing with a Code Graph-based Tuning Adaptor",
+      "year": 2025,
+      "authors": [
+        "Weibo Gao",
+        "Qi Liu",
+        "Rui Li",
+        "Yuze Zhao",
+        "Hao Wang",
+        "Linan Yue",
+        "Fangzhou Yao",
+        "Zheng Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GaoLLZWYYZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709172"
+    },
+    {
+      "title": "Detecting Interpretable Subgroup Drifts",
+      "year": 2025,
+      "authors": [
+        "Flavio Giobergia",
+        "Eliana Pastor",
+        "Luca de Alfaro",
+        "Elena Baralis"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GiobergiaPAB25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709259"
+    },
+    {
+      "title": "Benchmarking Fraud Detectors on Private Graph Data",
+      "year": 2025,
+      "authors": [
+        "Alexander Goldberg",
+        "Giulia Fanti",
+        "Nihar B. Shah",
+        "Steven Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GoldbergFS025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709170"
+    },
+    {
+      "title": "Augmented Contrastive Clustering with Uncertainty-Aware Prototyping for Time Series Test Time Adaptation",
+      "year": 2025,
+      "authors": [
+        "Peiliang Gong",
+        "Mohamed Ragab",
+        "Min Wu",
+        "Zhenghua Chen",
+        "Yongyi Su",
+        "Xiaoli Li",
+        "Daoqiang Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Gong00CS0Z25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709239"
+    },
+    {
+      "title": "Revisiting Cognition in Neural Cognitive Diagnosis",
+      "year": 2025,
+      "authors": [
+        "Hengnian Gu",
+        "Guoqian Luo",
+        "Xiaoxiao Dong",
+        "Shulin Li",
+        "Dongdai Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GuLDLZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709319"
+    },
+    {
+      "title": "Adaptive Domain Inference Attack with Concept Hierarchy",
+      "year": 2025,
+      "authors": [
+        "Yuechun Gu",
+        "Jiajie He",
+        "Keke Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GuHC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709332"
+    },
+    {
+      "title": "Controlling Diversity at Inference: Guiding Diffusion Recommender Models with Targeted Category Preferences",
+      "year": 2025,
+      "authors": [
+        "Gwangseok Han",
+        "Wonbin Kweon",
+        "Minsoo Kim",
+        "Hwanjo Yu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HanKKY25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709216"
+    },
+    {
+      "title": "Lorentzian Residual Neural Networks",
+      "year": 2025,
+      "authors": [
+        "Neil He",
+        "Menglin Yang",
+        "Rex Ying"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/He0Y25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709292"
+    },
+    {
+      "title": "UniGraph: Learning a Unified Cross-Domain Foundation Model for Text-Attributed Graphs",
+      "year": 2025,
+      "authors": [
+        "Yufei He",
+        "Yuan Sui",
+        "Xiaoxin He",
+        "Bryan Hooi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HeSHH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709277"
+    },
+    {
+      "title": "D-Tracker: Modeling Interest Diffusion in Social Activity Tensor Data Streams",
+      "year": 2025,
+      "authors": [
+        "Shingo Higashiguchi",
+        "Yasuko Matsubara",
+        "Koki Kawabata",
+        "Taichi Murayama",
+        "Yasushi Sakurai"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HigashiguchiMKM25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709192"
+    },
+    {
+      "title": "InvDiff: Invariant Guidance for Bias Mitigation in Diffusion Models",
+      "year": 2025,
+      "authors": [
+        "Min Hou",
+        "Yueying Wu",
+        "Chang Xu",
+        "Yu-Hao Huang",
+        "Chenxi Bai",
+        "Le Wu",
+        "Jiang Bian"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Hou00HBW025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709165"
+    },
+    {
+      "title": "TransPlace: Transferable Circuit Global Placement via Graph Neural Network",
+      "year": 2025,
+      "authors": [
+        "Yunbo Hou",
+        "Haoran Ye",
+        "Shuwen Yang",
+        "Yingxue Zhang",
+        "Siyuan Xu",
+        "Guojie Song"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HouYY0XS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709185"
+    },
+    {
+      "title": "AgentGen: Enhancing Planning Abilities for Large Language Model based Agent via Environment and Task Generation",
+      "year": 2025,
+      "authors": [
+        "Mengkang Hu",
+        "Pu Zhao",
+        "Can Xu",
+        "Qingfeng Sun",
+        "Jian-Guang Lou",
+        "Qingwei Lin",
+        "Ping Luo",
+        "Saravan Rajmohan"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Hu0XSLLLR25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709321"
+    },
+    {
+      "title": "Multi-level Matching Network for Multimodal Entity Linking",
+      "year": 2025,
+      "authors": [
+        "Zhiwei Hu",
+        "Víctor Gutiérrez-Basulto",
+        "Ru Li",
+        "Jeff Z. Pan"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HuG0P25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709306"
+    },
+    {
+      "title": "DIPS: Optimal Dynamic Index for Poisson πps Sampling",
+      "year": 2025,
+      "authors": [
+        "Jinchao Huang",
+        "Sibo Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Huang025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709162"
+    },
+    {
+      "title": "Progressive Dependency Representation Learning for Stock Ranking in Uncertain Risk Contrasting",
+      "year": 2025,
+      "authors": [
+        "Li Huang",
+        "Yanzhe Xie",
+        "Qiang Gao",
+        "Kunpeng Zhang",
+        "Guisong Liu",
+        "Xueqin Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HuangXGZL025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709189"
+    },
+    {
+      "title": "Path Complex Neural Networks for Sequential Process Activities Classification",
+      "year": 2025,
+      "authors": [
+        "Liang Huang",
+        "Kelin Xia",
+        "Chuan-Shen Hu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HuangXH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709193"
+    },
+    {
+      "title": "On the Hyperparameter Loss Landscapes of Machine Learning Models: An Exploratory Study",
+      "year": 2025,
+      "authors": [
+        "Mingyu Huang",
+        "Ke Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HuangL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709229"
+    },
+    {
+      "title": "Partial Pre-Post Code Tree: A Memory-Efficient Tree Structure for Conjunctive Rule Mining",
+      "year": 2025,
+      "authors": [
+        "Van Quoc Phuong Huynh",
+        "Florian Beck",
+        "Johannes Fürnkranz"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HuynhBF25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709303"
+    },
+    {
+      "title": "Seeing the Unseen: Learning Basis Confounder Representations for Robust Traffic Prediction",
+      "year": 2025,
+      "authors": [
+        "Jiahao Ji",
+        "Wentao Zhang",
+        "Jingyuan Wang",
+        "Chao Huang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/JiZW025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709201"
+    },
+    {
+      "title": "PipeRAG: Fast Retrieval-Augmented Generation via Adaptive Pipeline Parallelism",
+      "year": 2025,
+      "authors": [
+        "Wenqi Jiang",
+        "Shuai Zhang",
+        "Boran Han",
+        "Jie Wang",
+        "Bernie Wang",
+        "Tim Kraska"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/JiangZHW0K25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709194"
+    },
+    {
+      "title": "Why Not Together? A Multiple-Round Recommender System for Queries and Items",
+      "year": 2025,
+      "authors": [
+        "Jiarui Jin",
+        "Xianyu Chen",
+        "Weinan Zhang",
+        "Yong Yu",
+        "Jun Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/JinC00025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709261"
+    },
+    {
+      "title": "On Measuring Unnoticeability of Graph Adversarial Attacks: Observations, New Measure, and Applications",
+      "year": 2025,
+      "authors": [
+        "Hyeonsoo Jo",
+        "Hyunjin Hwang",
+        "Fanchen Bu",
+        "Soo Yong Lee",
+        "Chanyoung Park",
+        "Kijung Shin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/JoHBL0S25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709163"
+    },
+    {
+      "title": "Simplicial SMOTE: Oversampling Solution to the Imbalanced Learning Problem",
+      "year": 2025,
+      "authors": [
+        "Oleg Kachan",
+        "Andrey V. Savchenko",
+        "Gleb Gusev"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KachanSG25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709268"
+    },
+    {
+      "title": "LH-Mix: Local Hierarchy Correlation Guided Mixup over Hierarchical Prompt Tuning",
+      "year": 2025,
+      "authors": [
+        "Fanshuang Kong",
+        "Richong Zhang",
+        "Ziqiao Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KongZW25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709326"
+    },
+    {
+      "title": "CAPER: Enhancing Career Trajectory Prediction using Temporal Knowledge Graph and Ternary Relationship",
+      "year": 2025,
+      "authors": [
+        "Yeon-Chang Lee",
+        "Jaehyun Lee",
+        "Michiharu Yamashita",
+        "Dongwon Lee",
+        "Sang-Wook Kim"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LeeLY0K25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709329"
+    },
+    {
+      "title": "Reasoning-Enhanced Object-Centric Learning for Videos",
+      "year": 2025,
+      "authors": [
+        "Jian Li",
+        "Pu Ren",
+        "Yang Liu",
+        "Hao Sun"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiRL025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709168"
+    },
+    {
+      "title": "TSINR: Capturing Temporal Continuity via Implicit Neural Representations for Time Series Anomaly Detection",
+      "year": 2025,
+      "authors": [
+        "Mengxuan Li",
+        "Ke Liu",
+        "Hongyang Chen",
+        "Jiajun Bu",
+        "Hongwei Wang",
+        "Haishuai Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00030CB0W25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709266"
+    },
+    {
+      "title": "Diversity Optimization for Travelling Salesman Problem via Deep Reinforcement Learning",
+      "year": 2025,
+      "authors": [
+        "Qi Li",
+        "Zhiguang Cao",
+        "Yining Ma",
+        "Yaoxin Wu",
+        "Yue-Jiao Gong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiC0WG25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709181"
+    },
+    {
+      "title": "MGS3: A Multi-Granularity Self-Supervised Code Search Framework",
+      "year": 2025,
+      "authors": [
+        "Rui Li",
+        "Junfeng Kang",
+        "Qi Liu",
+        "Liyang He",
+        "Zheng Zhang",
+        "Yunhao Sha",
+        "Linbo Zhu",
+        "Zhenya Huang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiKLH0SZH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709263"
+    },
+    {
+      "title": "TSPRank: Bridging Pairwise and Listwise Methods with a Bilinear Travelling Salesman Model",
+      "year": 2025,
+      "authors": [
+        "Weixian Waylon Li",
+        "Yftah Ziser",
+        "Yifei Xie",
+        "Shay B. Cohen",
+        "Tiejun Ma"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiZXCM25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709234"
+    },
+    {
+      "title": "Exploring Preference-Guided Diffusion Model for Cross-Domain Recommendation",
+      "year": 2025,
+      "authors": [
+        "Xiaodong Li",
+        "Hengzhu Tang",
+        "Jiawei Sheng",
+        "Xinghua Zhang",
+        "Li Gao",
+        "Suqi Cheng",
+        "Dawei Yin",
+        "Tingwen Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiTS0GCYL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709220"
+    },
+    {
+      "title": "Harnessing Scale and Physics: A Multi-Graph Neural Operator Framework for PDEs on Arbitrary Geometries",
+      "year": 2025,
+      "authors": [
+        "Zhihao Li",
+        "Haoze Song",
+        "Di Xiao",
+        "Zhilu Lai",
+        "Wei Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0004SXLW25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709173"
+    },
+    {
+      "title": "APEX2: Adaptive and Extreme Summarization for Personalized Knowledge Graphs",
+      "year": 2025,
+      "authors": [
+        "Zihao Li",
+        "Dongqi Fu",
+        "Mengting Ai",
+        "Jingrui He"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiFAH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709213"
+    },
+    {
+      "title": "DistPred: A Distribution-Free Probabilistic Inference Method for Regression and Forecasting",
+      "year": 2025,
+      "authors": [
+        "Daojun Liang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Liang25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709286"
+    },
+    {
+      "title": "Learnable Prompt as Pseudo-Imputation: Rethinking the Necessity of Traditional EHR Data Imputation in Downstream Clinical Prediction",
+      "year": 2025,
+      "authors": [
+        "Weibin Liao",
+        "Yinghao Zhu",
+        "Zhongji Zhang",
+        "Yuhang Wang",
+        "Zixiang Wang",
+        "Xu Chu",
+        "Yasha Wang",
+        "Liantao Ma"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiaoZZWWCWM25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709166"
+    },
+    {
+      "title": "Stealing Training Graphs from Graph Neural Networks",
+      "year": 2025,
+      "authors": [
+        "Minhua Lin",
+        "Enyan Dai",
+        "Junjie Xu",
+        "Jinyuan Jia",
+        "Xiang Zhang",
+        "Suhang Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LinDXJ0W25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709289"
+    },
+    {
+      "title": "Spectral Subspace Clustering for Attributed Graphs",
+      "year": 2025,
+      "authors": [
+        "Xiaoyang Lin",
+        "Renchi Yang",
+        "Haoran Zheng",
+        "Xiangyu Ke"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LinYZK25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709207"
+    },
+    {
+      "title": "Learning Attribute as Explicit Relation for Sequential Recommendation",
+      "year": 2025,
+      "authors": [
+        "Gang Liu",
+        "Fan Yang",
+        "Yang Jiao",
+        "Alireza Bagheri Garakani",
+        "Tian Tong",
+        "Yan Gao",
+        "Meng Jiang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiuYJGTGJ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709267"
+    },
+    {
+      "title": "SEPTQ: A Simple and Effective Post-Training Quantization Paradigm for Large Language Models",
+      "year": 2025,
+      "authors": [
+        "Han Liu",
+        "Haotian Gao",
+        "Xiaotong Zhang",
+        "Changya Li",
+        "Feng Zhang",
+        "Wei Wang",
+        "Fenglong Ma",
+        "Hong Yu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiuG0LZ0M025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709287"
+    },
+    {
+      "title": "SCode: A Spherical Code Metric Learning Approach to Continuously Monitoring Predictive Events in Networked Data",
+      "year": 2025,
+      "authors": [
+        "Qu Liu",
+        "Emil Zulawnik",
+        "Tingjian Ge"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiuZG25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709246"
+    },
+    {
+      "title": "Language Representation Favored Zero-Shot Cross-Domain Cognitive Diagnosis",
+      "year": 2025,
+      "authors": [
+        "Shuo Liu",
+        "Zihan Zhou",
+        "Yuanhao Liu",
+        "Jing Zhang",
+        "Hong Qian"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiuZLZQ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709281"
+    },
+    {
+      "title": "Fine-tuning Multimodal Large Language Models for Product Bundling",
+      "year": 2025,
+      "authors": [
+        "Xiaohao Liu",
+        "Jie Wu",
+        "Zhulin Tao",
+        "Yunshan Ma",
+        "Yinwei Wei",
+        "Tat-Seng Chua"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiuWTMWC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709255"
+    },
+    {
+      "title": "3DGraphX: Explaining 3D Molecular Graph Models via Incorporating Chemical Priors",
+      "year": 2025,
+      "authors": [
+        "Xufeng Liu",
+        "Dongsheng Luo",
+        "Wenhan Gao",
+        "Yi Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiuLGL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709302"
+    },
+    {
+      "title": "Enhancing Unsupervised Graph Few-shot Learning via Set Functions and Optimal Transport",
+      "year": 2025,
+      "authors": [
+        "Yonghao Liu",
+        "Fausto Giunchiglia",
+        "Ximing Li",
+        "Lan Huang",
+        "Xiaoyue Feng",
+        "Renchu Guan"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001G00FG25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709208"
+    },
+    {
+      "title": "MobileSteward: Integrating Multiple App-Oriented Agents with Self-Evolution to Automate Cross-App Instructions",
+      "year": 2025,
+      "authors": [
+        "Yuxuan Liu",
+        "Hongda Sun",
+        "Wei Liu",
+        "Jian Luan",
+        "Bo Du",
+        "Rui Yan"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Liu0L0DY25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709171"
+    },
+    {
+      "title": "A Universal Model for Human Mobility Prediction",
+      "year": 2025,
+      "authors": [
+        "Qingyue Long",
+        "Yuan Yuan",
+        "Yong Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LongYL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709236"
+    },
+    {
+      "title": "Future Matters for Present: Towards Effective Physical Simulation over Meshes",
+      "year": 2025,
+      "authors": [
+        "Xiao Luo",
+        "Junyu Luo",
+        "Huiyu Jiang",
+        "Hang Zhou",
+        "Zhiping Xiao",
+        "Wei Ju",
+        "Carl Ji Yang",
+        "Ming Zhang",
+        "Yizhou Sun"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Luo0J00JYZS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709340"
+    },
+    {
+      "title": "Fairness without Demographics through Learning Graph of Gradients",
+      "year": 2025,
+      "authors": [
+        "Yingtao Luo",
+        "Zhixun Li",
+        "Qiang Liu",
+        "Jun Zhu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LuoLLZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709160"
+    },
+    {
+      "title": "Online Item Cold-Start Recommendation with Popularity-Aware Meta-Learning",
+      "year": 2025,
+      "authors": [
+        "Yunze Luo",
+        "Yuezihan Jiang",
+        "Yinjie Jiang",
+        "Gaode Chen",
+        "Jingchi Wang",
+        "Kaigui Bian",
+        "Peiyi Li",
+        "Qi Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LuoJJCWB0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709336"
+    },
+    {
+      "title": "Dynamic Deep Clustering of High-Dimensional Directional Data via Hyperspherical Embeddings with Bayesian Nonparametric Mixtures",
+      "year": 2025,
+      "authors": [
+        "Zhiwen Luo",
+        "Wentao Fan",
+        "Manar Amayri",
+        "Nizar Bouguila"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LuoFAB25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709230"
+    },
+    {
+      "title": "Towards Controllable Hybrid Fairness in Graph Neural Networks",
+      "year": 2025,
+      "authors": [
+        "Zihan Luo",
+        "Hong Huang",
+        "Jianxun Lian",
+        "Xiran Song",
+        "Hai Jin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00010LS025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709224"
+    },
+    {
+      "title": "Collaboration of Large Language Models and Small Recommendation Models for Device-Cloud Recommendation",
+      "year": 2025,
+      "authors": [
+        "Zheqi Lv",
+        "Tianyu Zhan",
+        "Wenjie Wang",
+        "Xinyu Lin",
+        "Shengyu Zhang",
+        "Wenqiao Zhang",
+        "Jiwei Li",
+        "Kun Kuang",
+        "Fei Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LvZ0LZZ0K025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709335"
+    },
+    {
+      "title": "Task Diversity in Bayesian Federated Learning: Simultaneous Processing of Classification and Regression",
+      "year": 2025,
+      "authors": [
+        "Junliang Lyu",
+        "Yixuan Zhang",
+        "Xiaoling Lu",
+        "Feng Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LyuZLZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709341"
+    },
+    {
+      "title": "AutoSTF: Decoupled Neural Architecture Search for Cost-Effective Automated Spatio-Temporal Forecasting",
+      "year": 2025,
+      "authors": [
+        "Tengfei Lyu",
+        "Weijia Zhang",
+        "Jinliang Deng",
+        "Hao Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LyuZDL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709323"
+    },
+    {
+      "title": "Diffusion-Inspired Cold Start with Sufficient Prior in Computerized Adaptive Testing",
+      "year": 2025,
+      "authors": [
+        "Haiping Ma",
+        "Aoqing Xia",
+        "Changqian Wang",
+        "Hai Wang",
+        "Xingyi Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/MaXWWZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709317"
+    },
+    {
+      "title": "Achieving Nearly-Optimal Regret and Sample Complexity in Dueling Bandits with Applications in Online Recommendations",
+      "year": 2025,
+      "authors": [
+        "Lanjihong Ma",
+        "Yao-Xiang Ding",
+        "Zhen-Yu Zhang",
+        "Zhi-Hua Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Ma0ZZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709279"
+    },
+    {
+      "title": "On the Support Vector Effect in DNNs: Rethinking Data Selection and Attribution",
+      "year": 2025,
+      "authors": [
+        "Syed Hasan Amin Mahmood",
+        "Ming Yin",
+        "Rajiv Khanna"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Mahmood0K25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709295"
+    },
+    {
+      "title": "Enhancing Black-Box Adversarial Attacks on Discrete Sequential Data via Bilevel Bayesian Optimization in Hybrid Spaces",
+      "year": 2025,
+      "authors": [
+        "Tianxing Man",
+        "Xingchen Li",
+        "Zhaogeng Liu",
+        "Haozhen Zhang",
+        "Bin Gu",
+        "Yi Chang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ManLLZ0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709265"
+    },
+    {
+      "title": "Attribute-Enhanced Similarity Ranking for Sparse Link Prediction",
+      "year": 2025,
+      "authors": [
+        "João Mattos",
+        "Zexi Huang",
+        "Mert Kosan",
+        "Ambuj K. Singh",
+        "Arlei Silva"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/MattosHKSS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709314"
+    },
+    {
+      "title": "Conservation-informed Graph Learning for Spatiotemporal Dynamics Prediction",
+      "year": 2025,
+      "authors": [
+        "Yuan Mi",
+        "Pu Ren",
+        "Hongteng Xu",
+        "Hongsheng Liu",
+        "Zidong Wang",
+        "Yike Guo",
+        "Ji-Rong Wen",
+        "Hao Sun",
+        "Yang Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/MiRX00GWSL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709244"
+    },
+    {
+      "title": "Data Glitches Discovery using Influence-based Model Explanations",
+      "year": 2025,
+      "authors": [
+        "Nikolaos Myrtakis",
+        "Ioannis Tsamardinos",
+        "Vassilis Christophides"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/MyrtakisTC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709285"
+    },
+    {
+      "title": "Electron-Informed Coarse-Graining Molecular Representation Learning for Real-World Molecular Physics",
+      "year": 2025,
+      "authors": [
+        "Gyoung S. Na",
+        "Chanyoung Park"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Na025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709270"
+    },
+    {
+      "title": "Weight-Constrained Simple Path Enumeration in Weighted Graph",
+      "year": 2025,
+      "authors": [
+        "Dian Ouyang",
+        "Dong Wen",
+        "Jianye Yang",
+        "Wentao Li",
+        "Xuemin Lin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Ouyang000025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709310"
+    },
+    {
+      "title": "Distributional Prototype Learning for Out-of-distribution Detection",
+      "year": 2025,
+      "authors": [
+        "Bo Peng",
+        "Jie Lu",
+        "Yonggang Zhang",
+        "Guangquan Zhang",
+        "Zhen Fang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/PengLZ0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709294"
+    },
+    {
+      "title": "On the Necessity of World Knowledge for Mitigating Missing Labels in Extreme Classification",
+      "year": 2025,
+      "authors": [
+        "Jatin Prakash",
+        "Anirudh Buvanesh",
+        "Bishal Santra",
+        "Deepak Saini",
+        "Sachin Yadav",
+        "Jian Jiao",
+        "Yashoteja Prabhu",
+        "Amit Sharma",
+        "Manik Varma"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/PrakashBSS00P0V25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709290"
+    },
+    {
+      "title": "Understanding the Effect of Loss Functions on the Generalization of Recommendations",
+      "year": 2025,
+      "authors": [
+        "Yuanhao Pu",
+        "Defu Lian",
+        "Xiaolong Chen",
+        "Jin Chen",
+        "Ze Liu",
+        "Enhong Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/PuLC0LC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709169"
+    },
+    {
+      "title": "Input Snapshots Fusion for Scalable Discrete-Time Dynamic Graph Neural Networks",
+      "year": 2025,
+      "authors": [
+        "QingGuo Qi",
+        "Hongyang Chen",
+        "Minhao Cheng",
+        "Han Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/QiCC025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709316"
+    },
+    {
+      "title": "Tackling the Length Barrier: Dynamic Context Browsing for Knowledge-Intensive Task",
+      "year": 2025,
+      "authors": [
+        "Hongjin Qian",
+        "Zheng Liu",
+        "Peitian Zhang",
+        "Kelong Mao",
+        "Yujia Zhou",
+        "Xu Chen",
+        "Zhicheng Dou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/QianLZM0CD25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709240"
+    },
+    {
+      "title": "Adapting to Generalized Online Label Shift by Invariant Representation Learning",
+      "year": 2025,
+      "authors": [
+        "Yu-Yang Qian",
+        "Yi-Han Wang",
+        "Zhen-Yu Zhang",
+        "Yuan Jiang",
+        "Zhi-Hua Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/QianWZ0Z25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709182"
+    },
+    {
+      "title": "Quantum Time-index Models with Reservoir for Time Series Forecasting",
+      "year": 2025,
+      "authors": [
+        "Wenbo Qiao",
+        "Jiaming Zhao",
+        "Peng Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/QiaoZZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709228"
+    },
+    {
+      "title": "DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting",
+      "year": 2025,
+      "authors": [
+        "Xiangfei Qiu",
+        "Xingjian Wu",
+        "Yan Lin",
+        "Chenjuan Guo",
+        "Jilin Hu",
+        "Bin Yang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/QiuW0GH025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709325"
+    },
+    {
+      "title": "Fast Causal Discovery by Approximate Kernel-based Generalized Score Functions with Linear Computational Complexity",
+      "year": 2025,
+      "authors": [
+        "Yixin Ren",
+        "Haocheng Zhang",
+        "Yewei Xia",
+        "Hao Zhang",
+        "Jihong Guan",
+        "Shuigeng Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/RenZXZGZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709338"
+    },
+    {
+      "title": "ST-MTM: Masked Time Series Modeling with Seasonal-Trend Decomposition for Time Series Forecasting",
+      "year": 2025,
+      "authors": [
+        "Hyunwoo Seo",
+        "Chiehyeon Lim"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/SeoL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709254"
+    },
+    {
+      "title": "Abductive Learning for Neuro-Symbolic Grounded Imitation",
+      "year": 2025,
+      "authors": [
+        "Jie-Jing Shao",
+        "Hao-Ran Hao",
+        "Xiao-Wen Yang",
+        "Yu-Feng Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ShaoHYL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709344"
+    },
+    {
+      "title": "Exploring Heterogeneity and Uncertainty for Graph-based Cognitive Diagnosis Models in Intelligent Education",
+      "year": 2025,
+      "authors": [
+        "Pengyang Shao",
+        "Yonghui Yang",
+        "Chen Gao",
+        "Lei Chen",
+        "Kun Zhang",
+        "Chenyi Zhuang",
+        "Le Wu",
+        "Yong Li",
+        "Meng Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ShaoYGCZZWLW25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709264"
+    },
+    {
+      "title": "HeavyLocker: Lock Heavy Hitters in Distributed Data Streams",
+      "year": 2025,
+      "authors": [
+        "Qilong Shi",
+        "Xirui Li",
+        "Hanyue Zheng",
+        "Tong Yang",
+        "Yangyang Wang",
+        "Mingwei Xu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ShiLZ00X25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709167"
+    },
+    {
+      "title": "Off-Policy Evaluation and Learning for the Future under Non-Stationarity",
+      "year": 2025,
+      "authors": [
+        "Tatsuhiro Shimizu",
+        "Kazuki Kawamura",
+        "Takanori Muroi",
+        "Yusuke Narita",
+        "Kei Tateno",
+        "Takuma Udagawa",
+        "Yuta Saito"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ShimizuKMNTUS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709237"
+    },
+    {
+      "title": "Covering Cracks in Content Moderation: Delexicalized Distant Supervision for Illicit Drug Jargon Detection",
+      "year": 2025,
+      "authors": [
+        "Minkyoo Song",
+        "Eugene Jang",
+        "Jaehan Kim",
+        "Seungwon Shin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/SongJK025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709183"
+    },
+    {
+      "title": "Counterfactual Explanations with Probabilistic Guarantees on their Robustness to Model Change",
+      "year": 2025,
+      "authors": [
+        "Ignacy Stepka",
+        "Jerzy Stefanowski",
+        "Mateusz Lango"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/StepkaSL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709300"
+    },
+    {
+      "title": "CLEAR: Addressing Representation Contamination in Multimodal Healthcare Analytics",
+      "year": 2025,
+      "authors": [
+        "Ge Su",
+        "Kaiping Zheng",
+        "Tiancheng Zhao",
+        "Jianwei Yin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/SuZZY25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709164"
+    },
+    {
+      "title": "A Unified Invariant Learning Framework for Graph Classification",
+      "year": 2025,
+      "authors": [
+        "Yongduo Sui",
+        "Jie Sun",
+        "Shuyao Wang",
+        "Zemin Liu",
+        "Qing Cui",
+        "Longfei Li",
+        "Xiang Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/SuiSWLCL025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709203"
+    },
+    {
+      "title": "Handling Feature Heterogeneity with Learnable Graph Patches",
+      "year": 2025,
+      "authors": [
+        "Yifei Sun",
+        "Yang Yang",
+        "Xiao Feng",
+        "Zijun Wang",
+        "Haoyang Zhong",
+        "Chunping Wang",
+        "Lei Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00020FWZWC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709242"
+    },
+    {
+      "title": "Robust Uplift Modeling with Large-Scale Contexts for Real-time Marketing",
+      "year": 2025,
+      "authors": [
+        "Zexu Sun",
+        "Qiyu Han",
+        "Minqin Zhu",
+        "Hao Gong",
+        "Dugang Liu",
+        "Chen Ma"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/SunHZGL025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709293"
+    },
+    {
+      "title": "R2MR: Review and Rewrite Modality for Recommendation",
+      "year": 2025,
+      "authors": [
+        "Gu Tang",
+        "Jinghe Wang",
+        "Xiaoying Gan",
+        "Bin Lu",
+        "Ze Zhao",
+        "Luoyi Fu",
+        "Xinbing Wang",
+        "Chenghu Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/TangWG0ZFWZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709250"
+    },
+    {
+      "title": "Spatially Compact Dense Block Mining in Spatial Tensors",
+      "year": 2025,
+      "authors": [
+        "Weike Tang",
+        "Dingming Wu",
+        "Tsz Nam Chan",
+        "Kezhong Lu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Tang0CL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709221"
+    },
+    {
+      "title": "MLDGG: Meta-Learning for Domain Generalization on Graphs",
+      "year": 2025,
+      "authors": [
+        "Qin Tian",
+        "Chen Zhao",
+        "Minglai Shao",
+        "Wenjun Wang",
+        "Yujie Lin",
+        "Dong Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/TianZS0L025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709188"
+    },
+    {
+      "title": "From Missteps to Mastery: Enhancing Low-Resource Dense Retrieval through Adaptive Query Generation",
+      "year": 2025,
+      "authors": [
+        "Zhenyu Tong",
+        "Chuan Qin",
+        "Chuyu Fang",
+        "Kaichun Yao",
+        "Xi Chen",
+        "Jingshuai Zhang",
+        "Chen Zhu",
+        "Hengshu Zhu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Tong0FY0Z0Z25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709225"
+    },
+    {
+      "title": "GROOT: Effective Design of Biological Sequences with Limited Experimental Data",
+      "year": 2025,
+      "authors": [
+        "Thanh V. T. Tran",
+        "Nhat Khang Ngo",
+        "Viet Anh Nguyen",
+        "Truong Son Hy"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/TranNNH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709291"
+    },
+    {
+      "title": "How Well Calibrated are Extreme Multi-label Classifiers? An Empirical Analysis",
+      "year": 2025,
+      "authors": [
+        "Nasib Ullah",
+        "Erik Schultheis",
+        "Jinbin Zhang",
+        "Rohit Babbar"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/UllahSZB25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709333"
+    },
+    {
+      "title": "Scaling the Vocabulary of Non-autoregressive Models for Fast Generative Retrieval",
+      "year": 2025,
+      "authors": [
+        "Ravisri Valluri",
+        "Akash Kumar Mohankumar",
+        "Kushal Dave",
+        "Amit Singh",
+        "Jian Jiao",
+        "Manik Varma",
+        "Gaurav Sinha"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ValluriM0S0VS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709330"
+    },
+    {
+      "title": "Interpretable Prediction and Feature Selection for Survival Analysis",
+      "year": 2025,
+      "authors": [
+        "Mike Van Ness",
+        "Madeleine Udell"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/NessU25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709245"
+    },
+    {
+      "title": "Dynamic Causal Structure Discovery and Causal Effect Estimation",
+      "year": 2025,
+      "authors": [
+        "Jianian Wang",
+        "Rui Song"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Wang025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709345"
+    },
+    {
+      "title": "Asymmetrical Reciprocity-based Federated Learning for Resolving Disparities in Medical Diagnosis",
+      "year": 2025,
+      "authors": [
+        "Jiaqi Wang",
+        "Ziyi Yin",
+        "Quanzeng You",
+        "Lingjuan Lyu",
+        "Fenglong Ma"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00020YLM25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709235"
+    },
+    {
+      "title": "CoopRide: Cooperate All Grids in City-Scale Ride-Hailing Dispatching with Multi-Agent Reinforcement Learning",
+      "year": 2025,
+      "authors": [
+        "Jingwei Wang",
+        "Qianyue Hao",
+        "Wenzhen Huang",
+        "Xiaochen Fan",
+        "Qin Zhang",
+        "Zhentao Tang",
+        "Bin Wang",
+        "Jianye Hao",
+        "Yong Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002HHFZT0H025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709205"
+    },
+    {
+      "title": "An Efficient Diffusion-based Non-Autoregressive Solver for Traveling Salesman Problem",
+      "year": 2025,
+      "authors": [
+        "Mingzhao Wang",
+        "You Zhou",
+        "Zhiguang Cao",
+        "Yubin Xiao",
+        "Xuan Wu",
+        "Wei Pang",
+        "Yuan Jiang",
+        "Hui Yang",
+        "Peng Zhao",
+        "Yuanshu Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Wang0CX000YZL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709343"
+    },
+    {
+      "title": "Robust Fast Adaptation from Adversarially Explicit Task Distribution Generation",
+      "year": 2025,
+      "authors": [
+        "Qi (Cheems) Wang",
+        "Yiqin Lv",
+        "Yixiu Mao",
+        "Yun Qu",
+        "Yi Xu",
+        "Xiangyang Ji"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WangLM0XJ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709337"
+    },
+    {
+      "title": "GraphTool-Instruction: Revolutionizing Graph Reasoning in LLMs through Decomposed Subtask Instruction",
+      "year": 2025,
+      "authors": [
+        "Rongzheng Wang",
+        "Shuang Liang",
+        "Qizhi Chen",
+        "Jiasheng Zhang",
+        "Ke Qin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Wang0CZQ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709238"
+    },
+    {
+      "title": "Embedding Prior Task-specific Knowledge into Language Models for Context-aware Document Ranking",
+      "year": 2025,
+      "authors": [
+        "Shuting Wang",
+        "Yutao Zhu",
+        "Zhicheng Dou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00020D25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709282"
+    },
+    {
+      "title": "Mitigating Redundancy in Deep Recommender Systems: A Field Importance Distribution Perspective",
+      "year": 2025,
+      "authors": [
+        "Xianquan Wang",
+        "Likang Wu",
+        "Zhi Li",
+        "Haitao Yuan",
+        "Shuanghong Shen",
+        "Huibo Xu",
+        "Yu Su",
+        "Chenyi Lei"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WangW0YSX0L25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709275"
+    },
+    {
+      "title": "Graph Triple Attention Networks: A Decoupled Perspective",
+      "year": 2025,
+      "authors": [
+        "Xiaotang Wang",
+        "Yun Zhu",
+        "Haizhou Shi",
+        "Yongchao Liu",
+        "Chuntao Hong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WangZSLH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709223"
+    },
+    {
+      "title": "Runtime-Aware Pipeline for Vertical Federated Learning with Bounded Model Staleness",
+      "year": 2025,
+      "authors": [
+        "Xiong Wang",
+        "Yi Zhang",
+        "Yuxin Chen",
+        "Yuqing Li",
+        "Chuanhu Ma",
+        "Bo Li",
+        "Hai Jin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WangZCLML025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709243"
+    },
+    {
+      "title": "Noise-Resilient Point-wise Anomaly Detection in Time Series Using Weak Segment Labels",
+      "year": 2025,
+      "authors": [
+        "Yaxuan Wang",
+        "Hao Cheng",
+        "Jing Xiong",
+        "Qingsong Wen",
+        "Han Jia",
+        "Ruixuan Song",
+        "Liyuan Zhang",
+        "Zhaowei Zhu",
+        "Yang Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Wang0XWJSZZ025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709257"
+    },
+    {
+      "title": "Connecting Domains and Contrasting Samples: A Ladder for Domain Generalization",
+      "year": 2025,
+      "authors": [
+        "Tianxin Wei",
+        "Yifan Chen",
+        "Xinrui He",
+        "Wenxuan Bao",
+        "Jingrui He"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Wei0HBH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709280"
+    },
+    {
+      "title": "Progressive Generalization Risk Reduction for Data-Efficient Causal Effect Estimation",
+      "year": 2025,
+      "authors": [
+        "Hechuan Wen",
+        "Tong Chen",
+        "Guanhua Ye",
+        "Li Kheng Chai",
+        "Shazia Sadiq",
+        "Hongzhi Yin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Wen0YCSY25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709305"
+    },
+    {
+      "title": "FLMarket: Enabling Privacy-preserved Pre-training Data Pricing for Federated Learning",
+      "year": 2025,
+      "authors": [
+        "Zhenyu Wen",
+        "Wanglei Feng",
+        "Di Wu",
+        "Haozhen Hu",
+        "Chang Xu",
+        "Bin Qian",
+        "Zhen Hong",
+        "Cong Wang",
+        "Shouling Ji"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WenFWHX0HWJ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709346"
+    },
+    {
+      "title": "Feature Selection for Network Intrusion Detection",
+      "year": 2025,
+      "authors": [
+        "Charles Westphal",
+        "Stephen Hailes",
+        "Mirco Musolesi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WestphalHM25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709339"
+    },
+    {
+      "title": "Classifying Treatment Responders: Bounds and Algorithms",
+      "year": 2025,
+      "authors": [
+        "Anpeng Wu",
+        "Haoxuan Li",
+        "Chunyuan Zheng",
+        "Kun Kuang",
+        "Kun Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WuLZKZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709191"
+    },
+    {
+      "title": "Breaking the Memory Wall for Heterogeneous Federated Learning via Progressive Training",
+      "year": 2025,
+      "authors": [
+        "Yebo Wu",
+        "Li Li",
+        "Cheng-Zhong Xu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Wu0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709284"
+    },
+    {
+      "title": "ProgDiffusion: Progressively Self-encoding Diffusion Models",
+      "year": 2025,
+      "authors": [
+        "Zhangkai Wu",
+        "Xuhui Fan",
+        "Longbing Cao"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Wu0C25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709222"
+    },
+    {
+      "title": "ProST: Prompt Future Snapshot on Dynamic Graphs for Spatio-Temporal Prediction",
+      "year": 2025,
+      "authors": [
+        "Kaiwen Xia",
+        "Li Lin",
+        "Shuai Wang",
+        "Qi Zhang",
+        "Shuai Wang",
+        "Tian He"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/XiaLWZW025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709273"
+    },
+    {
+      "title": "Brain Effective Connectivity Estimation via Fourier Spatiotemporal Attention",
+      "year": 2025,
+      "authors": [
+        "Wen Xiong",
+        "Jinduo Liu",
+        "Junzhong Ji",
+        "Fenglong Ma"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Xiong0JM25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709226"
+    },
+    {
+      "title": "ScalaGBM: Memory Efficient GBDT Training for High-Dimensional Data on GPU",
+      "year": 2025,
+      "authors": [
+        "Borui Xu",
+        "Zeyi Wen",
+        "Yao Chen",
+        "Weiguo Liu",
+        "Weng-Fai Wong",
+        "Bingsheng He"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/XuWCLWH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709271"
+    },
+    {
+      "title": "Incremental Label Distribution Learning",
+      "year": 2025,
+      "authors": [
+        "Chao Xu",
+        "Xijia Tang",
+        "Hong Tao",
+        "Chenping Hou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0008TTH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709318"
+    },
+    {
+      "title": "Neural Network Pruning for Invariance Learning",
+      "year": 2025,
+      "authors": [
+        "Derek Xu",
+        "Yuanzhou Chen",
+        "Yizhou Sun",
+        "Wei Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/XuCS025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709262"
+    },
+    {
+      "title": "MM-Path: Multi-modal, Multi-granularity Path Representation Learning",
+      "year": 2025,
+      "authors": [
+        "Ronghui Xu",
+        "Hanyin Cheng",
+        "Chenjuan Guo",
+        "Hongfan Gao",
+        "Jilin Hu",
+        "Sean Bin Yang",
+        "Bin Yang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001CGGHY025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709209"
+    },
+    {
+      "title": "Succinct Interaction-Aware Explanations",
+      "year": 2025,
+      "authors": [
+        "Sascha Xu",
+        "Joscha Cüppers",
+        "Jilles Vreeken"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/XuCV25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709175"
+    },
+    {
+      "title": "Fast and Accurate Temporal Hypergraph Representation for Hyperedge Prediction",
+      "year": 2025,
+      "authors": [
+        "Yuanyuan Xu",
+        "Wenjie Zhang",
+        "Ying Zhang",
+        "Xiwei Xu",
+        "Xuemin Lin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002ZZ0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709327"
+    },
+    {
+      "title": "Learning Universal Multi-level Market Irrationality Factors to Improve Stock Return Forecasting",
+      "year": 2025,
+      "authors": [
+        "Chen Yang",
+        "Jingyuan Wang",
+        "Xiaohan Jiang",
+        "Junjie Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0024WJ025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709328"
+    },
+    {
+      "title": "Causal Discovery from Shifted Multiple Environments",
+      "year": 2025,
+      "authors": [
+        "Dezhi Yang",
+        "Guoxian Yu",
+        "Jun Wang",
+        "Jinglin Zhang",
+        "Carlotta Domeniconi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YangY0ZD25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709247"
+    },
+    {
+      "title": "Mixed Blessing: Class-Wise Embedding guided Instance-Dependent Partial Label Learning",
+      "year": 2025,
+      "authors": [
+        "Fuchao Yang",
+        "Jianhong Cheng",
+        "Hui Liu",
+        "Yongqiang Dong",
+        "Yuheng Jia",
+        "Junhui Hou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YangC0DJH25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709276"
+    },
+    {
+      "title": "CausalMob: Causal Human Mobility Prediction with LLMs-derived Human Intentions toward Public Events",
+      "year": 2025,
+      "authors": [
+        "Xiaojie Yang",
+        "Hangli Ge",
+        "Jiawei Wang",
+        "Zipei Fan",
+        "Renhe Jiang",
+        "Ryosuke Shibasaki",
+        "Noboru Koshizuka"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YangGWFJSK25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709231"
+    },
+    {
+      "title": "GraphLoRA: Structure-Aware Contrastive Low-Rank Adaptation for Cross-Graph Transfer Learning",
+      "year": 2025,
+      "authors": [
+        "Zhe-Rui Yang",
+        "Jindong Han",
+        "Chang-Dong Wang",
+        "Hao Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YangH0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709186"
+    },
+    {
+      "title": "PraFFL: A Preference-Aware Scheme in Fair Federated Learning",
+      "year": 2025,
+      "authors": [
+        "Rongguang Ye",
+        "Wei-Bin Kou",
+        "Ming Tang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YeKT25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709217"
+    },
+    {
+      "title": "Benchmarking and Defending against Indirect Prompt Injection Attacks on Large Language Models",
+      "year": 2025,
+      "authors": [
+        "Jingwei Yi",
+        "Yueqi Xie",
+        "Bin Zhu",
+        "Emre Kiciman",
+        "Guangzhong Sun",
+        "Xing Xie",
+        "Fangzhao Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YiX0KS0W25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709179"
+    },
+    {
+      "title": "Inductive Link Prediction on N-ary Relational Facts via Semantic Hypergraph Reasoning",
+      "year": 2025,
+      "authors": [
+        "Gongzhu Yin",
+        "Hongli Zhang",
+        "Yuchen Yang",
+        "Yi Luo"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Yin00L25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709195"
+    },
+    {
+      "title": "Generalizable Recommender System During Temporal Popularity Distribution Shifts",
+      "year": 2025,
+      "authors": [
+        "Hyunsik Yoo",
+        "Ruizhong Qiu",
+        "Charlie Xu",
+        "Fei Wang",
+        "Hanghang Tong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YooQXWT25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709299"
+    },
+    {
+      "title": "Non-Homophilic Graph Pre-Training and Prompt Learning",
+      "year": 2025,
+      "authors": [
+        "Xingtong Yu",
+        "Jie Zhang",
+        "Yuan Fang",
+        "Renhe Jiang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YuZFJ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709219"
+    },
+    {
+      "title": "Annotation-guided Protein Design with Multi-Level Domain Alignment",
+      "year": 2025,
+      "authors": [
+        "Chaohao Yuan",
+        "Songyou Li",
+        "Geyan Ye",
+        "Yikun Zhang",
+        "Long-Kai Huang",
+        "Wenbing Huang",
+        "Wei Liu",
+        "Jianhua Yao",
+        "Yu Rong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YuanLYZH000025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709199"
+    },
+    {
+      "title": "Boosting Explainability through Selective Rationalization in Pre-trained Language Models",
+      "year": 2025,
+      "authors": [
+        "Libing Yuan",
+        "Shuaibo Hu",
+        "Kui Yu",
+        "Le Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YuanHYW25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709212"
+    },
+    {
+      "title": "A Structure-aware Invariant Learning Framework for Node-level Graph OOD Generalization",
+      "year": 2025,
+      "authors": [
+        "Ruiwen Yuan",
+        "Yongqiang Tang",
+        "Wensheng Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YuanT025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709227"
+    },
+    {
+      "title": "Combinatorial Optimization Perspective based Framework for Multi-behavior Recommendation",
+      "year": 2025,
+      "authors": [
+        "Chenhao Zhai",
+        "Chang Meng",
+        "Yu Yang",
+        "Kexin Zhang",
+        "Xuhao Zhao",
+        "Xiu Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhaiM00Z025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709278"
+    },
+    {
+      "title": "Semi-supervised Multi-view Clustering with Active Constraints",
+      "year": 2025,
+      "authors": [
+        "Chao Zhang",
+        "Deng Xu",
+        "Chunlin Chen",
+        "Huaxiong Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangXCL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709204"
+    },
+    {
+      "title": "DimCL: Dimension-Aware Augmentation in Contrastive Learning for Recommendation",
+      "year": 2025,
+      "authors": [
+        "Chi Zhang",
+        "Qilong Han",
+        "Qiaoyu Tan",
+        "Shengjie Wang",
+        "Xiangyu Zhao",
+        "Rui Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0060HTWZ025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709200"
+    },
+    {
+      "title": "Generalizing Personalized Federated Graph Augmentation via Min-max Adversarial Learning",
+      "year": 2025,
+      "authors": [
+        "Liang Zhang",
+        "Tao Long",
+        "Yang Liu",
+        "Lei Zhang",
+        "Laizhong Cui",
+        "Qingjiang Shi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangLL0CS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709311"
+    },
+    {
+      "title": "PrivDPR: Synthetic Graph Publishing with Deep PageRank under Differential Privacy",
+      "year": 2025,
+      "authors": [
+        "Sen Zhang",
+        "Haibo Hu",
+        "Qingqing Ye",
+        "Jianliang Xu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangH0X25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709334"
+    },
+    {
+      "title": "GLINT-RU: Gated Lightweight Intelligent Recurrent Units for Sequential Recommender Systems",
+      "year": 2025,
+      "authors": [
+        "Sheng Zhang",
+        "Maolin Wang",
+        "Wanyu Wang",
+        "Jingtong Gao",
+        "Xiangyu Zhao",
+        "Yu Yang",
+        "Xuetao Wei",
+        "Zitao Liu",
+        "Tong Xu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Zhang0WG0YW0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709304"
+    },
+    {
+      "title": "LLM-Eraser: Optimizing Large Language Model Unlearning through Selective Pruning",
+      "year": 2025,
+      "authors": [
+        "Shengming Zhang",
+        "Le Zhang",
+        "Jingbo Zhou",
+        "Zhi Zheng",
+        "Hui Xiong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Zhang0ZZ025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709312"
+    },
+    {
+      "title": "IDentity with Locality: An Ideal Hash for Gene Sequence Search",
+      "year": 2025,
+      "authors": [
+        "Tianyi Zhang",
+        "Gaurav Gupta",
+        "Aditya Desai",
+        "Anshumali Shrivastava"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangGDS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709233"
+    },
+    {
+      "title": "Understanding and Mitigating Hyperbolic Dimensional Collapse in Graph Contrastive Learning",
+      "year": 2025,
+      "authors": [
+        "Yifei Zhang",
+        "Hao Zhu",
+        "Menglin Yang",
+        "Jiahong Liu",
+        "Rex Ying",
+        "Irwin King",
+        "Piotr Koniusz"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangZ0LYKK25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709249"
+    },
+    {
+      "title": "Way to Specialist: Closing Loop Between Specialized LLM and Evolving Domain Knowledge Graph",
+      "year": 2025,
+      "authors": [
+        "Yutong Zhang",
+        "Lixing Chen",
+        "Shenghong Li",
+        "Nan Cao",
+        "Yang Shi",
+        "Jiaxin Ding",
+        "Zhe Qu",
+        "Pan Zhou",
+        "Yang Bai"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangC00S0Q0B25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709187"
+    },
+    {
+      "title": "Can Large Language Models Improve the Adversarial Robustness of Graph Neural Networks?",
+      "year": 2025,
+      "authors": [
+        "Zhongjian Zhang",
+        "Xiao Wang",
+        "Huichi Zhou",
+        "Yue Yu",
+        "Mengmei Zhang",
+        "Cheng Yang",
+        "Chuan Shi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Zhang0Z0Z0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709256"
+    },
+    {
+      "title": "Proactive Model Adaptation Against Concept Drift for Online Time Series Forecasting",
+      "year": 2025,
+      "authors": [
+        "Lifan Zhao",
+        "Yanyan Shen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhaoS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709210"
+    },
+    {
+      "title": "Stable Representation Learning on Graphs from Multiple Environments with Structure Distribution Shift",
+      "year": 2025,
+      "authors": [
+        "Tong Zhao",
+        "Daixin Wang",
+        "Zhiqiang Zhang",
+        "Yulin Kang",
+        "Jun Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhaoWZKZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709269"
+    },
+    {
+      "title": "Understanding Oversmoothing in Diffusion-Based GNNs From the Perspective of Operator Semigroup Theory",
+      "year": 2025,
+      "authors": [
+        "Weichen Zhao",
+        "Chenguang Wang",
+        "Xinyan Wang",
+        "Congying Han",
+        "Tiande Guo",
+        "Tianshu Yu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Zhao00HGY25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709324"
+    },
+    {
+      "title": "Graph Learning with Distributional Edge Layouts",
+      "year": 2025,
+      "authors": [
+        "Xinjian Zhao",
+        "Chaolong Ying",
+        "Yaoyao Xu",
+        "Tianshu Yu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhaoYXY25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709206"
+    },
+    {
+      "title": "Variational Graph Autoencoder for Heterogeneous Information Networks with Missing and Inaccurate Attributes",
+      "year": 2025,
+      "authors": [
+        "Yige Zhao",
+        "Jianxiang Yu",
+        "Yao Cheng",
+        "Chengcheng Yu",
+        "Yiding Liu",
+        "Xiang Li",
+        "Shuaiqiang Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Zhao0CYL0W25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709251"
+    },
+    {
+      "title": "Graph Contrastive Learning with Progressive Augmentations",
+      "year": 2025,
+      "authors": [
+        "Yuhai Zhao",
+        "Yejiang Wang",
+        "Zhengkui Wang",
+        "Wen Shan",
+        "Miaomiao Huang",
+        "Xingwei Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhaoWWSH025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709307"
+    },
+    {
+      "title": "Towards Context-Aware Traffic Classification via Time-Wavelet Fusion Network",
+      "year": 2025,
+      "authors": [
+        "Ziming Zhao",
+        "Zhuoxue Song",
+        "Xiaofei Xie",
+        "Zhaoxuan Li",
+        "Jiongchi Yu",
+        "Fan Zhang",
+        "Tingting Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0008SXLY0L25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709315"
+    },
+    {
+      "title": "Enhancing Graph Contrastive Learning with Reliable and Informative Augmentation for Recommendation",
+      "year": 2025,
+      "authors": [
+        "Bowen Zheng",
+        "Junjie Zhang",
+        "Hongyu Lu",
+        "Yu Chen",
+        "Ming Chen",
+        "Wayne Xin Zhao",
+        "Ji-Rong Wen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhengZLCCZW25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709214"
+    },
+    {
+      "title": "A Two-Stage Pretraining-Finetuning Framework for Treatment Effect Estimation with Unmeasured Confounding",
+      "year": 2025,
+      "authors": [
+        "Chuan Zhou",
+        "Yaxuan Li",
+        "Chunyuan Zheng",
+        "Haiteng Zhang",
+        "Min Zhang",
+        "Haoxuan Li",
+        "Mingming Gong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhouLZZZLG25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709161"
+    },
+    {
+      "title": "HRSTORY: Historical News Review Based Online Story Discovery",
+      "year": 2025,
+      "authors": [
+        "Renjie Zhou",
+        "Haoran Ye",
+        "Jian Wan",
+        "Yong Liao"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhouY0L25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709198"
+    },
+    {
+      "title": "Grid and Road Expressions Are Complementary for Trajectory Representation Learning",
+      "year": 2025,
+      "authors": [
+        "Silin Zhou",
+        "Shuo Shang",
+        "Lisi Chen",
+        "Peng Han",
+        "Christian S. Jensen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhouS00J25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709272"
+    },
+    {
+      "title": "BTFL: A Bayesian-based Test-Time Generalization Method for Internal and External Data Distributions in Federated learning",
+      "year": 2025,
+      "authors": [
+        "Yu Zhou",
+        "Bingyan Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhouL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709309"
+    },
+    {
+      "title": "RELIEF: Reinforcement Learning Empowered Graph Feature Prompt Tuning",
+      "year": 2025,
+      "authors": [
+        "Jiapeng Zhu",
+        "Zichen Ding",
+        "Jianxiang Yu",
+        "Jiaqi Tan",
+        "Xiang Li",
+        "Weining Qian"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002000LQ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709252"
+    },
+    {
+      "title": "Contextual Generative Auction with Permutation-level Externalities for Online Advertising",
+      "year": 2025,
+      "authors": [
+        "Ruitao Zhu",
+        "Yangsu Liu",
+        "Dagui Chen",
+        "Zhenjia Ma",
+        "Chufeng Shi",
+        "Zhenzhe Zheng",
+        "Jie Zhang",
+        "Jian Xu",
+        "Bo Zheng",
+        "Fan Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhuLCMSZZX0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709313"
+    },
+    {
+      "title": "Exploring Feature-based Knowledge Distillation for Recommender System: A Frequency Perspective",
+      "year": 2025,
+      "authors": [
+        "Zhangchi Zhu",
+        "Wei Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhuZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709248"
+    },
+    {
+      "title": "HyperZero: A Customized End-to-End Auto-Tuning System for Recommendation with Hourly Feedback",
+      "year": 2025,
+      "authors": [
+        "Xufeng Cai",
+        "Ziwei Guan",
+        "Lei Yuan",
+        "Ali Selman Aydin",
+        "Tengyu Xu",
+        "Boying Liu",
+        "Wenbo Ren",
+        "Renkai Xiang",
+        "Songyi He",
+        "Haichuan Yang",
+        "Serena Li",
+        "Mingze Gao",
+        "Yue Weng",
+        "Ji Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/CaiGYAXLRXHYLGW25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709409"
+    },
+    {
+      "title": "Powerformer: A Section-adaptive Transformer for Power Flow Adjustment",
+      "year": 2025,
+      "authors": [
+        "Kaixuan Chen",
+        "Wei Luo",
+        "Shunyu Liu",
+        "Yaoquan Wei",
+        "Yihe Zhou",
+        "Yunpeng Qing",
+        "Quan Zhang",
+        "Yong Wang",
+        "Jie Song",
+        "Mingli Song"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChenL0WZQZW0S25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709433"
+    },
+    {
+      "title": "An Adaptable Budget Planner for Enhancing Budget-Constrained Auto-Bidding in Online Advertising",
+      "year": 2025,
+      "authors": [
+        "Zhijian Duan",
+        "Yusen Huo",
+        "Tianyu Wang",
+        "Zhilin Zhang",
+        "Yeshu Li",
+        "Chuan Yu",
+        "Jian Xu",
+        "Bo Zheng",
+        "Xiaotie Deng"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001HWZLYXZD25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709414"
+    },
+    {
+      "title": "ForTune: Running Offline Scenarios to Estimate Impact on Business Metrics",
+      "year": 2025,
+      "authors": [
+        "Georges Dupret",
+        "Konstantin Sozinov",
+        "Carmen Barcena Gonzalez",
+        "Ziggy Zacks",
+        "Amber Yuan",
+        "Ben Carterette",
+        "Manuel Mai",
+        "Andrey Gatash",
+        "Gwo Liang Lien",
+        "Shubham Bansal",
+        "Roberto Sanchis-Ojeda",
+        "Mounia Lalmas"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DupretSGZYCMGLB25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709431"
+    },
+    {
+      "title": "Experimenting, Fast and Slow: Bayesian Optimization of Long-term Outcomes with Online Experiments",
+      "year": 2025,
+      "authors": [
+        "Qing Feng",
+        "Samuel Daulton",
+        "Benjamin Letham",
+        "Maximilian Balandat",
+        "Eytan Bakshy"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/FengDLBB25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709419"
+    },
+    {
+      "title": "Multi-Task Combinatorial Bandits for Budget Allocation",
+      "year": 2025,
+      "authors": [
+        "Lin Ge",
+        "Yang Xu",
+        "Jianing Chu",
+        "David Cramer",
+        "Fuhong Li",
+        "Kelly Paulson",
+        "Rui Song"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GeXCCLP025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709434"
+    },
+    {
+      "title": "TEMPER: Capturing Consistent and Fluctuating TEMPoral User Behaviour for EtheReum Phishing Scam Detection",
+      "year": 2025,
+      "authors": [
+        "Medhasree Ghosh",
+        "Chirag Dinesh Jain",
+        "Raju Halder",
+        "Joydeep Chandra"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GhoshJHC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709399"
+    },
+    {
+      "title": "Efficient Multi-Expert Tabular Language Model for Banking",
+      "year": 2025,
+      "authors": [
+        "Yue Guo",
+        "Wentao Zhang",
+        "Xiaojun Zhang",
+        "Vincent W. Zheng",
+        "Yi Yang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GuoZZZ025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709400"
+    },
+    {
+      "title": "Learning Adaptive Reserve Price in Display Advertising",
+      "year": 2025,
+      "authors": [
+        "Kun Hu",
+        "Shumin Zhang",
+        "Lixia Wu",
+        "Yongjun Dai",
+        "Minfang Lu",
+        "Yuting Qiang",
+        "Minglong Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HuZWDLQL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709439"
+    },
+    {
+      "title": "Synthetic Survey Data Generation and Evaluation",
+      "year": 2025,
+      "authors": [
+        "Yanru Jiang",
+        "Siyu Liang",
+        "Junwon Choi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/JiangLC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709421"
+    },
+    {
+      "title": "Large Vison-Language Foundation Model in Baidu AIGC Image Advertising",
+      "year": 2025,
+      "authors": [
+        "Zhipeng Jin",
+        "Wen Tao",
+        "Yafei Li",
+        "Yi Yang",
+        "Cong Han",
+        "Shuanglong Li",
+        "Lin Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/JinTLYHLL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709401"
+    },
+    {
+      "title": "YaART: Yet Another ART Rendering Technology",
+      "year": 2025,
+      "authors": [
+        "Sergey Kastryulin",
+        "Artem Konev",
+        "Alexander Shishenya",
+        "Eugene Lyapustin",
+        "Artem Khurshudov",
+        "Alexander Tselousov",
+        "Nikita Vinokurov",
+        "Denis Kuznedelev",
+        "Alexander Markovich",
+        "Grigoriy Livshits",
+        "Alexey Kirillov",
+        "Anastasiia Tabisheva",
+        "Liubov Chubarova",
+        "Marina Kaminskaia",
+        "Alexander Ustyuzhanin",
+        "Artemii Shvetsov",
+        "Daniil Shlenskii",
+        "Valerii Startsev",
+        "Dmitrii Kornilov",
+        "Mikhail Romanov",
+        "Dmitry Baranchuk",
+        "Artem Babenko",
+        "Sergei Ovcharenko",
+        "Valentin Khrulkov"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KastryulinKSLKT25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709404"
+    },
+    {
+      "title": "TGDataset: Collecting and Exploring the Largest Telegram Channels Dataset",
+      "year": 2025,
+      "authors": [
+        "Massimo La Morgia",
+        "Alessandro Mei",
+        "Alberto Maria Mongardini"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/MorgiaMM25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709397"
+    },
+    {
+      "title": "LLMLight: Large Language Models as Traffic Signal Control Agents",
+      "year": 2025,
+      "authors": [
+        "Siqi Lai",
+        "Zhao Xu",
+        "Weijia Zhang",
+        "Hao Liu",
+        "Hui Xiong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Lai000025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709379"
+    },
+    {
+      "title": "A Deep Subgrouping Framework for Precision Drug Repurposing via Emulating Clinical Trials on Real-world Patient Data",
+      "year": 2025,
+      "authors": [
+        "Seungyeon Lee",
+        "Ruoqi Liu",
+        "Feixiong Cheng",
+        "Ping Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002LC025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709418"
+    },
+    {
+      "title": "ECGrecover: A Deep Learning Approach for Electrocardiogram Signal Completion",
+      "year": 2025,
+      "authors": [
+        "Alex Lence",
+        "Federica Granese",
+        "Ahmad Fall",
+        "Blaise Hanczar",
+        "Joe-Elie Salem",
+        "Jean-Daniel Zucker",
+        "Edi Prifti"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LenceGFHSZP25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709405"
+    },
+    {
+      "title": "MerRec:A Large-scale Multipurpose Mercari Dataset for Consumer-to-Consumer Recommendation Systems",
+      "year": 2025,
+      "authors": [
+        "Lichi Li",
+        "Zainul Abi Din",
+        "Zhen Tan",
+        "Sam London",
+        "Tianlong Chen",
+        "Ajay H. Daptardar"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiD0LCD25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709394"
+    },
+    {
+      "title": "Contrastive Learning for Inventory Add Prediction at Fliggy",
+      "year": 2025,
+      "authors": [
+        "Manwei Li",
+        "Detao Lv",
+        "Yao Yu",
+        "Zihao Jiao"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiLYJ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709384"
+    },
+    {
+      "title": "FuzzyLight: A Robust Two-Stage Fuzzy Approach for Traffic Signal Control Works in Real Cities",
+      "year": 2025,
+      "authors": [
+        "Mingyuan Li",
+        "Jiahao Wang",
+        "Bo Du",
+        "Jun Shen",
+        "Qiang Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0006W00025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709393"
+    },
+    {
+      "title": "Improving Synthetic Image Detection Towards Generalization: An Image Transformation Perspective",
+      "year": 2025,
+      "authors": [
+        "Ouxiang Li",
+        "Jiayin Cai",
+        "Yanbin Hao",
+        "Xiaolong Jiang",
+        "Yao Hu",
+        "Fuli Feng"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiCHJHF25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709392"
+    },
+    {
+      "title": "RankElectra: Semi-supervised Pre-training of Learning-to-Rank Electra for Web-scale Search",
+      "year": 2025,
+      "authors": [
+        "Yuchen Li",
+        "Haoyi Xiong",
+        "Yongqi Zhang",
+        "Jiang Bian",
+        "Tianhao Peng",
+        "Xuhong Li",
+        "Shuaiqiang Wang",
+        "Linghe Kong",
+        "Dawei Yin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiXZB0LWKY25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709395"
+    },
+    {
+      "title": "Automatic Radiotherapy Treatment Planning with Deep Functional Reinforcement Learning",
+      "year": 2025,
+      "authors": [
+        "Bin Liu",
+        "Yu Liu",
+        "Zhiqian Li",
+        "Jianghong Xiao",
+        "Guosheng Yin",
+        "Huazhen Lin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiuLLXYL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709430"
+    },
+    {
+      "title": "Scenario Shared Instance Modeling for Click-through Rate Prediction",
+      "year": 2025,
+      "authors": [
+        "Dugang Liu",
+        "Chaohua Yang",
+        "Yuwen Fu",
+        "Xing Tang",
+        "Gongfu Li",
+        "Fuyuan Lyu",
+        "Xiuqiang He",
+        "Zhong Ming"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiuYF0LL0025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709390"
+    },
+    {
+      "title": "LinkSAGE: Optimizing Job Matching Using Graph Neural Networks",
+      "year": 2025,
+      "authors": [
+        "Ping Liu",
+        "Haichao Wei",
+        "Xiaochen Hou",
+        "Jianqiang Shen",
+        "Shihai He",
+        "Qianqi Shen",
+        "Zhujun Chen",
+        "Fedor Borisyuk",
+        "Daniel Hewlett",
+        "Liang Wu",
+        "Srikant Veeraraghavan",
+        "Alex Tsun",
+        "Chengming Jiang",
+        "Wenjing Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002WHSHSCBHWVT25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709396"
+    },
+    {
+      "title": "Session-Level Dynamic Ad Load Optimization using Offline Robust Reinforcement Learning",
+      "year": 2025,
+      "authors": [
+        "Tao Liu",
+        "Qi Xu",
+        "Wei Shi",
+        "Zhigang Hua",
+        "Shuang Yang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiuXSHY25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709437"
+    },
+    {
+      "title": "Roadside Multi-LiDAR Data Fusion for Enhanced Traffic Safety",
+      "year": 2025,
+      "authors": [
+        "Md. Parvez Mollah",
+        "Biplob Debnath",
+        "Murugan Sankaradas",
+        "Srimat Chakradhar",
+        "Abdullah Mueen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/MollahDSCM25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709410"
+    },
+    {
+      "title": "Using Instruction-Tuned LMs for Scalable Use Case-Based Shopping - Where Customers Meet Their Needs",
+      "year": 2025,
+      "authors": [
+        "Rajdeep Mukherjee",
+        "Sonali Singh",
+        "Sachin Farfade"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/MukherjeeSF25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709411"
+    },
+    {
+      "title": "Understanding Team Collapse via Probabilistic Graphical Models",
+      "year": 2025,
+      "authors": [
+        "Iasonas Nikolaou",
+        "Konstantinos Pelechrinis",
+        "Evimaria Terzi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/NikolaouPT25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709386"
+    },
+    {
+      "title": "Explainable LiDAR 3D Point Cloud Segmentation and Clustering for Detecting Airplane-Generated Wind Turbulence",
+      "year": 2025,
+      "authors": [
+        "Zhan Qu",
+        "Shuzhou Yuan",
+        "Michael Färber",
+        "Marius Brennfleck",
+        "Niklas Wartha",
+        "Anton Stephan"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/QuY0BWS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709436"
+    },
+    {
+      "title": "Towards Web-scale Recommendations with LLMs: From Quality-aware Ranking to Candidate Generation",
+      "year": 2025,
+      "authors": [
+        "Jaidev Shah",
+        "Iman Barjasteh",
+        "Amey Barapatre",
+        "Rana Forsati",
+        "Gang Luo",
+        "Fan Wu",
+        "Yuan Fang",
+        "Xue Deng",
+        "Blake Shepard",
+        "Ronak Shah",
+        "Linjun Yang",
+        "Hongzhi Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ShahBBFLWFDSSYL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709413"
+    },
+    {
+      "title": "SSE: Multimodal Semantic Data Selection and Enrichment for Industrial-scale Data Assimilation",
+      "year": 2025,
+      "authors": [
+        "Maying Shen",
+        "Nadine Chang",
+        "Sifei Liu",
+        "José M. Álvarez"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ShenCLA25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709417"
+    },
+    {
+      "title": "AntAkso: Claims Management System for Health Insurance in Alipay",
+      "year": 2025,
+      "authors": [
+        "Qitao Shi",
+        "Jun Zhou",
+        "Ya-Lin Zhang",
+        "Longfei Li",
+        "Chaoyi Ma",
+        "Yifan Wu",
+        "Xiaobo Qin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ShiZ0LMWQ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709398"
+    },
+    {
+      "title": "CATER: A Cluster-Based Alternative-Term Recommendation Framework for Large-Scale Web Search at NAVER",
+      "year": 2025,
+      "authors": [
+        "Jiwon Son",
+        "Jaeyoon Kim",
+        "Taekin Kim",
+        "Yeon-Chang Lee",
+        "Sang-Wook Kim"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/SonKKLK25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709426"
+    },
+    {
+      "title": "A Framework for Leveraging Partially-Labeled Data for Product Attribute-Value Identification",
+      "year": 2025,
+      "authors": [
+        "D. Subhalingam",
+        "Keshav Kolluru",
+        "Mausam",
+        "Saurabh Singal"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/SubhalingamKMS25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709427"
+    },
+    {
+      "title": "Unifying Adversarial Multi-Deconfounded Learning Paradigm for Fake News Detection",
+      "year": 2025,
+      "authors": [
+        "Zixun Sun",
+        "Mingye Xu",
+        "Guanming Liang",
+        "Qi Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/SunXLL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709406"
+    },
+    {
+      "title": "Struct-X: Enhancing the Reasoning Capabilities of Large Language Models in Structured Data Scenarios",
+      "year": 2025,
+      "authors": [
+        "Xiaoyu Tan",
+        "Haoyu Wang",
+        "Xihe Qiu",
+        "Leijun Cheng",
+        "Yuan Cheng",
+        "Wei Chu",
+        "Yinghui Xu",
+        "Yuan Qi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/TanWQCCCX025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709381"
+    },
+    {
+      "title": "Multi-Branch Collaborative Learning Network for Video Quality Assessment in Industrial Video Search",
+      "year": 2025,
+      "authors": [
+        "Hengzhu Tang",
+        "Zefeng Zhang",
+        "Zhiping Li",
+        "Zhenyu Zhang",
+        "Xing Wu",
+        "Li Gao",
+        "Suqi Cheng",
+        "Dawei Yin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/TangZLZWGCY25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709408"
+    },
+    {
+      "title": "Generative Retrieval for Book Search",
+      "year": 2025,
+      "authors": [
+        "Yubao Tang",
+        "Ruqing Zhang",
+        "Jiafeng Guo",
+        "Maarten de Rijke",
+        "Shihao Liu",
+        "Shuaiqiang Wang",
+        "Dawei Yin",
+        "Xueqi Cheng"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Tang0GRLWYC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709435"
+    },
+    {
+      "title": "Cross-Species Insights: Transforming Drug Efficacy from Rats to Humans Using Tissue-Specific Generative Models",
+      "year": 2025,
+      "authors": [
+        "Sally Turutov",
+        "Kira Radinsky"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/TurutovR25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709389"
+    },
+    {
+      "title": "Breaker: Removing Shortcut Cues with User Clustering for Single-slot Recommendation System",
+      "year": 2025,
+      "authors": [
+        "Chao Wang",
+        "Yue Zheng",
+        "Yujing Zhang",
+        "Yan Feng",
+        "Zhe Wang",
+        "Xiaowei Shi",
+        "An You",
+        "Yu Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WangZZFWSYC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709387"
+    },
+    {
+      "title": "HoME: Hierarchy of Multi-Gate Experts for Multi-Task Learning at Kuaishou",
+      "year": 2025,
+      "authors": [
+        "Xu Wang",
+        "Jiangxia Cao",
+        "Zhiyi Fu",
+        "Kun Gai",
+        "Guorui Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WangCFGZ25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709416"
+    },
+    {
+      "title": "Producer-Side Experiments Based on Counterfactual Interleaving Designs for Online Recommender Systems",
+      "year": 2025,
+      "authors": [
+        "Yan Wang",
+        "Shan Ba"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WangB25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709428"
+    },
+    {
+      "title": "SoAy: A Solution-based LLM API-using Methodology for Academic Information Seeking",
+      "year": 2025,
+      "authors": [
+        "Yuanchun Wang",
+        "Jifan Yu",
+        "Zijun Yao",
+        "Jing Zhang",
+        "Yuyang Xie",
+        "Shangqing Tu",
+        "Yiyang Fu",
+        "Youhe Feng",
+        "Jinkai Zhang",
+        "Jingyao Zhang",
+        "Bowen Huang",
+        "Yuanyao Li",
+        "Huihui Yuan",
+        "Lei Hou",
+        "Juanzi Li",
+        "Jie Tang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WangY0ZXTFFZZHL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709412"
+    },
+    {
+      "title": "Beyond Item Dissimilarities: Diversifying by Intent in Recommender Systems",
+      "year": 2025,
+      "authors": [
+        "Yuyan Wang",
+        "Cheenar Banerjee",
+        "Samer Chucri",
+        "Fabio Soldo",
+        "Sriraj Badam",
+        "Ed H. Chi",
+        "Minmin Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WangBCSBCC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709429"
+    },
+    {
+      "title": "DynST: Dynamic Sparse Training for Resource-Constrained Spatio-Temporal Forecasting",
+      "year": 2025,
+      "authors": [
+        "Hao Wu",
+        "Haomin Wen",
+        "Guibin Zhang",
+        "Yutong Xia",
+        "Yuxuan Liang",
+        "Yu Zheng",
+        "Qingsong Wen",
+        "Kun Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/WuWZXL0WW25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709391"
+    },
+    {
+      "title": "LDMapNet-U: An End-to-End System for City-Scale Lane-Level Map Updating",
+      "year": 2025,
+      "authors": [
+        "Deguo Xia",
+        "Weiming Zhang",
+        "Xiyan Liu",
+        "Wei Zhang",
+        "Chenting Gong",
+        "Xiao Tan",
+        "Jizhou Huang",
+        "Mengmeng Yang",
+        "Diange Yang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/XiaZL0G0H0Y25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709383"
+    },
+    {
+      "title": "Effective AOI-level Parcel Volume Prediction: When Lookahead Parcels Matter",
+      "year": 2025,
+      "authors": [
+        "Yinfeng Xiang",
+        "Jiangyi Fang",
+        "Chao Li",
+        "Haitao Yuan",
+        "Yiwei Song",
+        "Jiming Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/XiangF0YS025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709441"
+    },
+    {
+      "title": "Scalable Area Difficulty Assessment with Knowledge-enhanced AI for Nationwide Logistics Systems",
+      "year": 2025,
+      "authors": [
+        "Zejun Xie",
+        "Wenjun Lyu",
+        "Yiwei Song",
+        "Haotian Wang",
+        "Guang Yang",
+        "Yunhuai Liu",
+        "Tian He",
+        "Desheng Zhang",
+        "Guang Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/XieLSWYL0Z025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709407"
+    },
+    {
+      "title": "Mutual Information-aware Knowledge Distillation for Short Video Recommendation",
+      "year": 2025,
+      "authors": [
+        "Han Xu",
+        "Taoxing Pan",
+        "Zhiqiang Liu",
+        "Xiaoxiao Xu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/XuPLX25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709403"
+    },
+    {
+      "title": "Disclosing Actual Controller based on Equity Knowledge Graph Learning",
+      "year": 2025,
+      "authors": [
+        "Qingying Xu",
+        "Liang Hong",
+        "Mingxuan Shen",
+        "Baokun Yi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/XuHSY25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709432"
+    },
+    {
+      "title": "Multi-granularity Interest Retrieval and Refinement Network for Long-Term User Behavior Modeling in CTR Prediction",
+      "year": 2025,
+      "authors": [
+        "Xiang Xu",
+        "Hao Wang",
+        "Wei Guo",
+        "Luankang Zhang",
+        "Wanshan Yang",
+        "Runlong Yu",
+        "Yong Liu",
+        "Defu Lian",
+        "Enhong Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/XuW0ZYYLLC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709438"
+    },
+    {
+      "title": "AddrLLM: Address Rewriting via Large Language Model on Nationwide Logistics Data",
+      "year": 2025,
+      "authors": [
+        "Qinchen Yang",
+        "Zhiqing Hong",
+        "Dongjiang Cao",
+        "Haotian Wang",
+        "Zejun Xie",
+        "Tian He",
+        "Yunhuai Liu",
+        "Yu Yang",
+        "Desheng Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YangHCWX0L0Z25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709425"
+    },
+    {
+      "title": "SWaT: Statistical Modeling of Video Watch Time through User Behavior Analysis",
+      "year": 2025,
+      "authors": [
+        "Shentao Yang",
+        "Haichuan Yang",
+        "Linna Du",
+        "Adithya Ganesh",
+        "Bo Peng",
+        "Boying Liu",
+        "Serena Li",
+        "Ji Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YangYDGPLLL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709415"
+    },
+    {
+      "title": "SepsisCalc: Integrating Clinical Calculators into Early Sepsis Prediction via Dynamic Temporal Graph Construction",
+      "year": 2025,
+      "authors": [
+        "Changchang Yin",
+        "Shihan Fu",
+        "Bingsheng Yao",
+        "Thai-Hoang Pham",
+        "Weidan Cao",
+        "Dakuo Wang",
+        "Jeffrey M. Caterino",
+        "Ping Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YinFYPCWC025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709402"
+    },
+    {
+      "title": "BackdoorMBTI: A Backdoor Learning Multimodal Benchmark Tool Kit for Backdoor Defense Evaluation",
+      "year": 2025,
+      "authors": [
+        "Haiyang Yu",
+        "Tian Xie",
+        "Jiaping Gui",
+        "Pengyang Wang",
+        "Pengzhou Cheng",
+        "Ping Yi",
+        "Yue Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YuXGWCY025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709385"
+    },
+    {
+      "title": "Instruction Semantics Enhanced Dual-Flow Graph Model for GPU Error Resilience Prediction",
+      "year": 2025,
+      "authors": [
+        "Pengfei Yu",
+        "Jingjing Gu",
+        "Dazhong Shen",
+        "Xin Dong",
+        "Yang Liu",
+        "Hui Xiong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/YuGSDLX25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709424"
+    },
+    {
+      "title": "NoteLLM-2: Multimodal Large Representation Models for Recommendation",
+      "year": 2025,
+      "authors": [
+        "Chao Zhang",
+        "Haoxin Zhang",
+        "Shiwei Wu",
+        "Di Wu",
+        "Tong Xu",
+        "Xiangyu Zhao",
+        "Yan Gao",
+        "Yao Hu",
+        "Enhong Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangZWW00GHC25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709440"
+    },
+    {
+      "title": "Large-scale Human Mobility Data Regeneration for Open Urban Research",
+      "year": 2025,
+      "authors": [
+        "Ruixing Zhang",
+        "Yunqi Liu",
+        "Liangzhe Han",
+        "Leilei Sun",
+        "Chuanren Liu",
+        "Jibin Wang",
+        "Weifeng Lv"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangLHSLWL25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709380"
+    },
+    {
+      "title": "MentorPDM: Learning Data-Driven Curriculum for Multi-Modal Predictive Maintenance",
+      "year": 2025,
+      "authors": [
+        "Shuaicheng Zhang",
+        "Tuo Wang",
+        "Stephen Adams",
+        "Sanmitra Bhattacharya",
+        "Sunil Reddy Tiyyagura",
+        "Edward Bowen",
+        "Balaji Veeramani",
+        "Dawei Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangWABTBV025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709388"
+    },
+    {
+      "title": "Multi-period Learning for Financial Time Series Forecasting",
+      "year": 2025,
+      "authors": [
+        "Xu Zhang",
+        "Zhengang Huang",
+        "Yunzhi Wu",
+        "Xun Lu",
+        "Erpeng Qi",
+        "Yunkai Chen",
+        "Zhongya Xue",
+        "Qitong Wang",
+        "Peng Wang",
+        "Wei Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangHWLQCX0WW25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709422"
+    },
+    {
+      "title": "MOPI-HFRS: A Multi-objective Personalized Health-aware Food Recommendation System with LLM-enhanced Interpretation",
+      "year": 2025,
+      "authors": [
+        "Zheyuan Zhang",
+        "Zehong Wang",
+        "Tianyi Ma",
+        "Varun Sameer Taneja",
+        "Sofia Nelson",
+        "Nhi Ha Lan Le",
+        "Keerthiram Murugesan",
+        "Mingxuan Ju",
+        "Nitesh V. Chawla",
+        "Chuxu Zhang",
+        "Yanfang Ye"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhangWMTNLMJCZ025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709382"
+    },
+    {
+      "title": "Awaking the Slides: A Tuning-free and Knowledge-regulated AI Tutoring System via Language Model Coordination",
+      "year": 2025,
+      "authors": [
+        "Daniel Zhang-Li",
+        "Zheyuan Zhang",
+        "Jifan Yu",
+        "Joy Lim Jia Yin",
+        "Shangqing Tu",
+        "Linlu Gong",
+        "Haohua Wang",
+        "Zhiyuan Liu",
+        "Huiqin Liu",
+        "Lei Hou",
+        "Juanzi Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Zhang-LiZYYTGW025.html",
+      "doi": "https://doi.org/10.1145/3690624.3709423"
+    },
+    {
+      "title": "Prices Do Matter: Modeling Price Competitiveness for Online Hotel Industry",
+      "year": 2025,
+      "authors": [
+        "Ruitao Zhu",
+        "Wendong Xiao",
+        "Yao Yu",
+        "Yangsu Liu",
+        "Zhenzhe Zheng",
+        "Shuqi Zhang",
+        "Dong Li",
+        "Fan Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ZhuXYLZZLW25.html",
+      "doi": "https://doi.org/10.1145/3690624.3709420"
+    },
+    {
+      "title": "The Surprising Victory of NLP: From Philosophy to Agentic Language Models",
+      "year": 2025,
+      "authors": [
+        "Christopher D. Manning"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Manning25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736801"
+    },
+    {
+      "title": "On Reasoning LLMs: Myths, Merits, and How to Move Forward",
+      "year": 2025,
+      "authors": [
+        "Dan Roth"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/000125.html",
+      "doi": "https://doi.org/10.1145/3711896.3736800"
+    },
+    {
+      "title": "Causality - Exploiting Multi-Modal Data",
+      "year": 2025,
+      "authors": [
+        "Caroline Uhler"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Uhler25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736799"
+    },
+    {
+      "title": "K-Paths: Reasoning over Graph Paths for Drug Repurposing and Drug Interaction Prediction",
+      "year": 2025,
+      "authors": [
+        "Tassallah Abdullahi",
+        "Ioanna Gemou",
+        "Nihal V. Nayak",
+        "Ghulam Murtaza",
+        "Stephen H. Bach",
+        "Carsten Eickhoff",
+        "Ritambhara Singh"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/AbdullahiGNMBES25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737011"
+    },
+    {
+      "title": "Fair Diversity Maximization with Few Representatives",
+      "year": 2025,
+      "authors": [
+        "Florian Adriaens",
+        "Nikolaj Tatti"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/AdriaensT25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736950"
+    },
+    {
+      "title": "Separating Graph Generative Models via Degree Distributions",
+      "year": 2025,
+      "authors": [
+        "Daniel Alabi",
+        "Dimitris Kalimeris"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/AlabiK25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737124"
+    },
+    {
+      "title": "DiSa: Directional Saliency-Aware Prompt Learning for Generalizable Vision-Language Models",
+      "year": 2025,
+      "authors": [
+        "Niloufar Alipour Talemi",
+        "Hossein Kashiani",
+        "Hossein R. Nowdeh",
+        "Fatemeh Afghah"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/TalemiKNA25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736911"
+    },
+    {
+      "title": "GRAND : Graph Reconstruction from Potential Partial Adjacency and Neighborhood Data",
+      "year": 2025,
+      "authors": [
+        "Sofiane Azogagh",
+        "Zelma Aubin Birba",
+        "Josée Desharnais",
+        "Sébastien Gambs",
+        "Marc-Olivier Killijian",
+        "Nadia Tawbi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/AzogaghBDGKT25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736988"
+    },
+    {
+      "title": "FlexGNN: A High-Performance, Large-Scale Full-Graph GNN System with Best-Effort Training Plan Optimization",
+      "year": 2025,
+      "authors": [
+        "Jeongmin Bae",
+        "Donghyoung Han",
+        "Min-Soo Kim"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002H025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736964"
+    },
+    {
+      "title": "A Unified Solution to Diverse Heterogeneities in One-Shot Federated Learning",
+      "year": 2025,
+      "authors": [
+        "Jun Bai",
+        "Yiliao Song",
+        "Di Wu",
+        "Atul Sajjanhar",
+        "Yong Xiang",
+        "Wei Zhou",
+        "Xiaohui Tao",
+        "Yan Li",
+        "Yue Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/BaiS0S0000025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736825"
+    },
+    {
+      "title": "Progressive Stacking for Scalable Graph Condensation",
+      "year": 2025,
+      "authors": [
+        "Yibing Bai",
+        "Min Gao",
+        "Zongwei Wang",
+        "Xinyi Gao",
+        "Wentao Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Bai000025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737090"
+    },
+    {
+      "title": "UnG-MoCha: Neural Motif Counting in Uncertain Graphs",
+      "year": 2025,
+      "authors": [
+        "Lujie Ban",
+        "Xiaolin Han",
+        "Jinyang Li",
+        "Chenhao Ma"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Ban0L025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737170"
+    },
+    {
+      "title": "Quantizing Text-attributed Graphs for Semantic-Structural Integration",
+      "year": 2025,
+      "authors": [
+        "Jianyuan Bo",
+        "Hao Wu",
+        "Yuan Fang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Bo0025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737096"
+    },
+    {
+      "title": "ErrorEraser: Unlearning Data Bias for Improved Continual Learning",
+      "year": 2025,
+      "authors": [
+        "Xuemei Cao",
+        "Hanlin Gu",
+        "Xin Yang",
+        "Bingjun Wei",
+        "Haoyang Liang",
+        "Xiangkun Wang",
+        "Tianrui Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001G0WLW025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736941"
+    },
+    {
+      "title": "CODA: Temporal Domain Generalization via Concept Drift Simulator",
+      "year": 2025,
+      "authors": [
+        "Chia-Yuan Chang",
+        "Yu-Neng Chuang",
+        "Zhimeng Jiang",
+        "Kwei-Herng Lai",
+        "Anxiao Jiang",
+        "Na Zou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002CJLJ025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736883"
+    },
+    {
+      "title": "Does Vector Quantization Fail in Spatio-Temporal Forecasting? Exploring a Differentiable Sparse Soft-Vector Quantization Approach",
+      "year": 2025,
+      "authors": [
+        "Chao Chen",
+        "Tian Zhou",
+        "Yanjun Zhao",
+        "Hui Liu",
+        "Rong Jin",
+        "Liang Sun"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Chen0Z00025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736914"
+    },
+    {
+      "title": "Unlocking the Power of Diffusion Models in Sequential Recommendation: A Simple and Effective Approach",
+      "year": 2025,
+      "authors": [
+        "Jialei Chen",
+        "Yuanbo Xu",
+        "Yiheng Jiang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0004XJ25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737172"
+    },
+    {
+      "title": "Decoupling Spatio-Temporal Prediction: When Lightweight Large Models Meet Adaptive Hypergraphs",
+      "year": 2025,
+      "authors": [
+        "Jiawen Chen",
+        "Qi Shao",
+        "Duxin Chen",
+        "Wenwu Yu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChenSCY25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736904"
+    },
+    {
+      "title": "AffinityTune: A Prompt-Tuning Framework for Few-Shot Anomaly Detection on Graphs",
+      "year": 2025,
+      "authors": [
+        "Jingyan Chen",
+        "Guanghui Zhu",
+        "Guansong Pang",
+        "Chunfeng Yuan",
+        "Yihua Huang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChenZPY025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736836"
+    },
+    {
+      "title": "GraphLAMA: Enabling Efficient Adaptation of Graph Language Models with Limited Annotations",
+      "year": 2025,
+      "authors": [
+        "Junze Chen",
+        "Cheng Yang",
+        "Shujie Li",
+        "Zhiqiang Zhang",
+        "Yawen Li",
+        "Junping Du",
+        "Chuan Shi"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Chen00000025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736991"
+    },
+    {
+      "title": "Towards Interpretable Drug-Drug Interaction Prediction: A Graph-Based Approach with Molecular and Network-Level Explanations",
+      "year": 2025,
+      "authors": [
+        "Mengjie Chen",
+        "Ming Zhang",
+        "Cunquan Qu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Chen0Q25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737163"
+    },
+    {
+      "title": "From Expansion to Retraction: Long-tailed Machine Unlearning via Boundary Manipulation",
+      "year": 2025,
+      "authors": [
+        "Min Chen",
+        "Weizhuo Gao",
+        "Chen Wang",
+        "Gaoyang Liu",
+        "Ahmed M. Abdelmoniem",
+        "Kai Peng"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChenG0LA025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736970"
+    },
+    {
+      "title": "Enhanced Subgraph Learning in 2-FWL GNNs via Local Connectivity, Spectral, and Distance Encodings",
+      "year": 2025,
+      "authors": [
+        "Rongqin Chen",
+        "Yan Li",
+        "Dan Wu",
+        "Fan Mo",
+        "Shenghui Zhang",
+        "Pak Lon Ip",
+        "Hoi Cheong Iam",
+        "Ye Li",
+        "Leong Hou U"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001000ZII0U25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736933"
+    },
+    {
+      "title": "Counterfactual Fairness Through Transforming Data Orthogonal to Bias",
+      "year": 2025,
+      "authors": [
+        "Shuyi Chen",
+        "Shixiang Zhu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChenZ25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736895"
+    },
+    {
+      "title": "Enhancer: A Distribution-Aware Framework with Temporal-Relational Meta-Learning for Stock Prediction",
+      "year": 2025,
+      "authors": [
+        "Weijun Chen",
+        "Shun Li",
+        "Heyuan Wang",
+        "Tengjiao Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/000200025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736934"
+    },
+    {
+      "title": "Enhancing Large Language Models for Mobility Analytics with Semantic Location Tokenization",
+      "year": 2025,
+      "authors": [
+        "Yile Chen",
+        "Yicheng Tao",
+        "Yue Jiang",
+        "Shuai Liu",
+        "Han Yu",
+        "Gao Cong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00010000C25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736937"
+    },
+    {
+      "title": "MSHTrans: Multi-Scale Hypergraph Transformer with Time-Series Decomposition for Temporal Anomaly Detection",
+      "year": 2025,
+      "authors": [
+        "Zhaoliang Chen",
+        "Zhihao Wu",
+        "William K. Cheung",
+        "Hong-Ning Dai",
+        "Byron Choi",
+        "Jiming Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Chen00DC025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737057"
+    },
+    {
+      "title": "CompressGNN: Accelerating Graph Neural Network Training via Hierarchical Compression",
+      "year": 2025,
+      "authors": [
+        "Zheng Chen",
+        "Feng Zhang",
+        "Yifei Xia",
+        "Wentao Zhang",
+        "Xiaowei Zhu",
+        "Wenguang Chen",
+        "Xiaoyong Du"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00010X00C025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736888"
+    },
+    {
+      "title": "On the Scalability of Temporal Relative Positional Encoding for Dynamic Link Prediction",
+      "year": 2025,
+      "authors": [
+        "Ke Cheng",
+        "Linzhi Peng",
+        "Pengyang Wang",
+        "Heng Chang",
+        "Junchen Ye",
+        "Bowen Du"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0003PWCY025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737069"
+    },
+    {
+      "title": "FAT: Frequency-Aware Pretraining for Enhanced Time-Series Representation Learning",
+      "year": 2025,
+      "authors": [
+        "Rui Cheng",
+        "Xiangfei Jia",
+        "Qing Li",
+        "Rong Xing",
+        "Jiwen Huang",
+        "Yu Zheng",
+        "Zhilong Xie"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0007J0XH0X25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736952"
+    },
+    {
+      "title": "ATOM: A Framework of Detecting Query-Based Model Extraction Attacks for Graph Neural Networks",
+      "year": 2025,
+      "authors": [
+        "Zhan Cheng",
+        "Bolin Shen",
+        "Tianming Sha",
+        "Yuan Gao",
+        "Shibo Li",
+        "Yushun Dong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChengSSGLD25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736848"
+    },
+    {
+      "title": "Generative Thinking, Corrective Action: User-Friendly Composed Image Retrieval via Automatic Multi-Agent Collaboration",
+      "year": 2025,
+      "authors": [
+        "Zhangtao Cheng",
+        "Yuhao Ma",
+        "Jian Lang",
+        "Kunpeng Zhang",
+        "Ting Zhong",
+        "Yong Wang",
+        "Fan Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChengML0Z0025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736982"
+    },
+    {
+      "title": "Auto-Bidding in Real-Time Auctions via Oracle Imitation Learning",
+      "year": 2025,
+      "authors": [
+        "Alberto Silvio Chiappa",
+        "Briti Gangopadhyay",
+        "Zhao Wang",
+        "Shingo Takamatsu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/ChiappaG0T25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736850"
+    },
+    {
+      "title": "Empirical Bayes Selection for Value Maximization",
+      "year": 2025,
+      "authors": [
+        "Dominic Coey",
+        "Kenneth Hung"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/CoeyH25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736928"
+    },
+    {
+      "title": "Engagement-Driven Content Generation with Large Language Models",
+      "year": 2025,
+      "authors": [
+        "Erica Coppolillo",
+        "Federico Cinus",
+        "Marco Minici",
+        "Francesco Bonchi",
+        "Giuseppe Manco"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/CoppolilloCMB025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736932"
+    },
+    {
+      "title": "ArnoldiGCL: Graph Contrastive Learning via Learnable Arnoldi-Based Guided Spectral Chebyshev Polynomial Filters",
+      "year": 2025,
+      "authors": [
+        "Mustafa Coskun",
+        "Abdelkader Baggag",
+        "Mehmet Koyutürk"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/CoskunBK25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736847"
+    },
+    {
+      "title": "Cross-Platform Online Team Formation in Spatial Crowdsourcing",
+      "year": 2025,
+      "authors": [
+        "Xiaoxi Cui",
+        "Yurong Cheng",
+        "Xiangmin Zhou",
+        "Yongjiao Sun"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/CuiCZS25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736897"
+    },
+    {
+      "title": "FlanS: A Foundation Model for Free-Form Language-based Segmentation in Medical Images",
+      "year": 2025,
+      "authors": [
+        "Longchao Da",
+        "Rui Wang",
+        "Xiaojian Xu",
+        "Parminder Bhatia",
+        "Taha A. Kass-Hout",
+        "Hua Wei",
+        "Cao Xiao"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DaW0BK0X25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736963"
+    },
+    {
+      "title": "PreGIP: Watermarking the Pretraining of Graph Neural Networks for Deep IP Protection",
+      "year": 2025,
+      "authors": [
+        "Enyan Dai",
+        "Minhua Lin",
+        "Suhang Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DaiLW25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737089"
+    },
+    {
+      "title": "A Unified Online-Offline Framework for Co-Branding Campaign Recommendations",
+      "year": 2025,
+      "authors": [
+        "Xiangxiang Dai",
+        "Xiaowei Sun",
+        "Jinhang Zuo",
+        "Xutong Liu",
+        "John C. S. Lui"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DaiSZ0L25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736824"
+    },
+    {
+      "title": "Are Your Fairness Metrics Accurate? A Semi-Supervised Approach to Improving Fairness Estimates Under Sample Selection Bias",
+      "year": 2025,
+      "authors": [
+        "M. Clara De Paolis Kaluza",
+        "Thulasi Tholeti",
+        "Yile Chen",
+        "Ricardo Baeza-Yates",
+        "Predrag Radivojac",
+        "Shantanu Jain"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KaluzaTCBRJ25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736846"
+    },
+    {
+      "title": "Rank It, Then Ask It: Input Reranking for Maximizing the Performance of LLMs on Symmetric Tasks",
+      "year": 2025,
+      "authors": [
+        "Mohsen Dehghankar",
+        "Abolfazl Asudeh"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DehghankarA25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737099"
+    },
+    {
+      "title": "Marionette: Fine-Grained Conditional Generative Modeling of Spatiotemporal Human Trajectory Data Beyond Imitation",
+      "year": 2025,
+      "authors": [
+        "Bangchao Deng",
+        "Ling Ding",
+        "Lianhua Ji",
+        "Chunhua Chen",
+        "Xin Jing",
+        "Bingqing Qu",
+        "Dingqi Yang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DengDJ0JQY25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737039"
+    },
+    {
+      "title": "TarDiff: Target-Oriented Diffusion Guidance for Synthetic Electronic Health Record Time Series Generation",
+      "year": 2025,
+      "authors": [
+        "Bowen Deng",
+        "Chang Xu",
+        "Hao Li",
+        "Yu-Hao Huang",
+        "Min Hou",
+        "Jiang Bian"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Deng000H025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737147"
+    },
+    {
+      "title": "CompilerDream: Learning a Compiler World Model for General Code Optimization",
+      "year": 2025,
+      "authors": [
+        "Chaoyi Deng",
+        "Jialong Wu",
+        "Ningya Feng",
+        "Jianmin Wang",
+        "Mingsheng Long"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Deng0F0L25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736887"
+    },
+    {
+      "title": "Error Bounds for the Network Scale-Up Method",
+      "year": 2025,
+      "authors": [
+        "Sergio Díaz-Aranda",
+        "Juan Marcos Ramirez",
+        "Mohit Daga",
+        "Jaya Prakash Champati",
+        "Jose Aguilar",
+        "Rosa E. Lillo",
+        "Antonio Fernández Anta"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Diaz-ArandaRDC025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736940"
+    },
+    {
+      "title": "Enhancing Microservices Anomaly Detection via Multimodal Data Fusion in the Wavelet Domain and Spatiotemporal Graph-based Diffusion Probabilistic Model",
+      "year": 2025,
+      "authors": [
+        "Kaiqi Ding",
+        "Yuanmu Ma",
+        "Zijian Song",
+        "Kaigui Bian"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DingM0B25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736938"
+    },
+    {
+      "title": "Match: A Maximum-Likelihood Approach for Classification under Label Shift",
+      "year": 2025,
+      "authors": [
+        "Zahra Donyavi",
+        "Feiyu Li",
+        "Yunrui Zhang",
+        "Diego Furtado Silva",
+        "Gustavo Batista"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/DonyaviLZSB25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737040"
+    },
+    {
+      "title": "PERSCEN: Learning Personalized Interaction Pattern and Scenario Preference for Multi-Scenario Matching",
+      "year": 2025,
+      "authors": [
+        "Haotong Du",
+        "Yaqing Wang",
+        "Fei Xiong",
+        "Lei Shao",
+        "Ming Liu",
+        "Hao Gu",
+        "Quanming Yao",
+        "Zhen Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Du0XSLGY025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737079"
+    },
+    {
+      "title": "Causal Discovery through Synergizing Large Language Model and Data-Driven Reasoning",
+      "year": 2025,
+      "authors": [
+        "Huaming Du",
+        "Yujia Zheng",
+        "Baoyu Jing",
+        "Yu Zhao",
+        "Gang Kou",
+        "Guisong Liu",
+        "Tao Gu",
+        "Weimin Li",
+        "Carl Yang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Du0J0KLG0025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736874"
+    },
+    {
+      "title": "Normalized Space Alignment: A Versatile Metric for Representation Analysis",
+      "year": 2025,
+      "authors": [
+        "Danish Ebadulla",
+        "Aditya Gulati",
+        "Ambuj K. Singh"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/EbadullaGS25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737065"
+    },
+    {
+      "title": "Quick Draw Bandits: Quickly Optimizing in Nonstationary Environments with Extremely Many Arms",
+      "year": 2025,
+      "authors": [
+        "Derek Everett",
+        "Fred Lu",
+        "Edward Raff",
+        "Fernando Camacho",
+        "James Holt"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/EverettLRCH25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737097"
+    },
+    {
+      "title": "FedVS: Towards Federated Vector Similarity Search with Filters",
+      "year": 2025,
+      "authors": [
+        "Zeheng Fan",
+        "Yuxiang Zeng",
+        "Zhuanglin Zheng",
+        "Binhan Yang",
+        "Yongxin Tong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/FanZZYT25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736958"
+    },
+    {
+      "title": "CityGPT: Empowering Urban Spatial Cognition of Large Language Models",
+      "year": 2025,
+      "authors": [
+        "Jie Feng",
+        "Tianhui Liu",
+        "Yuwei Du",
+        "Siqi Guo",
+        "Yuming Lin",
+        "Yong Li"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002LDG0025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736878"
+    },
+    {
+      "title": "CryptoMixer: Fine-grained market information-aware MLP Networks for Individual Cryptocurrency Trading Prediction",
+      "year": 2025,
+      "authors": [
+        "Tingsheng Feng",
+        "Zhihao Shen",
+        "Xi Zhao",
+        "Xiaoni Lu",
+        "Yuyang Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Feng00LZ25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736900"
+    },
+    {
+      "title": "Efficient Sphere-Effect Based Information Diffusion Prediction on Large-scale Social Networks",
+      "year": 2025,
+      "authors": [
+        "Zihan Feng",
+        "Yajun Yang",
+        "Xin Huang",
+        "Hong Gao",
+        "Liping Jing",
+        "Qinghua Hu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001Y00JH25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736925"
+    },
+    {
+      "title": "HLSAD: Hodge Laplacian-based Simplicial Anomaly Detection",
+      "year": 2025,
+      "authors": [
+        "Florian Frantzen",
+        "Michael T. Schaub"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/FrantzenS25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736998"
+    },
+    {
+      "title": "Time Matters: Enhancing Sequential Recommendations with Time-Guided Graph Neural ODEs",
+      "year": 2025,
+      "authors": [
+        "Haoyan Fu",
+        "Zhida Qin",
+        "Shixiao Yang",
+        "Haoyao Zhang",
+        "Bin Lu",
+        "Shuang Li",
+        "Tianyu Huang",
+        "John C. S. Lui"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/FuQYZ00HL25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737156"
+    },
+    {
+      "title": "SSD-TS: Exploring the Potential of Linear State Space Models for Diffusion Models in Time Series Imputation",
+      "year": 2025,
+      "authors": [
+        "Hongfan Gao",
+        "Wangmeng Shen",
+        "Xiangfei Qiu",
+        "Ronghui Xu",
+        "Bin Yang",
+        "Jilin Hu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GaoSQ00H25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737135"
+    },
+    {
+      "title": "Contrastive Graph Condensation: Advancing Data Versatility through Self-Supervised Learning",
+      "year": 2025,
+      "authors": [
+        "Xinyi Gao",
+        "Yayong Li",
+        "Tong Chen",
+        "Guanhua Ye",
+        "Wentao Zhang",
+        "Hongzhi Yin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001L0Y0Y25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736892"
+    },
+    {
+      "title": "A Two-Stage Data Selection Framework for Data-Efficient Model Training on Edge Devices",
+      "year": 2025,
+      "authors": [
+        "Chen Gong",
+        "Rui Xing",
+        "Zhenzhe Zheng",
+        "Fan Wu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00060Z025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736823"
+    },
+    {
+      "title": "Temporal Restoration and Spatial Rewiring for Source-Free Multivariate Time Series Domain Adaptation",
+      "year": 2025,
+      "authors": [
+        "Peiliang Gong",
+        "Yucheng Wang",
+        "Min Wu",
+        "Zhenghua Chen",
+        "Xiaoli Li",
+        "Daoqiang Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Gong00C0Z25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737150"
+    },
+    {
+      "title": "Pairwise Sample Complexity for Fair Active Ranking with Cascaded Norm Objectives",
+      "year": 2025,
+      "authors": [
+        "Sruthi Gorantla",
+        "Sara Ahmadian"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GorantlaA25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737072"
+    },
+    {
+      "title": "EVINET: Towards Open-World Graph Learning via Evidential Reasoning Network",
+      "year": 2025,
+      "authors": [
+        "Weijie Guan",
+        "Haohui Wang",
+        "Jian Kang",
+        "Lihui Liu",
+        "Dawei Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GuanW0L025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736945"
+    },
+    {
+      "title": "LaTCoder: Converting Webpage Design to Code with Layout-as-Thought",
+      "year": 2025,
+      "authors": [
+        "Yi Gui",
+        "Zhen Li",
+        "Zhongyi Zhang",
+        "Guohao Wang",
+        "Tianpeng Lv",
+        "Gaoyang Jiang",
+        "Yi Liu",
+        "Dongping Chen",
+        "Yao Wan",
+        "Hongyu Zhang",
+        "Wenbin Jiang",
+        "Xuanhua Shi",
+        "Hai Jin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Gui0ZWLJLC000S025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737016"
+    },
+    {
+      "title": "Improving Subgraph Matching by Combining Algorithms and Graph Neural Networks",
+      "year": 2025,
+      "authors": [
+        "Shuyang Guo",
+        "Wenjin Xie",
+        "Ping Lu",
+        "Ting Deng",
+        "Richong Zhang",
+        "Jianxin Li",
+        "Xiangping Huang",
+        "Zhongyi Liu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GuoX0DZ0HL25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737006"
+    },
+    {
+      "title": "FEZE: Alignment-Flexible Zero-Shot Vertical Federated Learning",
+      "year": 2025,
+      "authors": [
+        "Wei Guo",
+        "Yiqi Tong",
+        "Yiyang Duan",
+        "Fuzhen Zhuang",
+        "Xiao Zhang",
+        "Zhaojun Hu",
+        "Jin Dong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GuoTDZ0HD25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736959"
+    },
+    {
+      "title": "S3GA: Towards Scalable Self-Supervised Learning for Large Scale Graph Alignment",
+      "year": 2025,
+      "authors": [
+        "Wenqi Guo",
+        "Shikui Tu",
+        "Lei Xu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GuoT025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737114"
+    },
+    {
+      "title": "GRASP: Differentially Private Graph Reconstruction Defense with Structured Perturbation",
+      "year": 2025,
+      "authors": [
+        "Zhiyu Guo",
+        "Yang Liu",
+        "Xiang Ao",
+        "Qing He"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Guo00025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736992"
+    },
+    {
+      "title": "Persona Identification in E-Commerce with Scarce Labels and In-Context Graph Learning",
+      "year": 2025,
+      "authors": [
+        "Anjali Gupta",
+        "Prashant Kumar",
+        "Aniket Mishra",
+        "Abhishek Singh",
+        "Surender Kumar",
+        "Muthusamy Chelliah",
+        "Abhijnan Chakraborty",
+        "Sayan Ranu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/GuptaKMSKCCR25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737080"
+    },
+    {
+      "title": "Monitoring Robustness and Individual Fairness",
+      "year": 2025,
+      "authors": [
+        "Ashutosh Gupta",
+        "Thomas A. Henzinger",
+        "Konstantin Kueffner",
+        "Kaushik Mallik",
+        "David Pape"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001HKMP25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737054"
+    },
+    {
+      "title": "SGD-DyG: Self-Reliant Global Dependency Apprehending on Dynamic Graphs",
+      "year": 2025,
+      "authors": [
+        "Minglian Han",
+        "Ling Wang",
+        "Ye Yuan",
+        "Xin Luo"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HanW0025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737126"
+    },
+    {
+      "title": "Swarm Intelligence in Geo-Localization: A Multi-Agent Large Vision-Language Model Collaborative Framework",
+      "year": 2025,
+      "authors": [
+        "Xiao Han",
+        "Chen Zhu",
+        "Hengshu Zhu",
+        "Xiangyu Zhao"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00040Z025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737141"
+    },
+    {
+      "title": "TempASD: Temporal Anomalous Subgraph Discovery in Large-Scale Dynamic Financial Networks",
+      "year": 2025,
+      "authors": [
+        "Xiaolin Han",
+        "Yikun Zhang",
+        "Chenhao Ma",
+        "Lingyun Song",
+        "Reynold Cheng",
+        "Xuequn Shang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002Z0SC025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737149"
+    },
+    {
+      "title": "Generative Imputation with Multi-level Causal Consistency for Variable Subset Forecasting",
+      "year": 2025,
+      "authors": [
+        "Qi Hao",
+        "Yue Gao",
+        "Runchang Liang",
+        "Yunhe Zhang",
+        "Pengyang Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00010L0W25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736980"
+    },
+    {
+      "title": "Practical Contextual Bandits for Large-Scale Structured Discrete Constrained Optimization Problems",
+      "year": 2025,
+      "authors": [
+        "Pavithra Harsha",
+        "Chitra Subramanian",
+        "Naoki Abe",
+        "Shivaram Subramanian",
+        "Amadou Ba",
+        "Kevin Arturo Fernández Román",
+        "Mauricio Longinos Garrido",
+        "Chandrasekhar Narayanaswami"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HarshaSASBRG025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737086"
+    },
+    {
+      "title": "Boosting Bot Detection via Heterophily-Aware Representation Learning and Prototype-Guided Cluster Discovery",
+      "year": 2025,
+      "authors": [
+        "Buyun He",
+        "Xiaorui Jiang",
+        "Qi Wu",
+        "Hao Liu",
+        "Yingguang Yang",
+        "Yong Liao"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HeJ0LYL25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736862"
+    },
+    {
+      "title": "Multi-Grained Preference Enhanced Transformer for Multi-Behavior Sequential Recommendation",
+      "year": 2025,
+      "authors": [
+        "Chuan He",
+        "Yongchao Liu",
+        "Qiang Li",
+        "Weiqiang Wang",
+        "Xing Fu",
+        "Xinyi Fu",
+        "Chuntao Hong",
+        "Xinwei Yao"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0005000FFH025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737059"
+    },
+    {
+      "title": "Explaining GNN Explanations with Edge Gradients",
+      "year": 2025,
+      "authors": [
+        "Jesse He",
+        "Akbar Rafiey",
+        "Gal Mishne",
+        "Yusu Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HeRM025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736947"
+    },
+    {
+      "title": "LLM2Rec: Large Language Models Are Powerful Embedding Models for Sequential Recommendation",
+      "year": 2025,
+      "authors": [
+        "Yingzhi He",
+        "Xiaohao Liu",
+        "An Zhang",
+        "Yunshan Ma",
+        "Tat-Seng Chua"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HeL0MC25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737029"
+    },
+    {
+      "title": "Evidential Prototype Learning for Semi-supervised Medical Image Segmentation",
+      "year": 2025,
+      "authors": [
+        "Yuanpeng He",
+        "Lijian Li",
+        "Tianxiang Zhan",
+        "Chi-Man Pun",
+        "Wenpin Jiao",
+        "Zhi Jin"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/He0ZPJ025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736944"
+    },
+    {
+      "title": "Collaborative Filtering Meets Spectrum Shift: Connecting User-Item Interaction with Graph-Structured Side Information",
+      "year": 2025,
+      "authors": [
+        "Yunhang He",
+        "Cong Xu",
+        "Jun Wang",
+        "Wei Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/He00025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736885"
+    },
+    {
+      "title": "Cognify: Supercharging Gen-AI Workflows With Hierarchical Autotuning",
+      "year": 2025,
+      "authors": [
+        "Zijian He",
+        "Reyna Abhyankar",
+        "Vikranth Srivatsa",
+        "Yiying Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HeAS025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736884"
+    },
+    {
+      "title": "Depth-Adaptive Graph Neural Networks via Learnable Bakry-Émery Curvature",
+      "year": 2025,
+      "authors": [
+        "Asela Hevapathige",
+        "Ahad N. Zehmakan",
+        "Qing Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HevapathigeZ025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736905"
+    },
+    {
+      "title": "Generating Long Semantic IDs in Parallel for Recommendation",
+      "year": 2025,
+      "authors": [
+        "Yupeng Hou",
+        "Jiacheng Li",
+        "Ashley Shin",
+        "Jinsung Jeon",
+        "Abhishek Santhanam",
+        "Wei Shao",
+        "Kaveh Hassani",
+        "Ning Yao",
+        "Julian J. McAuley"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Hou0SJSSHYM25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736979"
+    },
+    {
+      "title": "CLID-MU: Cross-Layer Information Divergence Based Meta Update Strategy for Learning with Noisy Labels",
+      "year": 2025,
+      "authors": [
+        "Ruofan Hu",
+        "Dongyu Zhang",
+        "Huayi Zhang",
+        "Elke A. Rundensteiner"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001ZZR25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736880"
+    },
+    {
+      "title": "Multi-level Mixture of Experts for Multimodal Entity Linking",
+      "year": 2025,
+      "authors": [
+        "Zhiwei Hu",
+        "Víctor Gutiérrez-Basulto",
+        "Zhiliang Xiang",
+        "Ru Li",
+        "Jeff Z. Pan"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/HuGX0P25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737060"
+    },
+    {
+      "title": "MetaEformer: Unveiling and Leveraging Meta-Patterns for Complex and Dynamic Systems Load Forecasting",
+      "year": 2025,
+      "authors": [
+        "Shaoyuan Huang",
+        "Tiancheng Zhang",
+        "Zhongtian Zhang",
+        "Xiaofei Wang",
+        "Lanjun Wang",
+        "Xin Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Huang0Z0W025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737047"
+    },
+    {
+      "title": "KET-RAG: A Cost-Efficient Multi-Granular Indexing Framework for Graph-RAG",
+      "year": 2025,
+      "authors": [
+        "Yiqian Huang",
+        "Shiqi Zhang",
+        "Xiaokui Xiao"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00030X25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737012"
+    },
+    {
+      "title": "Generalized Discords for Time Series Anomaly Detection with Flexible Subsequence Lengths",
+      "year": 2025,
+      "authors": [
+        "Makoto Imamura"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Imamura25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736977"
+    },
+    {
+      "title": "Bayesian Optimization for Simultaneous Selection of Machine Learning Algorithms and Hyperparameters on Shared Latent Space",
+      "year": 2025,
+      "authors": [
+        "Kazuki Ishikawa",
+        "Ryota Ozaki",
+        "Yohei Kanzaki",
+        "Ichiro Takeuchi",
+        "Masayuki Karasuyama"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00030KTK25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736851"
+    },
+    {
+      "title": "Adapting Large Vision-Language Models to Visually-Aware Conversational Recommendation",
+      "year": 2025,
+      "authors": [
+        "Hyunsik Jeon",
+        "Satoshi Koide",
+        "Yu Wang",
+        "Zhankui He",
+        "Julian J. McAuley"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/JeonK0HM25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736828"
+    },
+    {
+      "title": "Prompt as a Double-Edged Sword: A Dynamic Equilibrium Gradient-Assigned Attack against Graph Prompt Learning",
+      "year": 2025,
+      "authors": [
+        "Ju Jia",
+        "Jingxuan Yu",
+        "Di Wu",
+        "Cong Wu",
+        "Hengjie Zhu",
+        "Lina Wang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/JiaY00Z025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737091"
+    },
+    {
+      "title": "CMA: A Unified Contextual Meta-Adaptation Methodology for Time-Series Denoising and Prediction",
+      "year": 2025,
+      "authors": [
+        "Haiqi Jiang",
+        "Ying Ding",
+        "Chenjie Pan",
+        "Aimin Huang",
+        "Rui Chen",
+        "Chenyou Fan"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00030PHCF25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736881"
+    },
+    {
+      "title": "Urban Region Pre-training and Prompting: A Graph-based Approach",
+      "year": 2025,
+      "authors": [
+        "Jiahui Jin",
+        "Yifan Song",
+        "Dong Kan",
+        "Haojia Zhu",
+        "Xiangguo Sun",
+        "Zhicheng Li",
+        "Xigang Sun",
+        "Jinghui Zhang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Jin0KZSLSZ25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737176"
+    },
+    {
+      "title": "Experience Speaks Louder: Black-box Hard-label Adversarial Attack through Reinforcement Learning",
+      "year": 2025,
+      "authors": [
+        "Yilun Jin",
+        "Kun Zhu",
+        "Feng Tang",
+        "Jiaxuan Shi",
+        "Yong Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Jin0TS025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736946"
+    },
+    {
+      "title": "Revisiting Self-attention for Cross-domain Sequential Recommendation",
+      "year": 2025,
+      "authors": [
+        "Clark Mingxuan Ju",
+        "Leonardo Neves",
+        "Bhuvesh Kumar",
+        "Liam Collins",
+        "Tong Zhao",
+        "Yuwei Qiu",
+        "Qing Dou",
+        "Sohail Nizam",
+        "Sen Yang",
+        "Neil Shah"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/JuNKC0QDNYS25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737108"
+    },
+    {
+      "title": "Harnessing Influence Function in Explaining Graph Neural Networks",
+      "year": 2025,
+      "authors": [
+        "Heesoo Jung",
+        "Chanyong Kim",
+        "Geonhee Han",
+        "Hogun Park"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/JungKHP25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736995"
+    },
+    {
+      "title": "One-shot Multi-view Visual Conversational Recommendation",
+      "year": 2025,
+      "authors": [
+        "Noriaki Kawamae"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Kawamae25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737070"
+    },
+    {
+      "title": "Knowledge-Aligned Domain Shift Tuning for Efficient Adaptation in Large Language Models",
+      "year": 2025,
+      "authors": [
+        "Noriaki Kawamae"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Kawamae25a.html",
+      "doi": "https://doi.org/10.1145/3711896.3737013"
+    },
+    {
+      "title": "Bidirectional Diffusion Bridge Models",
+      "year": 2025,
+      "authors": [
+        "Duc Kieu",
+        "Kien Do",
+        "Toan Nguyen",
+        "Dang Nguyen",
+        "Thin Nguyen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KieuD00N25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736858"
+    },
+    {
+      "title": "Accurate Graph-based Multi-Positive Unlabeled Learning via Disentangled Multi-view Feature Propagation",
+      "year": 2025,
+      "authors": [
+        "Junghun Kim",
+        "Hoyoung Yoon",
+        "Ka Hyun Park",
+        "U Kang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KimYPK25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736827"
+    },
+    {
+      "title": "Lost in Sequence: Do Large Language Models Understand Sequential Recommendation?",
+      "year": 2025,
+      "authors": [
+        "Sein Kim",
+        "Hongseok Kang",
+        "Kibum Kim",
+        "Jiwan Kim",
+        "Donghyun Kim",
+        "Minchul Yang",
+        "Kwangjin Oh",
+        "Julian J. McAuley",
+        "Chanyoung Park"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KimKKK0YOM025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737035"
+    },
+    {
+      "title": "Addressing and Visualizing Misalignments in Human Task-Solving Trajectories",
+      "year": 2025,
+      "authors": [
+        "Sejin Kim",
+        "Hosung Lee",
+        "Sundong Kim"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0002LK25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736831"
+    },
+    {
+      "title": "STARLINE: Contrastive Learning with Modality-Aware Graph Refinement for Effective Multimedia Recommendation",
+      "year": 2025,
+      "authors": [
+        "Taeri Kim",
+        "Sohee Ban",
+        "Hyunjoon Kim",
+        "Sang-Wook Kim"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KimBKK25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737136"
+    },
+    {
+      "title": "'Oh LLM, I'm Asking Thee, Please Give Me a Decision Tree': Zero-Shot Decision Tree Induction and Embedding with Large Language Models",
+      "year": 2025,
+      "authors": [
+        "Ricardo Knauer",
+        "Mario Koddenbrock",
+        "Raphael Wallsberger",
+        "Nicholas M. Brisson",
+        "Georg N. Duda",
+        "Deborah Falla",
+        "David W. Evans",
+        "Erik Rodner"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KnauerKWBDFER25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736818"
+    },
+    {
+      "title": "Breiman meets Bellman: Non-Greedy Decision Trees with MDPs",
+      "year": 2025,
+      "authors": [
+        "Hector Kohler",
+        "Riad Akrour",
+        "Philippe Preux"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KohlerAP25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736868"
+    },
+    {
+      "title": "Cross-Validation for Longitudinal Datasets with Unstable Correlations",
+      "year": 2025,
+      "authors": [
+        "Meera Krishnamoorthy",
+        "Michael W. Sjoding",
+        "Jenna Wiens"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/KrishnamoorthyS25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736898"
+    },
+    {
+      "title": "Simple yet Effective Graph Distillation via Clustering",
+      "year": 2025,
+      "authors": [
+        "Yurui Lai",
+        "Taiyan Zhang",
+        "Renchi Yang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LaiZY25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737130"
+    },
+    {
+      "title": "REDEEMing Modality Information Loss: Retrieval-Guided Conditional Generation for Severely Modality Missing Learning",
+      "year": 2025,
+      "authors": [
+        "Jian Lang",
+        "Rongpei Hong",
+        "Zhangtao Cheng",
+        "Ting Zhong",
+        "Yong Wang",
+        "Fan Zhou"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LangHCZ0025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737101"
+    },
+    {
+      "title": "Understanding and Tackling Over-Dilution in Graph Neural Networks",
+      "year": 2025,
+      "authors": [
+        "Junhyun Lee",
+        "Veronika Thost",
+        "Bumsoo Kim",
+        "Jaewoo Kang",
+        "Tengfei Ma"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LeeTKK025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737168"
+    },
+    {
+      "title": "Range-limited Augmentation for Few-shot Learning in Tabular Data with Comprehensive Benchmark",
+      "year": 2025,
+      "authors": [
+        "Kyungeun Lee",
+        "Moonjung Eo",
+        "Hye-Seung Cho",
+        "Min-Kook Suh",
+        "Seoyoon Kim",
+        "Ye Seul Sim",
+        "Suhee Yoon",
+        "Sanghyu Yoon",
+        "Woohyung Lim"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LeeECSKSYYL25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737098"
+    },
+    {
+      "title": "Logical Anomaly Detection with Text-based Logic via Component-Aware Contrastive Language-Image Training",
+      "year": 2025,
+      "authors": [
+        "Seung-eon Lee",
+        "Soopil Kim",
+        "Sion An",
+        "Sang-Chul Lee",
+        "Sang Hyun Park"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LeeKA0025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737032"
+    },
+    {
+      "title": "Divergent Paths: Separating Homophilic and Heterophilic Learning for Enhanced Graph-level Representations",
+      "year": 2025,
+      "authors": [
+        "Han Lei",
+        "Jiaxing Xu",
+        "Xia Dong",
+        "Yiping Ke"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LeiXDK25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736913"
+    },
+    {
+      "title": "PARSIFAL: Private and Robust Sign Federated Learning",
+      "year": 2025,
+      "authors": [
+        "Runze Lei",
+        "Pinghui Wang",
+        "Juxiang Zeng",
+        "Chenxu Wang",
+        "Hongbin Pei",
+        "Junzhou Zhao"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LeiWZ0PZ25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737074"
+    },
+    {
+      "title": "Unveiling Mode Connectivity in Graph Neural Network",
+      "year": 2025,
+      "authors": [
+        "Bingheng Li",
+        "Zhikai Chen",
+        "Haoyu Han",
+        "Shenglai Zeng",
+        "Jingzhe Liu",
+        "Jiliang Tang"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiC0ZLT25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737175"
+    },
+    {
+      "title": "Refining Labeling Functions with Limited Labeled Data",
+      "year": 2025,
+      "authors": [
+        "Chenjie Li",
+        "Amir Gilad",
+        "Boris Glavic",
+        "Zhengjie Miao",
+        "Sudeepa Roy"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiGGM025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737102"
+    },
+    {
+      "title": "FusionSAM: Visual Multi-Modal Learning with Segment Anything Model",
+      "year": 2025,
+      "authors": [
+        "Daixun Li",
+        "Weiying Xie",
+        "Mingxiang Cao",
+        "Yunke Wang",
+        "Yusi Zhang",
+        "Leyuan Fang",
+        "Yunsong Li",
+        "Chang Xu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiXCWZF0025.html",
+      "doi": "https://doi.org/10.1145/3711896.3736973"
+    },
+    {
+      "title": "Tackling Size Generalization of Graph Neural Networks on Biological Data from a Spectral Perspective",
+      "year": 2025,
+      "authors": [
+        "Gaotang Li",
+        "Danai Koutra",
+        "Yujun Yan"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiKY25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737144"
+    },
+    {
+      "title": "Partition-wise Graph Filtering: A Unified Perspective Through the Lens of Graph Coarsening",
+      "year": 2025,
+      "authors": [
+        "Guoming Li",
+        "Jian Yang",
+        "Yifan Chen"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Li0025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737075"
+    },
+    {
+      "title": "Revisiting Feature Interactions from the Perspective of Quadratic Neural Networks for Click-through Rate Prediction",
+      "year": 2025,
+      "authors": [
+        "Honghao Li",
+        "Yiwen Zhang",
+        "Yi Zhang",
+        "Lei Sang",
+        "Jieming Zhu"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Li000Z25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737106"
+    },
+    {
+      "title": "SlotPi: Physics-informed Object-centric Reasoning Models",
+      "year": 2025,
+      "authors": [
+        "Jian Li",
+        "Han Wan",
+        "Ning Lin",
+        "Yu-Liang Zhan",
+        "Ruizhi Chengze",
+        "Haining Wang",
+        "Yi Zhang",
+        "Hongsheng Liu",
+        "Zidong Wang",
+        "Fan Yu",
+        "Hao Sun"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiWLZCWZLWY025.html",
+      "doi": "https://doi.org/10.1145/3711896.3737131"
+    },
+    {
+      "title": "Learning to Slice: Self-Supervised Interpretable Hierarchical Representation Learning with Graph Auto-Encoder Tree",
+      "year": 2025,
+      "authors": [
+        "Jinning Li",
+        "Ruipeng Han",
+        "Jingying Zeng",
+        "Dachun Sun",
+        "Chenkai Sun",
+        "Hanghang Tong",
+        "ChengXiang Zhai",
+        "Boleslaw K. Szymanski",
+        "Tarek F. Abdelzaher"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/0001HZSSTZSA25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737023"
+    },
+    {
+      "title": "Learn to Refine: Synergistic Multi-Agent Path Optimization for Lifelong Conflict-Free Navigation of Autonomous Vehicles",
+      "year": 2025,
+      "authors": [
+        "Junjun Li",
+        "Zeyuan Ma",
+        "Ting Huang",
+        "Yue-Jiao Gong"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/LiM0G25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737017"
+    },
+    {
+      "title": "LiPM: Foundation Model for Lithium-Ion Battery Analysis",
+      "year": 2025,
+      "authors": [
+        "Juren Li",
+        "Yang Yang",
+        "Hanchen Su",
+        "Jiayu Liu",
+        "Youmin Chen",
+        "Jianfeng Zhang",
+        "Lujia Pan"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/Li0SLCZP25.html",
+      "doi": "https://doi.org/10.1145/3711896.3737027"
+    },
+    {
+      "title": "Beyond Locations: A Motion Range-Aware Similarity Join",
+      "year": 2025,
+      "authors": [
+        "Ke Li",
+        "Lisi Chen",
+        "Shuo Shang",
+        "Christian S. Jensen",
+        "Panos Kalnis"
+      ],
+      "venue": "KDD",
+      "url": "https://dblp.org/rec/conf/kdd/00190SJK25.html",
+      "doi": "https://doi.org/10.1145/3711896.3736855"
     }
   ]
 }

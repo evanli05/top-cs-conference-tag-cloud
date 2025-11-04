@@ -69,9 +69,6 @@ class App {
             this.data = await response.json();
             this.filteredData = this.data;
 
-            // Update UI with metadata
-            this.updateMetadata();
-
             console.log('Data loaded successfully:', this.data);
         } catch (error) {
             console.error('Error loading data:', error);
@@ -79,33 +76,6 @@ class App {
         }
     }
 
-    /**
-     * Update metadata display
-     */
-    updateMetadata() {
-        const { metadata } = this.data;
-
-        // Conference name
-        document.getElementById('conference-name').textContent = metadata.conference || 'N/A';
-
-        // Category badge
-        const categoryBadge = document.getElementById('conference-category');
-        if (metadata.categories && metadata.categories.length > 0) {
-            categoryBadge.textContent = metadata.categories.join(', ');
-        }
-
-        // Total papers
-        document.getElementById('total-papers').textContent =
-            metadata.total_papers ? metadata.total_papers.toLocaleString() : '-';
-
-        // Total keywords
-        document.getElementById('total-keywords').textContent =
-            metadata.total_keywords ? metadata.total_keywords.toLocaleString() : '-';
-
-        // Last updated
-        document.getElementById('last-updated').textContent =
-            metadata.last_updated || '-';
-    }
 
     /**
      * Setup event listeners for filters
@@ -177,9 +147,6 @@ class App {
 
         // Update word cloud
         this.wordCloud.update(filteredWords);
-
-        // Update keyword count
-        document.getElementById('total-keywords').textContent = filteredWords.length;
     }
 
     /**
@@ -192,9 +159,6 @@ class App {
         // Reset UI
         document.getElementById('year-filter').value = 'all';
         document.getElementById('category-filter').value = 'all';
-
-        // Reset metadata display
-        this.updateMetadata();
 
         // Reapply filters (which will show all data)
         this.applyFilters();

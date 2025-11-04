@@ -461,8 +461,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For questions, suggestions, or collaboration:
 - Open an issue on GitHub
-- Email: [your-email@example.com]
-- Twitter: [@yourhandle]
+- Email: [yifan.li.1112@gmail.com]
 
 ## Citation
 
@@ -471,8 +470,8 @@ If you use this tool in your research or find it helpful, please consider citing
 ```bibtex
 @misc{cs_conference_tagcloud,
   title={Top CS Conference Tag Cloud: Visualizing Research Trends},
-  author={Your Name},
-  year={2024},
+  author={Yifan Li},
+  year={2025},
   url={https://github.com/yourusername/top-cs-conference-tag-cloud}
 }
 ```
