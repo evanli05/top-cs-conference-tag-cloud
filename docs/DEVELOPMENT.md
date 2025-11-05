@@ -452,6 +452,206 @@ This makes theming and dark mode implementation straightforward.
 - Caching with JSON files
 - Incremental updates (only new years)
 
+### Abstract Fetching System
+
+**Overview:**
+The project uses a two-tier approach to enrich paper data with abstracts, combining the speed of batch processing with comprehensive fallback coverage.
+
+**Why Abstracts?**
+- Improves keyword extraction quality
+- Provides richer context for research trends
+- Enables future features (semantic search, clustering)
+- Adds citation counts for impact analysis
+
+#### Architecture
+
+**Tier 1: OpenAlex API (Primary)**
+- **Purpose**: Batch fetching for high-speed processing
+- **Coverage**: ~92% of papers (lower for recent publications)
+- **Speed**: ~5 minutes for 3,000 papers
+- **Batch Size**: 100 DOIs per request
+- **Rate Limit**: 10 requests/second (polite pool with mailto parameter)
+- **Data Format**: Inverted index (word → positions)
+
+**Tier 2: Semantic Scholar API (Fallback)**
+- **Purpose**: Fill gaps from OpenAlex
+- **Coverage**: ~90%+ of missing papers
+- **Speed**: ~3 seconds per paper
+- **Rate Limit**: 1 request per 3 seconds (free tier)
+- **Data Format**: Plain text abstracts
+
+**Combined Coverage**: 98-99% of all papers
+
+#### Implementation Details
+
+**File**: `scripts/fetch_papers.py`
+
+**Key Methods**:
+
+1. **`enrich_papers_with_abstracts(papers)`**
+   - Main orchestration method
+   - Calls OpenAlex for bulk fetching
+   - Falls back to Semantic Scholar for nulls
+   - Returns papers with abstract fields added
+
+2. **`fetch_abstracts_openalex(papers)`**
+   - Extracts DOIs from papers
+   - Batches into groups of 100
+   - Queries OpenAlex with pipe-separated DOI filter
+   - Converts inverted index to plain text
+   - Returns DOI → (abstract, citation_count, source_id) mapping
+
+3. **`fetch_abstract_semantic_scholar(doi)`**
+   - Single DOI lookup
+   - Rate-limited with 3-second delay
+   - Returns (abstract, citation_count, s2_paper_id) tuple
+   - Handles 404 gracefully (paper not found)
+
+4. **`reconstruct_abstract_from_inverted_index(inv_index)`**
+   - Converts OpenAlex inverted index to plain text
+   - Maps positions to words
+   - Sorts by position and joins
+
+#### Data Structure
+
+**Paper Object (after enrichment)**:
+```python
+{
+    'title': str,
+    'year': int,
+    'authors': [str],
+    'venue': str,
+    'url': str,
+    'doi': str,
+    # NEW FIELDS:
+    'abstract': str or None,              # Plain text abstract
+    'abstract_source': str or None,       # 'openalex', 'semantic_scholar', or None
+    'citation_count': int or None,        # Citation count from API
+    'source_id': str or None              # OpenAlex ID or S2 paper ID
+}
+```
+
+#### API Endpoints
+
+**OpenAlex**:
+```
+GET https://api.openalex.org/works
+Parameters:
+  - filter: "doi:DOI1|DOI2|...|DOI100"
+  - per-page: 100
+  - mailto: yli05@yahoo.com (for polite pool)
+```
+
+**Semantic Scholar**:
+```
+GET https://api.semanticscholar.org/graph/v1/paper/DOI:{doi}
+Parameters:
+  - fields: "abstract,citationCount"
+```
+
+#### Configuration
+
+**File**: `scripts/config.py`
+
+```python
+# OpenAlex API Configuration
+OPENALEX_API_URL = "https://api.openalex.org/works"
+OPENALEX_BATCH_SIZE = 100
+OPENALEX_RATE_LIMIT = 10  # requests per second
+OPENALEX_EMAIL = "yli05@yahoo.com"
+
+# Semantic Scholar API Configuration
+SEMANTIC_SCHOLAR_API_URL = "https://api.semanticscholar.org/graph/v1/paper"
+SEMANTIC_SCHOLAR_RATE_LIMIT = 0.33  # 1 request per 3 seconds
+SEMANTIC_SCHOLAR_FIELDS = "abstract,citationCount"
+SEMANTIC_SCHOLAR_TIMEOUT = 10
+```
+
+#### Usage
+
+**Automatic (via pipeline)**:
+```bash
+python scripts/fetch_papers.py
+```
+This automatically enriches papers with abstracts after fetching from DBLP.
+
+**Manual (standalone)**:
+```python
+from fetch_papers import DBLPFetcher
+
+fetcher = DBLPFetcher('kdd')
+papers = [...] # Your paper list
+enriched_papers = fetcher.enrich_papers_with_abstracts(papers)
+```
+
+#### Performance Metrics
+
+**For 3,016 papers**:
+- OpenAlex: ~5 minutes (31 batches × 0.1s)
+- Semantic Scholar: ~12-15 minutes (~240 papers × 3s)
+- **Total Time**: ~20 minutes
+- **Total Cost**: $0 (completely free)
+
+#### Error Handling
+
+**OpenAlex Errors**:
+- Retry logic with exponential backoff
+- Batch-level error handling (continues on failure)
+- Graceful degradation (nulls for failed batches)
+
+**Semantic Scholar Errors**:
+- HTTP 404: Paper not found (expected, not logged as error)
+- Timeout: Logged as warning, returns None
+- Rate limit exceeded: 3-second delay prevents this
+
+#### Limitations
+
+1. **Recent Papers**: OpenAlex coverage is lower for papers published in the last 3-6 months
+2. **Non-ACM Papers**: Some conference papers may not be in either API
+3. **API Availability**: Dependent on external services (99.9% uptime)
+4. **Rate Limits**: Free tiers have modest limits (sufficient for current needs)
+
+#### Future Improvements
+
+- **Request Semantic Scholar API key** for faster processing (1-100 req/sec)
+- **Implement caching** to avoid re-fetching on pipeline reruns
+- **Add arXiv API** as third fallback tier
+- **Parallelize Semantic Scholar** requests with API key
+- **Track abstract quality** metrics (length, completeness)
+
+#### Monitoring
+
+**Statistics Logged**:
+- Total papers processed
+- Abstracts from OpenAlex (count + %)
+- Abstracts from Semantic Scholar (count + %)
+- Papers without abstracts (count + %)
+- Processing time per tier
+
+**Example Output**:
+```
+==================================================
+Abstract Fetching Summary:
+==================================================
+Total papers: 3,016
+Papers with abstracts: 2,965 (98.3%)
+  - From OpenAlex: 2,775 (92.0%)
+  - From Semantic Scholar: 190 (6.3%)
+Papers without abstracts: 51 (1.7%)
+```
+
+#### Testing
+
+**Test File**: `scripts/test_abstract_fetching.py`
+
+```bash
+python scripts/test_abstract_fetching.py
+```
+
+Tests abstract fetching on 5 sample papers (covering different years) to verify both API tiers work correctly.
+
+---
+
 ### Security Considerations
 
 - No user authentication required (static site)
