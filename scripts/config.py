@@ -39,25 +39,67 @@ DBLP_MULTI_PART_CONFERENCES = {
     ('kdd', 2025): ['', '-1', '-2'],  # Will generate kdd2025.html, kdd2025-1.html, kdd2025-2.html
 }
 
-# Conference configurations
-# Format: {conference_key: {name, dblp_venue, categories}}
+# Conference configurations (organized by CSRankings categories)
+# Format: {conference_key: {name, full_name, dblp_venue, categories, years}}
+
+# ===================================
+# Machine Learning Conferences
+# ===================================
 CONFERENCES = {
     'kdd': {
         'name': 'KDD',
         'full_name': 'ACM SIGKDD Conference on Knowledge Discovery and Data Mining',
-        'dblp_venue': 'kdd',  # DBLP venue identifier
-        'categories': ['Data Mining'],
-        'years': [2020, 2021, 2022, 2023, 2024]
+        'dblp_venue': 'kdd',
+        'categories': ['Machine Learning'],
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
     },
-    # Future conferences (commented out for now)
-    # 'ijcai': {
-    #     'name': 'IJCAI',
-    #     'full_name': 'International Joint Conference on Artificial Intelligence',
-    #     'dblp_venue': 'ijcai',
-    #     'categories': ['Artificial Intelligence'],
+    # ICLR - International Conference on Learning Representations
+    # 'iclr': {
+    #     'name': 'ICLR',
+    #     'full_name': 'International Conference on Learning Representations',
+    #     'dblp_venue': 'iclr',
+    #     'categories': ['Machine Learning'],
+    #     'years': [2020, 2021, 2022, 2023, 2024]
+    # },
+    # ICML - International Conference on Machine Learning
+    # 'icml': {
+    #     'name': 'ICML',
+    #     'full_name': 'International Conference on Machine Learning',
+    #     'dblp_venue': 'icml',
+    #     'categories': ['Machine Learning'],
+    #     'years': [2020, 2021, 2022, 2023, 2024]
+    # },
+    # NeurIPS - Conference on Neural Information Processing Systems
+    # 'neurips': {
+    #     'name': 'NeurIPS',
+    #     'full_name': 'Conference on Neural Information Processing Systems',
+    #     'dblp_venue': 'nips',  # Note: DBLP uses 'nips' as venue identifier
+    #     'categories': ['Machine Learning'],
     #     'years': [2020, 2021, 2022, 2023, 2024]
     # },
 }
+
+# ===================================
+# Future Conference Tracks (CSRankings)
+# ===================================
+
+# Artificial Intelligence
+# - AAAI: AAAI Conference on Artificial Intelligence
+# - IJCAI: International Joint Conference on Artificial Intelligence
+
+# Computer Vision
+# - CVPR: IEEE/CVF Conference on Computer Vision and Pattern Recognition
+# - ECCV: European Conference on Computer Vision
+# - ICCV: IEEE International Conference on Computer Vision
+
+# Natural Language Processing
+# - ACL: Annual Meeting of the Association for Computational Linguistics
+# - EMNLP: Conference on Empirical Methods in Natural Language Processing
+# - NAACL: North American Chapter of the Association for Computational Linguistics
+
+# The Web & Information Retrieval
+# - SIGIR: International ACM SIGIR Conference on Research and Development in Information Retrieval
+# - WWW: The Web Conference
 
 # Default conference for initial implementation
 DEFAULT_CONFERENCE = 'kdd'
@@ -77,6 +119,22 @@ REQUEST_DELAY = 1.0
 
 # User agent for API requests
 USER_AGENT = 'CS-Conference-TagCloud/1.0 (Educational Project; https://github.com/yourusername/top-cs-conference-tag-cloud)'
+
+# ===================================
+# Abstract Fetching APIs
+# ===================================
+
+# OpenAlex API Configuration (Primary source for abstracts)
+OPENALEX_API_URL = "https://api.openalex.org/works"
+OPENALEX_BATCH_SIZE = 100  # Up to 100 DOIs per request
+OPENALEX_RATE_LIMIT = 10  # requests per second (polite pool)
+OPENALEX_EMAIL = "yli05@yahoo.com"  # For polite pool access
+
+# Semantic Scholar API Configuration (Fallback for missing abstracts)
+SEMANTIC_SCHOLAR_API_URL = "https://api.semanticscholar.org/graph/v1/paper"
+SEMANTIC_SCHOLAR_RATE_LIMIT = 0.33  # 1 request per 3 seconds (free tier)
+SEMANTIC_SCHOLAR_FIELDS = "abstract,citationCount"
+SEMANTIC_SCHOLAR_TIMEOUT = 10  # API request timeout in seconds
 
 # ===================================
 # Keyword Extraction Settings

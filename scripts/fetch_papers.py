@@ -265,6 +265,223 @@ class DBLPFetcher:
         utils.save_json(data, filepath)
         utils.log(f"Saved {len(papers)} papers to {filepath}")
 
+    def reconstruct_abstract_from_inverted_index(self, inv_index: Dict[str, List[int]]) -> str:
+        """
+        Convert OpenAlex inverted index to plain text abstract
+
+        Args:
+            inv_index (Dict): Inverted index mapping word -> list of positions
+
+        Returns:
+            str: Reconstructed abstract text
+        """
+        if not inv_index:
+            return None
+
+        # Create list of (position, word) tuples
+        word_positions = []
+        for word, positions in inv_index.items():
+            for pos in positions:
+                word_positions.append((pos, word))
+
+        # Sort by position
+        word_positions.sort(key=lambda x: x[0])
+
+        # Join words to form abstract
+        abstract = " ".join([word for _, word in word_positions])
+        return abstract
+
+    def fetch_abstracts_openalex(self, papers: List[Dict]) -> Dict[str, tuple]:
+        """
+        Fetch abstracts from OpenAlex API in batches
+
+        Args:
+            papers (List[Dict]): List of papers with DOI field
+
+        Returns:
+            Dict[str, tuple]: Mapping of DOI -> (abstract, citation_count, semantic_scholar_id)
+        """
+        utils.log("\nFetching abstracts from OpenAlex...")
+
+        # Extract DOIs from papers
+        dois = []
+        for paper in papers:
+            doi = paper.get('doi', '').replace('https://doi.org/', '').strip()
+            if doi:
+                dois.append(doi)
+
+        if not dois:
+            utils.log("  No DOIs found in papers", 'WARNING')
+            return {}
+
+        utils.log(f"  Found {len(dois)} papers with DOIs")
+
+        abstracts = {}
+        batch_size = config.OPENALEX_BATCH_SIZE
+        total_batches = (len(dois) + batch_size - 1) // batch_size
+
+        for batch_num in range(total_batches):
+            start_idx = batch_num * batch_size
+            end_idx = min(start_idx + batch_size, len(dois))
+            batch_dois = dois[start_idx:end_idx]
+
+            # Create filter parameter for batch query
+            doi_filter = "|".join(batch_dois)
+
+            try:
+                # Rate limiting
+                if batch_num > 0:
+                    time.sleep(1.0 / config.OPENALEX_RATE_LIMIT)
+
+                # Query OpenAlex API
+                url = config.OPENALEX_API_URL
+                params = {
+                    "filter": f"doi:{doi_filter}",
+                    "per-page": batch_size,
+                    "mailto": config.OPENALEX_EMAIL
+                }
+
+                response = requests.get(url, params=params, timeout=config.REQUEST_TIMEOUT)
+                response.raise_for_status()
+                data = response.json()
+
+                # Process results
+                for work in data.get("results", []):
+                    doi = work.get("doi", "").replace("https://doi.org/", "")
+                    inv_index = work.get("abstract_inverted_index")
+                    citation_count = work.get("cited_by_count", 0)
+                    openalex_id = work.get("id", "").replace("https://openalex.org/", "")
+
+                    if inv_index:
+                        abstract = self.reconstruct_abstract_from_inverted_index(inv_index)
+                        abstracts[doi] = (abstract, citation_count, openalex_id)
+                    else:
+                        abstracts[doi] = (None, citation_count, openalex_id)
+
+                utils.log(f"  Batch {batch_num + 1}/{total_batches}: Retrieved {len([a for a in abstracts.values() if a[0] is not None])} abstracts")
+
+            except Exception as e:
+                utils.log(f"  Error fetching batch {batch_num + 1}: {e}", 'WARNING')
+
+        abstract_count = len([a for a in abstracts.values() if a[0] is not None])
+        utils.log(f"  OpenAlex: {abstract_count}/{len(dois)} abstracts ({abstract_count * 100 / len(dois):.1f}%)")
+
+        return abstracts
+
+    def fetch_abstract_semantic_scholar(self, doi: str) -> tuple:
+        """
+        Fetch abstract from Semantic Scholar API for a single paper
+
+        Args:
+            doi (str): DOI of the paper (without https://doi.org/ prefix)
+
+        Returns:
+            tuple: (abstract, citation_count, s2_paper_id) or (None, None, None)
+        """
+        if not doi:
+            return (None, None, None)
+
+        try:
+            # Rate limiting
+            time.sleep(1.0 / config.SEMANTIC_SCHOLAR_RATE_LIMIT)
+
+            # Query Semantic Scholar API
+            url = f"{config.SEMANTIC_SCHOLAR_API_URL}/DOI:{doi}"
+            params = {"fields": config.SEMANTIC_SCHOLAR_FIELDS}
+
+            response = requests.get(url, params=params, timeout=config.SEMANTIC_SCHOLAR_TIMEOUT)
+            response.raise_for_status()
+            data = response.json()
+
+            abstract = data.get("abstract")
+            citation_count = data.get("citationCount", 0)
+            s2_paper_id = data.get("paperId")
+
+            return (abstract, citation_count, s2_paper_id)
+
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                # Paper not found in Semantic Scholar
+                return (None, None, None)
+            utils.log(f"    HTTP error for DOI {doi}: {e}", 'WARNING')
+            return (None, None, None)
+        except Exception as e:
+            utils.log(f"    Error fetching DOI {doi}: {e}", 'WARNING')
+            return (None, None, None)
+
+    def enrich_papers_with_abstracts(self, papers: List[Dict]) -> List[Dict]:
+        """
+        Enrich papers with abstracts using two-tier approach:
+        1. Fetch from OpenAlex (fast, batch processing)
+        2. Fall back to Semantic Scholar for missing abstracts
+
+        Args:
+            papers (List[Dict]): Papers to enrich
+
+        Returns:
+            List[Dict]: Papers with added abstract fields
+        """
+        utils.log("\n" + "=" * 50)
+        utils.log("Enriching papers with abstracts...")
+        utils.log("=" * 50)
+
+        # Tier 1: Fetch from OpenAlex (batch)
+        openalex_abstracts = self.fetch_abstracts_openalex(papers)
+
+        # Add abstracts from OpenAlex to papers
+        for paper in papers:
+            doi = paper.get('doi', '').replace('https://doi.org/', '').strip()
+            if doi in openalex_abstracts:
+                abstract, citation_count, source_id = openalex_abstracts[doi]
+                paper['abstract'] = abstract
+                paper['citation_count'] = citation_count
+                paper['abstract_source'] = 'openalex' if abstract else None
+                paper['source_id'] = source_id
+            else:
+                paper['abstract'] = None
+                paper['citation_count'] = None
+                paper['abstract_source'] = None
+                paper['source_id'] = None
+
+        # Count papers without abstracts
+        missing_papers = [p for p in papers if p['abstract'] is None and p.get('doi')]
+
+        if missing_papers:
+            utils.log(f"\nFetching missing abstracts from Semantic Scholar...")
+            utils.log(f"  Papers to fetch: {len(missing_papers)}")
+
+            # Tier 2: Fetch missing abstracts from Semantic Scholar
+            for i, paper in enumerate(missing_papers, 1):
+                doi = paper.get('doi', '').replace('https://doi.org/', '').strip()
+
+                if i % 10 == 0 or i == len(missing_papers):
+                    utils.log(f"  Progress: {i}/{len(missing_papers)}")
+
+                abstract, citation_count, s2_paper_id = self.fetch_abstract_semantic_scholar(doi)
+
+                if abstract:
+                    paper['abstract'] = abstract
+                    paper['citation_count'] = citation_count
+                    paper['abstract_source'] = 'semantic_scholar'
+                    paper['source_id'] = s2_paper_id
+
+        # Calculate final statistics
+        total_papers = len(papers)
+        papers_with_abstracts = len([p for p in papers if p.get('abstract')])
+        openalex_count = len([p for p in papers if p.get('abstract_source') == 'openalex'])
+        semantic_scholar_count = len([p for p in papers if p.get('abstract_source') == 'semantic_scholar'])
+
+        utils.log("\n" + "=" * 50)
+        utils.log("Abstract Fetching Summary:")
+        utils.log("=" * 50)
+        utils.log(f"Total papers: {total_papers}")
+        utils.log(f"Papers with abstracts: {papers_with_abstracts} ({papers_with_abstracts * 100 / total_papers:.1f}%)")
+        utils.log(f"  - From OpenAlex: {openalex_count} ({openalex_count * 100 / total_papers:.1f}%)")
+        utils.log(f"  - From Semantic Scholar: {semantic_scholar_count} ({semantic_scholar_count * 100 / total_papers:.1f}%)")
+        utils.log(f"Papers without abstracts: {total_papers - papers_with_abstracts} ({(total_papers - papers_with_abstracts) * 100 / total_papers:.1f}%)")
+
+        return papers
+
 
 def main():
     """Main execution function"""
@@ -289,6 +506,9 @@ def main():
         sys.exit(1)
 
     utils.log(f"Validation passed: {message}")
+
+    # Enrich papers with abstracts
+    papers = fetcher.enrich_papers_with_abstracts(papers)
 
     # Save papers
     fetcher.save_papers(papers)
