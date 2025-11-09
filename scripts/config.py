@@ -107,7 +107,7 @@ CONFERENCES = {
 # - WWW: The Web Conference
 
 # Default conference for initial implementation
-DEFAULT_CONFERENCE = 'iclr'
+DEFAULT_CONFERENCE = 'iclr'  # Testing enhanced fetch with ICLR
 
 # ===================================
 # API Request Settings
@@ -147,6 +147,7 @@ OPENREVIEW_API_V2_URL = "https://api2.openreview.net"  # For conferences 2024 an
 OPENREVIEW_RATE_LIMIT = 1.0  # 1 request per second (polite rate limiting)
 OPENREVIEW_TIMEOUT = 10  # API request timeout in seconds
 OPENREVIEW_API_V2_YEAR_THRESHOLD = 2024  # Conferences from 2024+ use API v2
+OPENREVIEW_SEARCH_ENABLED = True  # Enable searching for papers by title if ID missing
 
 # Map conferences to OpenReview venue IDs
 OPENREVIEW_VENUES = {
@@ -154,6 +155,19 @@ OPENREVIEW_VENUES = {
     'neurips': 'NeurIPS.cc',
     'icml': 'ICML.cc',
 }
+
+# ===================================
+# Progress Logging & Recovery
+# ===================================
+
+# Progress logging intervals
+DBLP_PROGRESS_LOG_INTERVAL = 1000  # Log every N papers during DBLP fetching
+ABSTRACT_PROGRESS_LOG_INTERVAL = 100  # Log every N abstracts fetched
+INCREMENTAL_SAVE_INTERVAL = 100  # Save JSON every N abstracts fetched
+
+# Enable incremental saves and recovery
+ENABLE_INCREMENTAL_SAVES = True  # Save partial results during fetching
+ENABLE_RECOVERY_MODE = True  # Skip papers with existing abstracts on restart
 
 # ===================================
 # Keyword Extraction Settings

@@ -114,7 +114,7 @@ class DBLPFetcher:
         # DBLP structure: <li class="entry">...</li>
         entries = soup.find_all('li', class_='entry')
 
-        for entry in entries:
+        for i, entry in enumerate(entries, 1):
             try:
                 # Extract title - usually in <span class="title"> or <cite>
                 title_elem = entry.find('span', class_='title')
@@ -204,6 +204,10 @@ class DBLPFetcher:
 
                 papers.append(paper)
 
+                # Progress logging for large conference years (every 1000 papers)
+                if config.DBLP_PROGRESS_LOG_INTERVAL > 0 and len(papers) % config.DBLP_PROGRESS_LOG_INTERVAL == 0:
+                    self._save_progress_log(f"DBLP {year}: {len(papers)} papers parsed (entry {i}/{len(entries)})")
+
             except Exception as e:
                 utils.log(f"    Error parsing entry: {e}", 'WARNING')
                 continue
@@ -275,6 +279,22 @@ class DBLPFetcher:
         utils.save_json(data, filepath)
         utils.log(f"Saved {len(papers)} papers to {filepath}")
 
+    def _save_progress_log(self, message: str):
+        """
+        Append progress message to log file
+
+        Args:
+            message (str): Progress message to log
+        """
+        log_file = config.get_raw_papers_file(self.conference_key).replace('.json', '_progress.log')
+        timestamp = utils.get_current_timestamp()
+
+        try:
+            with open(log_file, 'a', encoding='utf-8') as f:
+                f.write(f"[{timestamp}] {message}\n")
+        except Exception as e:
+            utils.log(f"Warning: Could not write to progress log: {e}", 'WARNING')
+
     def reconstruct_abstract_from_inverted_index(self, inv_index: Dict[str, List[int]]) -> str:
         """
         Convert OpenAlex inverted index to plain text abstract
@@ -321,6 +341,60 @@ class DBLPFetcher:
             return match.group(1)
 
         return None
+
+    def search_openreview_by_title(self, title: str, year: int, venue: str) -> str:
+        """
+        Search OpenReview for a paper by title to find its forum ID
+
+        Args:
+            title (str): Paper title to search for
+            year (int): Paper year (determines API version and venue)
+            venue (str): Conference venue key (e.g., 'iclr')
+
+        Returns:
+            str: Forum ID if found, None otherwise
+        """
+        if not config.OPENREVIEW_SEARCH_ENABLED or not title or venue not in config.OPENREVIEW_VENUES:
+            return None
+
+        try:
+            # Rate limiting
+            time.sleep(1.0 / config.OPENREVIEW_RATE_LIMIT)
+
+            # Select API version based on year
+            if year >= config.OPENREVIEW_API_V2_YEAR_THRESHOLD:
+                base_url = config.OPENREVIEW_API_V2_URL
+            else:
+                base_url = config.OPENREVIEW_API_V1_URL
+
+            # Construct venue string for search (e.g., "ICLR.cc/2024/Conference")
+            venue_name = config.OPENREVIEW_VENUES[venue]
+            search_venue = f"{venue_name}/{year}/Conference"
+
+            # Search for papers by title in this venue
+            url = f"{base_url}/notes"
+            params = {
+                'content.title': title,
+                'invitation': f"{search_venue}/-/Blind_Submission",
+                'limit': 1
+            }
+
+            response = requests.get(url, params=params, timeout=config.OPENREVIEW_TIMEOUT)
+            response.raise_for_status()
+            data = response.json()
+
+            # Extract forum ID from search results
+            notes = data.get('notes', [])
+            if notes and len(notes) > 0:
+                forum_id = notes[0].get('id') or notes[0].get('forum')
+                if forum_id:
+                    return forum_id
+
+            return None
+
+        except Exception as e:
+            utils.log(f"    Error searching OpenReview for '{title[:50]}...': {e}", 'WARNING')
+            return None
 
     def fetch_abstract_openreview(self, forum_id: str, year: int, venue: str) -> tuple:
         """
@@ -503,9 +577,12 @@ class DBLPFetcher:
     def enrich_papers_with_abstracts(self, papers: List[Dict]) -> List[Dict]:
         """
         Enrich papers with abstracts using three-tier approach:
+        0. Search OpenReview by title for missing forum IDs (OpenReview-based conferences only)
         1. Fetch from OpenReview (for papers with OpenReview URLs)
         2. Fetch from OpenAlex (fast, batch processing for DOI papers)
         3. Fall back to Semantic Scholar for missing DOI abstracts
+
+        Includes progress logging and incremental saves for monitoring and recovery.
 
         Args:
             papers (List[Dict]): Papers to enrich
@@ -517,20 +594,60 @@ class DBLPFetcher:
         utils.log("Enriching papers with abstracts...")
         utils.log("=" * 50)
 
-        # Initialize all papers with None values
+        # Initialize all papers with None values (if not already present)
         for paper in papers:
-            paper['abstract'] = None
-            paper['citation_count'] = None
-            paper['abstract_source'] = None
-            paper['source_id'] = None
+            if 'abstract' not in paper:
+                paper['abstract'] = None
+            if 'citation_count' not in paper:
+                paper['citation_count'] = None
+            if 'abstract_source' not in paper:
+                paper['abstract_source'] = None
+            if 'source_id' not in paper:
+                paper['source_id'] = None
+
+        # Recovery mode: Check how many papers already have abstracts
+        existing_abstracts = len([p for p in papers if p.get('abstract')])
+        if config.ENABLE_RECOVERY_MODE and existing_abstracts > 0:
+            utils.log(f"\n[RECOVERY MODE] Found {existing_abstracts} papers with existing abstracts")
+            utils.log(f"[RECOVERY MODE] Will skip these and continue from where we left off")
+            self._save_progress_log(f"Recovery mode: {existing_abstracts} papers already have abstracts")
+
+        # Tier 0: For OpenReview-based conferences, search for missing forum IDs by title
+        venue = self.conf_config.get('dblp_venue')
+        if venue in config.OPENREVIEW_VENUES:
+            # Find papers that don't have openreview_id but should (no abstract yet)
+            papers_needing_id = [p for p in papers if not p.get('openreview_id') and not p.get('abstract')]
+
+            if papers_needing_id:
+                utils.log(f"\n[OpenReview ID Search] Searching for missing forum IDs by title...")
+                utils.log(f"  Papers to search: {len(papers_needing_id)}")
+                self._save_progress_log(f"Starting OpenReview ID search for {len(papers_needing_id)} papers")
+
+                found_count = 0
+                for i, paper in enumerate(papers_needing_id, 1):
+                    if i % 100 == 0 or i == len(papers_needing_id):
+                        utils.log(f"  Search progress: {i}/{len(papers_needing_id)} (found {found_count} IDs)")
+
+                    title = paper.get('title')
+                    year = paper.get('year')
+
+                    forum_id = self.search_openreview_by_title(title, year, venue)
+                    if forum_id:
+                        paper['openreview_id'] = forum_id
+                        found_count += 1
+
+                utils.log(f"  Found {found_count}/{len(papers_needing_id)} forum IDs by title search")
+                self._save_progress_log(f"OpenReview ID search complete: {found_count}/{len(papers_needing_id)} found")
 
         # Tier 1: Fetch from OpenReview for papers with OpenReview URLs
-        openreview_papers = [p for p in papers if p.get('openreview_id')]
+        openreview_papers = [p for p in papers if p.get('openreview_id') and not p.get('abstract')]
 
         if openreview_papers:
             utils.log(f"\nFetching abstracts from OpenReview...")
             utils.log(f"  Papers to fetch: {len(openreview_papers)}")
+            self._save_progress_log(f"Starting OpenReview abstract fetch for {len(openreview_papers)} papers")
 
+            abstracts_fetched = 0
             for i, paper in enumerate(openreview_papers, 1):
                 if i % 10 == 0 or i == len(openreview_papers):
                     utils.log(f"  Progress: {i}/{len(openreview_papers)}")
@@ -548,17 +665,32 @@ class DBLPFetcher:
                     paper['citation_count'] = citation_count
                     paper['abstract_source'] = 'openreview'
                     paper['source_id'] = forum_id
+                    abstracts_fetched += 1
+
+                # Progress logging and incremental saves
+                if config.ABSTRACT_PROGRESS_LOG_INTERVAL > 0 and abstracts_fetched > 0 and abstracts_fetched % config.ABSTRACT_PROGRESS_LOG_INTERVAL == 0:
+                    self._save_progress_log(f"OpenReview: {abstracts_fetched} abstracts fetched (progress: {i}/{len(openreview_papers)})")
+
+                    if config.ENABLE_INCREMENTAL_SAVES and abstracts_fetched % config.INCREMENTAL_SAVE_INTERVAL == 0:
+                        utils.log(f"  [INCREMENTAL SAVE] Saving progress... ({abstracts_fetched} abstracts)")
+                        self.save_papers(papers)
 
             openreview_count = len([p for p in openreview_papers if p.get('abstract')])
             utils.log(f"  OpenReview: {openreview_count}/{len(openreview_papers)} abstracts ({openreview_count * 100 / len(openreview_papers):.1f}%)")
+            self._save_progress_log(f"OpenReview complete: {openreview_count}/{len(openreview_papers)} abstracts")
 
         # Tier 2: Fetch from OpenAlex (batch) for papers with DOIs
         doi_papers = [p for p in papers if p.get('doi') and not p.get('abstract')]
 
         if doi_papers:
+            utils.log(f"\nFetching abstracts from OpenAlex (batch processing)...")
+            utils.log(f"  Papers to fetch: {len(doi_papers)}")
+            self._save_progress_log(f"Starting OpenAlex batch fetch for {len(doi_papers)} papers")
+
             openalex_abstracts = self.fetch_abstracts_openalex(doi_papers)
 
             # Add abstracts from OpenAlex to papers
+            abstracts_added = 0
             for paper in doi_papers:
                 doi = paper.get('doi', '').replace('https://doi.org/', '').strip()
                 if doi in openalex_abstracts:
@@ -568,6 +700,15 @@ class DBLPFetcher:
                         paper['citation_count'] = citation_count
                         paper['abstract_source'] = 'openalex'
                         paper['source_id'] = source_id
+                        abstracts_added += 1
+
+            utils.log(f"  OpenAlex: {abstracts_added}/{len(doi_papers)} abstracts ({abstracts_added * 100 / len(doi_papers):.1f}%)")
+            self._save_progress_log(f"OpenAlex complete: {abstracts_added}/{len(doi_papers)} abstracts")
+
+            # Incremental save after OpenAlex batch
+            if config.ENABLE_INCREMENTAL_SAVES and abstracts_added > 0:
+                utils.log(f"  [INCREMENTAL SAVE] Saving progress after OpenAlex batch...")
+                self.save_papers(papers)
 
         # Tier 3: Fetch missing abstracts from Semantic Scholar
         missing_papers = [p for p in papers if p['abstract'] is None and p.get('doi')]
@@ -575,7 +716,9 @@ class DBLPFetcher:
         if missing_papers:
             utils.log(f"\nFetching missing abstracts from Semantic Scholar...")
             utils.log(f"  Papers to fetch: {len(missing_papers)}")
+            self._save_progress_log(f"Starting Semantic Scholar fetch for {len(missing_papers)} papers")
 
+            abstracts_fetched = 0
             for i, paper in enumerate(missing_papers, 1):
                 doi = paper.get('doi', '').replace('https://doi.org/', '').strip()
 
@@ -589,6 +732,18 @@ class DBLPFetcher:
                     paper['citation_count'] = citation_count
                     paper['abstract_source'] = 'semantic_scholar'
                     paper['source_id'] = s2_paper_id
+                    abstracts_fetched += 1
+
+                # Progress logging and incremental saves
+                if config.ABSTRACT_PROGRESS_LOG_INTERVAL > 0 and abstracts_fetched > 0 and abstracts_fetched % config.ABSTRACT_PROGRESS_LOG_INTERVAL == 0:
+                    self._save_progress_log(f"Semantic Scholar: {abstracts_fetched} abstracts fetched (progress: {i}/{len(missing_papers)})")
+
+                    if config.ENABLE_INCREMENTAL_SAVES and abstracts_fetched % config.INCREMENTAL_SAVE_INTERVAL == 0:
+                        utils.log(f"  [INCREMENTAL SAVE] Saving progress... ({abstracts_fetched} abstracts)")
+                        self.save_papers(papers)
+
+            utils.log(f"  Semantic Scholar: {abstracts_fetched}/{len(missing_papers)} abstracts ({abstracts_fetched * 100 / len(missing_papers):.1f}%)")
+            self._save_progress_log(f"Semantic Scholar complete: {abstracts_fetched}/{len(missing_papers)} abstracts")
 
         # Calculate final statistics
         total_papers = len(papers)
@@ -606,6 +761,8 @@ class DBLPFetcher:
         utils.log(f"  - From OpenAlex: {openalex_count} ({openalex_count * 100 / total_papers:.1f}%)")
         utils.log(f"  - From Semantic Scholar: {semantic_scholar_count} ({semantic_scholar_count * 100 / total_papers:.1f}%)")
         utils.log(f"Papers without abstracts: {total_papers - papers_with_abstracts} ({(total_papers - papers_with_abstracts) * 100 / total_papers:.1f}%)")
+
+        self._save_progress_log(f"Abstract enrichment complete: {papers_with_abstracts}/{total_papers} papers ({papers_with_abstracts * 100 / total_papers:.1f}%)")
 
         return papers
 
@@ -634,10 +791,16 @@ def main():
 
     utils.log(f"Validation passed: {message}")
 
+    # Save papers after DBLP phase (for recovery if abstract fetching fails)
+    if config.ENABLE_INCREMENTAL_SAVES:
+        utils.log("\n[INCREMENTAL SAVE] Saving papers after DBLP phase...")
+        fetcher.save_papers(papers)
+        fetcher._save_progress_log(f"DBLP phase complete: {len(papers)} papers saved")
+
     # Enrich papers with abstracts
     papers = fetcher.enrich_papers_with_abstracts(papers)
 
-    # Save papers
+    # Save papers (final save)
     fetcher.save_papers(papers)
 
     # Print summary
