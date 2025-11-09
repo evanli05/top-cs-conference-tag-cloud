@@ -39,9 +39,13 @@ There are many ways to contribute to this project:
    pip install -r scripts/requirements.txt
    ```
 
-4. **Set up Gemini API key (for keyword extraction):**
+4. **Set up environment variables:**
    ```bash
-   export GEMINI_API_KEY="your-api-key-here"
+   # Copy the example .env file
+   cp .env.example .env
+
+   # Edit .env and add your API keys
+   # Get Gemini API key from: https://makersuite.google.com/app/apikey
    ```
 
 5. **Create a feature branch:**

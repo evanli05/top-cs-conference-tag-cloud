@@ -62,13 +62,14 @@ That's it! The word cloud should load with KDD conference data.
 To fetch the latest conference data:
 
 ```bash
-# Install dependencies first
+# 1. Install dependencies
 pip install -r scripts/requirements.txt
 
-# Set up Gemini API key
-export GEMINI_API_KEY="your-api-key-here"
+# 2. Set up environment variables
+cp .env.example .env
+# Edit .env file and add your Gemini API key
 
-# Run data pipeline
+# 3. Run data pipeline
 python scripts/run_pipeline.py
 ```
 

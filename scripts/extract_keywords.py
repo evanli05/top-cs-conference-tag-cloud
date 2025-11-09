@@ -542,10 +542,11 @@ def main():
     utils.log("=" * 50)
 
     # Load papers from Step 2
-    papers_data = utils.load_json(config.RAW_PAPERS_FILE)
+    raw_file = config.get_raw_papers_file(config.DEFAULT_CONFERENCE)
+    papers_data = utils.load_json(raw_file)
 
     if not papers_data:
-        utils.log(f"Failed to load papers from {config.RAW_PAPERS_FILE}", 'ERROR')
+        utils.log(f"Failed to load papers from {raw_file}", 'ERROR')
         utils.log("Please run fetch_papers.py first (Step 2)", 'ERROR')
         sys.exit(1)
 
@@ -555,7 +556,7 @@ def main():
         utils.log("No papers found in data file", 'ERROR')
         sys.exit(1)
 
-    utils.log(f"Loaded {len(papers)} papers from {config.RAW_PAPERS_FILE}")
+    utils.log(f"Loaded {len(papers)} papers from {raw_file}")
 
     # Initialize extractor
     extractor = KeywordExtractor(config.DEFAULT_CONFERENCE)

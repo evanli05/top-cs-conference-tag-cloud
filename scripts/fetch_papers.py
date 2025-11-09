@@ -170,8 +170,16 @@ class DBLPFetcher:
                 url_elem = entry.find('nav', class_='publ')
                 paper_url = ''
                 doi = ''
+                openreview_url = ''
+                openreview_id = None
 
                 if url_elem:
+                    # Look for OpenReview link (check this first for conferences using OpenReview)
+                    openreview_link = url_elem.find('a', href=re.compile(r'openreview\.net'))
+                    if openreview_link:
+                        openreview_url = openreview_link.get('href', '')
+                        openreview_id = self._extract_openreview_id(openreview_url)
+
                     # Look for DOI link
                     doi_link = url_elem.find('a', href=re.compile(r'doi\.org'))
                     if doi_link:
@@ -189,7 +197,9 @@ class DBLPFetcher:
                     'authors': authors,
                     'venue': self.conf_config['name'],
                     'url': paper_url,
-                    'doi': doi
+                    'doi': doi,
+                    'openreview_url': openreview_url,
+                    'openreview_id': openreview_id
                 }
 
                 papers.append(paper)
@@ -243,10 +253,10 @@ class DBLPFetcher:
 
         Args:
             papers (List[Dict]): Papers to save
-            filepath (str): Output file path (default: from config)
+            filepath (str): Output file path (default: conference-specific from config)
         """
         if filepath is None:
-            filepath = config.RAW_PAPERS_FILE
+            filepath = config.get_raw_papers_file(self.conference_key)
 
         # Add metadata
         data = {
@@ -290,6 +300,87 @@ class DBLPFetcher:
         # Join words to form abstract
         abstract = " ".join([word for _, word in word_positions])
         return abstract
+
+    def _extract_openreview_id(self, url: str) -> str:
+        """
+        Extract OpenReview forum ID from URL
+
+        Args:
+            url (str): OpenReview URL (e.g., https://openreview.net/forum?id=XXXXX)
+
+        Returns:
+            str: Forum ID or None if not found
+        """
+        if not url or 'openreview.net' not in url:
+            return None
+
+        # Extract forum ID from URL parameter
+        # Format: https://openreview.net/forum?id=XXXXX
+        match = re.search(r'[?&]id=([^&]+)', url)
+        if match:
+            return match.group(1)
+
+        return None
+
+    def fetch_abstract_openreview(self, forum_id: str, year: int, venue: str) -> tuple:
+        """
+        Fetch abstract from OpenReview API for a single paper
+
+        Args:
+            forum_id (str): OpenReview forum ID
+            year (int): Paper year (determines API version)
+            venue (str): Conference venue key (e.g., 'iclr')
+
+        Returns:
+            tuple: (abstract, citation_count, openreview_id) or (None, None, None)
+        """
+        if not forum_id:
+            return (None, None, None)
+
+        try:
+            # Rate limiting
+            time.sleep(1.0 / config.OPENREVIEW_RATE_LIMIT)
+
+            # Select API version based on year
+            if year >= config.OPENREVIEW_API_V2_YEAR_THRESHOLD:
+                # Use API v2 for 2024+
+                base_url = config.OPENREVIEW_API_V2_URL
+            else:
+                # Use API v1 for 2023 and earlier
+                base_url = config.OPENREVIEW_API_V1_URL
+
+            # Both API versions use the same endpoint format
+            url = f"{base_url}/notes?id={forum_id}"
+
+            response = requests.get(url, timeout=config.OPENREVIEW_TIMEOUT)
+            response.raise_for_status()
+            data = response.json()
+
+            # Extract abstract - both API versions return list of notes
+            abstract = None
+            citation_count = None  # OpenReview doesn't provide citation counts
+
+            notes = data.get('notes', [])
+            if notes:
+                content = notes[0].get('content', {})
+                # Abstract may be in 'abstract', 'TLDR', or other fields
+                abstract = content.get('abstract') or content.get('TL;DR') or content.get('tldr')
+
+                # Some OpenReview abstracts are dictionaries with 'value' key
+                if isinstance(abstract, dict) and 'value' in abstract:
+                    abstract = abstract['value']
+
+            return (abstract, citation_count, forum_id)
+
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                # Paper not found in OpenReview
+                return (None, None, None)
+            utils.log(f"    HTTP error for OpenReview ID {forum_id}: {e}", 'WARNING')
+            return (None, None, None)
+        except Exception as e:
+            utils.log(f"    Error fetching OpenReview ID {forum_id}: {e}", 'WARNING')
+            return (None, None, None)
 
     def fetch_abstracts_openalex(self, papers: List[Dict]) -> Dict[str, tuple]:
         """
@@ -411,9 +502,10 @@ class DBLPFetcher:
 
     def enrich_papers_with_abstracts(self, papers: List[Dict]) -> List[Dict]:
         """
-        Enrich papers with abstracts using two-tier approach:
-        1. Fetch from OpenAlex (fast, batch processing)
-        2. Fall back to Semantic Scholar for missing abstracts
+        Enrich papers with abstracts using three-tier approach:
+        1. Fetch from OpenReview (for papers with OpenReview URLs)
+        2. Fetch from OpenAlex (fast, batch processing for DOI papers)
+        3. Fall back to Semantic Scholar for missing DOI abstracts
 
         Args:
             papers (List[Dict]): Papers to enrich
@@ -425,32 +517,65 @@ class DBLPFetcher:
         utils.log("Enriching papers with abstracts...")
         utils.log("=" * 50)
 
-        # Tier 1: Fetch from OpenAlex (batch)
-        openalex_abstracts = self.fetch_abstracts_openalex(papers)
-
-        # Add abstracts from OpenAlex to papers
+        # Initialize all papers with None values
         for paper in papers:
-            doi = paper.get('doi', '').replace('https://doi.org/', '').strip()
-            if doi in openalex_abstracts:
-                abstract, citation_count, source_id = openalex_abstracts[doi]
-                paper['abstract'] = abstract
-                paper['citation_count'] = citation_count
-                paper['abstract_source'] = 'openalex' if abstract else None
-                paper['source_id'] = source_id
-            else:
-                paper['abstract'] = None
-                paper['citation_count'] = None
-                paper['abstract_source'] = None
-                paper['source_id'] = None
+            paper['abstract'] = None
+            paper['citation_count'] = None
+            paper['abstract_source'] = None
+            paper['source_id'] = None
 
-        # Count papers without abstracts
+        # Tier 1: Fetch from OpenReview for papers with OpenReview URLs
+        openreview_papers = [p for p in papers if p.get('openreview_id')]
+
+        if openreview_papers:
+            utils.log(f"\nFetching abstracts from OpenReview...")
+            utils.log(f"  Papers to fetch: {len(openreview_papers)}")
+
+            for i, paper in enumerate(openreview_papers, 1):
+                if i % 10 == 0 or i == len(openreview_papers):
+                    utils.log(f"  Progress: {i}/{len(openreview_papers)}")
+
+                openreview_id = paper.get('openreview_id')
+                year = paper.get('year')
+                venue = self.conf_config.get('dblp_venue')
+
+                abstract, citation_count, forum_id = self.fetch_abstract_openreview(
+                    openreview_id, year, venue
+                )
+
+                if abstract:
+                    paper['abstract'] = abstract
+                    paper['citation_count'] = citation_count
+                    paper['abstract_source'] = 'openreview'
+                    paper['source_id'] = forum_id
+
+            openreview_count = len([p for p in openreview_papers if p.get('abstract')])
+            utils.log(f"  OpenReview: {openreview_count}/{len(openreview_papers)} abstracts ({openreview_count * 100 / len(openreview_papers):.1f}%)")
+
+        # Tier 2: Fetch from OpenAlex (batch) for papers with DOIs
+        doi_papers = [p for p in papers if p.get('doi') and not p.get('abstract')]
+
+        if doi_papers:
+            openalex_abstracts = self.fetch_abstracts_openalex(doi_papers)
+
+            # Add abstracts from OpenAlex to papers
+            for paper in doi_papers:
+                doi = paper.get('doi', '').replace('https://doi.org/', '').strip()
+                if doi in openalex_abstracts:
+                    abstract, citation_count, source_id = openalex_abstracts[doi]
+                    if abstract:
+                        paper['abstract'] = abstract
+                        paper['citation_count'] = citation_count
+                        paper['abstract_source'] = 'openalex'
+                        paper['source_id'] = source_id
+
+        # Tier 3: Fetch missing abstracts from Semantic Scholar
         missing_papers = [p for p in papers if p['abstract'] is None and p.get('doi')]
 
         if missing_papers:
             utils.log(f"\nFetching missing abstracts from Semantic Scholar...")
             utils.log(f"  Papers to fetch: {len(missing_papers)}")
 
-            # Tier 2: Fetch missing abstracts from Semantic Scholar
             for i, paper in enumerate(missing_papers, 1):
                 doi = paper.get('doi', '').replace('https://doi.org/', '').strip()
 
@@ -468,6 +593,7 @@ class DBLPFetcher:
         # Calculate final statistics
         total_papers = len(papers)
         papers_with_abstracts = len([p for p in papers if p.get('abstract')])
+        openreview_count = len([p for p in papers if p.get('abstract_source') == 'openreview'])
         openalex_count = len([p for p in papers if p.get('abstract_source') == 'openalex'])
         semantic_scholar_count = len([p for p in papers if p.get('abstract_source') == 'semantic_scholar'])
 
@@ -476,6 +602,7 @@ class DBLPFetcher:
         utils.log("=" * 50)
         utils.log(f"Total papers: {total_papers}")
         utils.log(f"Papers with abstracts: {papers_with_abstracts} ({papers_with_abstracts * 100 / total_papers:.1f}%)")
+        utils.log(f"  - From OpenReview: {openreview_count} ({openreview_count * 100 / total_papers:.1f}%)")
         utils.log(f"  - From OpenAlex: {openalex_count} ({openalex_count * 100 / total_papers:.1f}%)")
         utils.log(f"  - From Semantic Scholar: {semantic_scholar_count} ({semantic_scholar_count * 100 / total_papers:.1f}%)")
         utils.log(f"Papers without abstracts: {total_papers - papers_with_abstracts} ({(total_papers - papers_with_abstracts) * 100 / total_papers:.1f}%)")
@@ -517,7 +644,7 @@ def main():
     utils.summarize_data(papers, fetcher.conf_config['years'])
 
     utils.log("✓ Data fetching complete!")
-    utils.log(f"Output: {config.RAW_PAPERS_FILE}")
+    utils.log(f"Output: {config.get_raw_papers_file(config.DEFAULT_CONFERENCE)}")
 
 
 if __name__ == '__main__':

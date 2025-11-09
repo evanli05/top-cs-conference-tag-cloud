@@ -131,7 +131,7 @@ def run_pipeline(conference_key: str = None):
     utils.log(f"  - Top keyword: '{stats['top_keyword']}' ({stats['top_keyword_count']} occurrences)")
     utils.log(f"  - Execution time: {elapsed_time:.2f} seconds")
     utils.log(f"\nOutput Files:")
-    utils.log(f"  - Raw papers: {config.RAW_PAPERS_FILE}")
+    utils.log(f"  - Raw papers: {config.get_raw_papers_file(config.DEFAULT_CONFERENCE)}")
     utils.log(f"  - Keywords (intermediate): {config.PROCESSED_KEYWORDS_FILE}")
     utils.log(f"  - Word cloud data (final): {config.FINAL_DATA_FILE}")
     utils.log(f"\nNext Steps:")

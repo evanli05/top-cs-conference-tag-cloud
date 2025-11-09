@@ -4,6 +4,9 @@
 # HTTP requests for DBLP API
 requests>=2.31.0
 
+# Environment variable management
+python-dotenv>=1.0.0
+
 # JSON processing (built-in, but listed for reference)
 # json (built-in)
 

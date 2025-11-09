@@ -16,11 +16,12 @@ def main():
     utils.log("=" * 50)
 
     # Load existing papers
-    with open(config.RAW_PAPERS_FILE, 'r') as f:
+    raw_file = config.get_raw_papers_file(config.DEFAULT_CONFERENCE)
+    with open(raw_file, 'r') as f:
         data = json.load(f)
         all_papers = data['papers']
 
-    utils.log(f"Loaded {len(all_papers)} papers from {config.RAW_PAPERS_FILE}")
+    utils.log(f"Loaded {len(all_papers)} papers from {raw_file}")
 
     # Select 5 test papers (include some from 2025 and some from older years)
     test_papers = [

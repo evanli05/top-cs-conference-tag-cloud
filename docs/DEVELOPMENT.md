@@ -455,7 +455,7 @@ This makes theming and dark mode implementation straightforward.
 ### Abstract Fetching System
 
 **Overview:**
-The project uses a two-tier approach to enrich paper data with abstracts, combining the speed of batch processing with comprehensive fallback coverage.
+The project uses a three-tier approach to enrich paper data with abstracts, supporting both DOI-based papers and OpenReview-based conferences. The system automatically detects the paper source and uses the appropriate API.
 
 **Why Abstracts?**
 - Improves keyword extraction quality
@@ -465,7 +465,18 @@ The project uses a two-tier approach to enrich paper data with abstracts, combin
 
 #### Architecture
 
-**Tier 1: OpenAlex API (Primary)**
+**Tier 1: OpenReview API (For OpenReview-based Conferences)**
+- **Purpose**: Fetch abstracts for conferences using OpenReview platform (ICLR, NeurIPS, ICML)
+- **Detection**: Automatic detection based on OpenReview URL in DBLP HTML
+- **Coverage**: ~100% for OpenReview-hosted conferences
+- **Speed**: ~1 second per paper (rate limited)
+- **Rate Limit**: 1 request per second (polite rate limiting)
+- **API Versions**:
+  - API v1 for conferences 2023 and earlier
+  - API v2 for conferences 2024 and later
+- **Data Format**: Plain text abstracts and TL;DR summaries
+
+**Tier 2: OpenAlex API (Primary for DOI-based Papers)**
 - **Purpose**: Batch fetching for high-speed processing
 - **Coverage**: ~92% of papers (lower for recent publications)
 - **Speed**: ~5 minutes for 3,000 papers
@@ -473,7 +484,7 @@ The project uses a two-tier approach to enrich paper data with abstracts, combin
 - **Rate Limit**: 10 requests/second (polite pool with mailto parameter)
 - **Data Format**: Inverted index (word → positions)
 
-**Tier 2: Semantic Scholar API (Fallback)**
+**Tier 3: Semantic Scholar API (Fallback for DOI-based Papers)**
 - **Purpose**: Fill gaps from OpenAlex
 - **Coverage**: ~90%+ of missing papers
 - **Speed**: ~3 seconds per paper
@@ -489,25 +500,40 @@ The project uses a two-tier approach to enrich paper data with abstracts, combin
 **Key Methods**:
 
 1. **`enrich_papers_with_abstracts(papers)`**
-   - Main orchestration method
-   - Calls OpenAlex for bulk fetching
-   - Falls back to Semantic Scholar for nulls
+   - Main orchestration method for three-tier approach
+   - Tier 1: Fetches from OpenReview for papers with `openreview_id`
+   - Tier 2: Calls OpenAlex for bulk DOI-based fetching
+   - Tier 3: Falls back to Semantic Scholar for missing DOI abstracts
    - Returns papers with abstract fields added
 
-2. **`fetch_abstracts_openalex(papers)`**
+2. **`_extract_openreview_id(url)`**
+   - Extracts OpenReview forum ID from URL
+   - Parses URL parameter: `openreview.net/forum?id=XXXXX`
+   - Returns forum ID or None
+
+3. **`fetch_abstract_openreview(forum_id, year, venue)`**
+   - Single OpenReview paper lookup
+   - Automatically selects API version based on year:
+     - API v1 for years ≤ 2023
+     - API v2 for years ≥ 2024
+   - Extracts abstract or TL;DR from response
+   - Rate-limited with 1-second delay
+   - Returns (abstract, citation_count, forum_id) tuple
+
+4. **`fetch_abstracts_openalex(papers)`**
    - Extracts DOIs from papers
    - Batches into groups of 100
    - Queries OpenAlex with pipe-separated DOI filter
    - Converts inverted index to plain text
    - Returns DOI → (abstract, citation_count, source_id) mapping
 
-3. **`fetch_abstract_semantic_scholar(doi)`**
+5. **`fetch_abstract_semantic_scholar(doi)`**
    - Single DOI lookup
    - Rate-limited with 3-second delay
    - Returns (abstract, citation_count, s2_paper_id) tuple
    - Handles 404 gracefully (paper not found)
 
-4. **`reconstruct_abstract_from_inverted_index(inv_index)`**
+6. **`reconstruct_abstract_from_inverted_index(inv_index)`**
    - Converts OpenAlex inverted index to plain text
    - Maps positions to words
    - Sorts by position and joins
@@ -521,17 +547,31 @@ The project uses a two-tier approach to enrich paper data with abstracts, combin
     'year': int,
     'authors': [str],
     'venue': str,
-    'url': str,
-    'doi': str,
-    # NEW FIELDS:
+    'url': str,                           # DBLP record URL
+    'doi': str,                           # DOI URL (for DOI-based papers)
+    'openreview_url': str,                # OpenReview URL (for OpenReview papers)
+    'openreview_id': str or None,         # OpenReview forum ID
+    # ENRICHED FIELDS:
     'abstract': str or None,              # Plain text abstract
-    'abstract_source': str or None,       # 'openalex', 'semantic_scholar', or None
-    'citation_count': int or None,        # Citation count from API
-    'source_id': str or None              # OpenAlex ID or S2 paper ID
+    'abstract_source': str or None,       # 'openreview', 'openalex', 'semantic_scholar', or None
+    'citation_count': int or None,        # Citation count from API (None for OpenReview)
+    'source_id': str or None              # Forum ID, OpenAlex ID, or S2 paper ID
 }
 ```
 
 #### API Endpoints
+
+**OpenReview API v1** (for conferences 2023 and earlier):
+```
+GET https://api.openreview.net/notes?id={forum_id}
+Response: { "notes": [{ "content": { "abstract": "...", "TL;DR": "..." } }] }
+```
+
+**OpenReview API v2** (for conferences 2024 and later):
+```
+GET https://api2.openreview.net/notes/{forum_id}
+Response: { "content": { "abstract": "...", "TL;DR": "..." } }
+```
 
 **OpenAlex**:
 ```
@@ -554,6 +594,20 @@ Parameters:
 **File**: `scripts/config.py`
 
 ```python
+# OpenReview API Configuration
+OPENREVIEW_API_V1_URL = "https://api.openreview.net"
+OPENREVIEW_API_V2_URL = "https://api2.openreview.net"
+OPENREVIEW_RATE_LIMIT = 1.0  # 1 request per second
+OPENREVIEW_TIMEOUT = 10
+OPENREVIEW_API_V2_YEAR_THRESHOLD = 2024  # Conferences from 2024+ use API v2
+
+# Map conferences to OpenReview venue IDs
+OPENREVIEW_VENUES = {
+    'iclr': 'ICLR.cc',
+    'neurips': 'NeurIPS.cc',
+    'icml': 'ICML.cc',
+}
+
 # OpenAlex API Configuration
 OPENALEX_API_URL = "https://api.openalex.org/works"
 OPENALEX_BATCH_SIZE = 100

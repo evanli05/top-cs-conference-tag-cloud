@@ -3,6 +3,10 @@ Configuration settings for CS Conference Tag Cloud
 """
 
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env'))
 
 # ===================================
 # Project Paths
@@ -18,7 +22,8 @@ PROCESSED_DATA_DIR = os.path.join(DATA_DIR, 'processed')
 SAMPLE_DATA_DIR = os.path.join(DATA_DIR, 'sample')
 
 # Output files
-RAW_PAPERS_FILE = os.path.join(RAW_DATA_DIR, 'kdd_papers.json')
+# Note: RAW_PAPERS_FILE is now dynamically generated per conference
+# Use get_raw_papers_file(conference_key) to get the correct path
 PROCESSED_KEYWORDS_FILE = os.path.join(PROCESSED_DATA_DIR, 'keywords_intermediate.json')
 FINAL_DATA_FILE = os.path.join(PROCESSED_DATA_DIR, 'wordcloud_data.json')
 
@@ -54,13 +59,13 @@ CONFERENCES = {
         'years': [2020, 2021, 2022, 2023, 2024, 2025]
     },
     # ICLR - International Conference on Learning Representations
-    # 'iclr': {
-    #     'name': 'ICLR',
-    #     'full_name': 'International Conference on Learning Representations',
-    #     'dblp_venue': 'iclr',
-    #     'categories': ['Machine Learning'],
-    #     'years': [2020, 2021, 2022, 2023, 2024]
-    # },
+    'iclr': {
+        'name': 'ICLR',
+        'full_name': 'International Conference on Learning Representations',
+        'dblp_venue': 'iclr',
+        'categories': ['Machine Learning'],
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
+    },
     # ICML - International Conference on Machine Learning
     # 'icml': {
     #     'name': 'ICML',
@@ -102,7 +107,7 @@ CONFERENCES = {
 # - WWW: The Web Conference
 
 # Default conference for initial implementation
-DEFAULT_CONFERENCE = 'kdd'
+DEFAULT_CONFERENCE = 'iclr'
 
 # ===================================
 # API Request Settings
@@ -136,6 +141,20 @@ SEMANTIC_SCHOLAR_RATE_LIMIT = 0.33  # 1 request per 3 seconds (free tier)
 SEMANTIC_SCHOLAR_FIELDS = "abstract,citationCount"
 SEMANTIC_SCHOLAR_TIMEOUT = 10  # API request timeout in seconds
 
+# OpenReview API Configuration (For conferences using OpenReview platform)
+OPENREVIEW_API_V1_URL = "https://api.openreview.net"  # For conferences 2023 and earlier
+OPENREVIEW_API_V2_URL = "https://api2.openreview.net"  # For conferences 2024 and later
+OPENREVIEW_RATE_LIMIT = 1.0  # 1 request per second (polite rate limiting)
+OPENREVIEW_TIMEOUT = 10  # API request timeout in seconds
+OPENREVIEW_API_V2_YEAR_THRESHOLD = 2024  # Conferences from 2024+ use API v2
+
+# Map conferences to OpenReview venue IDs
+OPENREVIEW_VENUES = {
+    'iclr': 'ICLR.cc',
+    'neurips': 'NeurIPS.cc',
+    'icml': 'ICML.cc',
+}
+
 # ===================================
 # Keyword Extraction Settings
 # ===================================
@@ -165,7 +184,13 @@ OLLAMA_BASE_URL = 'http://localhost:11434'
 OLLAMA_MODEL = 'mixtral:8x7b-instruct-v0.1-q4_K_M'  # Mixtral 8x7B quantized model
 
 # Gemini API Configuration
-GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyCgvwAenHcvw4zDh9gbKMCkahUhj6PqGw8')
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
+if not GEMINI_API_KEY and LLM_BACKEND == 'gemini':
+    raise ValueError(
+        "GEMINI_API_KEY not found in environment variables. "
+        "Please set it in the .env file or as an environment variable. "
+        "Get your API key from: https://makersuite.google.com/app/apikey"
+    )
 GEMINI_MODEL = 'gemini-2.5-flash-lite'
 # Rate limits for gemini-2.5-flash-lite: 15 RPM, 250K TPM, 1K RPD
 
@@ -258,6 +283,22 @@ def get_conference_config(conference_key=None):
         raise ValueError(f"Unknown conference: {conference_key}. Available: {list(CONFERENCES.keys())}")
 
     return CONFERENCES[conference_key]
+
+
+def get_raw_papers_file(conference_key=None):
+    """
+    Get the raw papers JSON file path for a specific conference
+
+    Args:
+        conference_key (str): Conference key (e.g., 'kdd', 'iclr')
+
+    Returns:
+        str: Path to the raw papers JSON file
+    """
+    if conference_key is None:
+        conference_key = DEFAULT_CONFERENCE
+
+    return os.path.join(RAW_DATA_DIR, f'{conference_key}_papers.json')
 
 
 def ensure_directories():
