@@ -48,9 +48,13 @@ DBLP_MULTI_PART_CONFERENCES = {
 # Format: {conference_key: {name, full_name, dblp_venue, categories, years}}
 
 # ===================================
-# Machine Learning Conferences
+# AI Parent Area Conferences (CSRankings)
 # ===================================
+
 CONFERENCES = {
+    # ===================================
+    # Machine Learning
+    # ===================================
     'kdd': {
         'name': 'KDD',
         'full_name': 'ACM SIGKDD Conference on Knowledge Discovery and Data Mining',
@@ -58,7 +62,6 @@ CONFERENCES = {
         'categories': ['Machine Learning'],
         'years': [2020, 2021, 2022, 2023, 2024, 2025]
     },
-    # ICLR - International Conference on Learning Representations
     'iclr': {
         'name': 'ICLR',
         'full_name': 'International Conference on Learning Representations',
@@ -66,22 +69,107 @@ CONFERENCES = {
         'categories': ['Machine Learning'],
         'years': [2020, 2021, 2022, 2023, 2024, 2025]
     },
-    # ICML - International Conference on Machine Learning
-    # 'icml': {
-    #     'name': 'ICML',
-    #     'full_name': 'International Conference on Machine Learning',
-    #     'dblp_venue': 'icml',
-    #     'categories': ['Machine Learning'],
-    #     'years': [2020, 2021, 2022, 2023, 2024]
-    # },
-    # NeurIPS - Conference on Neural Information Processing Systems
-    # 'neurips': {
-    #     'name': 'NeurIPS',
-    #     'full_name': 'Conference on Neural Information Processing Systems',
-    #     'dblp_venue': 'nips',  # Note: DBLP uses 'nips' as venue identifier
-    #     'categories': ['Machine Learning'],
-    #     'years': [2020, 2021, 2022, 2023, 2024]
-    # },
+    'icml': {
+        'name': 'ICML',
+        'full_name': 'International Conference on Machine Learning',
+        'dblp_venue': 'icml',
+        'categories': ['Machine Learning'],
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
+    },
+    'neurips': {
+        'name': 'NeurIPS',
+        'full_name': 'Conference on Neural Information Processing Systems',
+        'dblp_venue': 'neurips',  # Filename prefix (e.g., neurips2024.html)
+        'dblp_dir': 'nips',  # Directory in DBLP URL (e.g., /conf/nips/)
+        'categories': ['Machine Learning'],
+        'years': [2020, 2021, 2022, 2023, 2024]  # 2025 not available yet
+    },
+
+    # ===================================
+    # Artificial Intelligence
+    # ===================================
+    'aaai': {
+        'name': 'AAAI',
+        'full_name': 'AAAI Conference on Artificial Intelligence',
+        'dblp_venue': 'aaai',
+        'categories': ['Artificial Intelligence'],
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
+    },
+    'ijcai': {
+        'name': 'IJCAI',
+        'full_name': 'International Joint Conference on Artificial Intelligence',
+        'dblp_venue': 'ijcai',
+        'categories': ['Artificial Intelligence'],
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
+    },
+
+    # ===================================
+    # Computer Vision
+    # ===================================
+    'cvpr': {
+        'name': 'CVPR',
+        'full_name': 'IEEE/CVF Conference on Computer Vision and Pattern Recognition',
+        'dblp_venue': 'cvpr',
+        'categories': ['Computer Vision'],
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
+    },
+    'eccv': {
+        'name': 'ECCV',
+        'full_name': 'European Conference on Computer Vision',
+        'dblp_venue': 'eccv',
+        'categories': ['Computer Vision'],
+        'years': [2020, 2022, 2024]  # Biennial conference (even years only)
+    },
+    'iccv': {
+        'name': 'ICCV',
+        'full_name': 'IEEE International Conference on Computer Vision',
+        'dblp_venue': 'iccv',
+        'categories': ['Computer Vision'],
+        'years': [2021, 2023, 2025]  # Biennial conference (odd years only)
+    },
+
+    # ===================================
+    # Natural Language Processing
+    # ===================================
+    'acl': {
+        'name': 'ACL',
+        'full_name': 'Annual Meeting of the Association for Computational Linguistics',
+        'dblp_venue': 'acl',
+        'categories': ['Natural Language Processing'],
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
+    },
+    'emnlp': {
+        'name': 'EMNLP',
+        'full_name': 'Conference on Empirical Methods in Natural Language Processing',
+        'dblp_venue': 'emnlp',
+        'categories': ['Natural Language Processing'],
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
+    },
+    'naacl': {
+        'name': 'NAACL',
+        'full_name': 'North American Chapter of the Association for Computational Linguistics',
+        'dblp_venue': 'naacl',
+        'categories': ['Natural Language Processing'],
+        'years': [2021, 2022, 2024, 2025]  # Not held every year
+    },
+
+    # ===================================
+    # The Web & Information Retrieval
+    # ===================================
+    'sigir': {
+        'name': 'SIGIR',
+        'full_name': 'International ACM SIGIR Conference on Research and Development in Information Retrieval',
+        'dblp_venue': 'sigir',
+        'categories': ['The Web & Information Retrieval'],
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
+    },
+    'www': {
+        'name': 'WWW',
+        'full_name': 'The Web Conference',
+        'dblp_venue': 'www',
+        'categories': ['The Web & Information Retrieval'],
+        'years': [2020, 2021, 2022, 2023, 2024, 2025]
+    },
 }
 
 # ===================================
@@ -107,7 +195,7 @@ CONFERENCES = {
 # - WWW: The Web Conference
 
 # Default conference for initial implementation
-DEFAULT_CONFERENCE = 'iclr'  # Testing enhanced fetch with ICLR
+DEFAULT_CONFERENCE = 'neurips'  # Fetching NeurIPS data with OpenReview title search
 
 # ===================================
 # API Request Settings
@@ -152,9 +240,15 @@ OPENREVIEW_SEARCH_ENABLED = True  # Enable searching for papers by title if ID m
 # Map conferences to OpenReview venue IDs
 OPENREVIEW_VENUES = {
     'iclr': 'ICLR.cc',
-    'neurips': 'NeurIPS.cc',
     'icml': 'ICML.cc',
 }
+
+# NeurIPS Proceedings Configuration (For conferences 2020-2024 without OpenReview)
+# NeurIPS publishes conference proceedings at proceedings.nips.cc
+# Papers can be accessed directly using hash extracted from DBLP links
+NEURIPS_PROCEEDINGS_BASE_URL = "https://proceedings.nips.cc"
+NEURIPS_PROCEEDINGS_RATE_LIMIT = 10  # 10 requests per second
+NEURIPS_PROCEEDINGS_TIMEOUT = 10  # API request timeout in seconds
 
 # ===================================
 # Progress Logging & Recovery

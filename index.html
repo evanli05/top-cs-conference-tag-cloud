@@ -47,11 +47,11 @@
                 </label>
                 <select id="category-filter" class="filter-select">
                     <option value="all">All Categories</option>
-                    <option value="Data Mining">Data Mining</option>
                     <option value="Machine Learning">Machine Learning</option>
                     <option value="Artificial Intelligence">Artificial Intelligence</option>
                     <option value="Computer Vision">Computer Vision</option>
                     <option value="Natural Language Processing">Natural Language Processing</option>
+                    <option value="The Web & Information Retrieval">The Web & Information Retrieval</option>
                 </select>
             </div>
 
@@ -65,10 +65,40 @@
                 </label>
                 <select id="conference-filter" class="filter-select">
                     <option value="all">All Conferences</option>
-                    <option value="KDD" data-category="Data Mining">KDD</option>
-                    <!-- Future conferences can be added here -->
-                    <!-- <option value="ICDM" data-category="Data Mining">ICDM</option> -->
-                    <!-- <option value="CIKM" data-category="Data Mining">CIKM</option> -->
+
+                    <!-- Machine Learning -->
+                    <optgroup label="Machine Learning">
+                        <option value="ICLR" data-category="Machine Learning">ICLR</option>
+                        <option value="ICML" data-category="Machine Learning">ICML</option>
+                        <option value="KDD" data-category="Machine Learning">KDD</option>
+                        <option value="NeurIPS" data-category="Machine Learning">NeurIPS</option>
+                    </optgroup>
+
+                    <!-- Artificial Intelligence -->
+                    <optgroup label="Artificial Intelligence">
+                        <option value="AAAI" data-category="Artificial Intelligence">AAAI</option>
+                        <option value="IJCAI" data-category="Artificial Intelligence">IJCAI</option>
+                    </optgroup>
+
+                    <!-- Computer Vision -->
+                    <optgroup label="Computer Vision">
+                        <option value="CVPR" data-category="Computer Vision">CVPR</option>
+                        <option value="ECCV" data-category="Computer Vision">ECCV</option>
+                        <option value="ICCV" data-category="Computer Vision">ICCV</option>
+                    </optgroup>
+
+                    <!-- Natural Language Processing -->
+                    <optgroup label="Natural Language Processing">
+                        <option value="ACL" data-category="Natural Language Processing">ACL</option>
+                        <option value="EMNLP" data-category="Natural Language Processing">EMNLP</option>
+                        <option value="NAACL" data-category="Natural Language Processing">NAACL</option>
+                    </optgroup>
+
+                    <!-- The Web & Information Retrieval -->
+                    <optgroup label="The Web & Information Retrieval">
+                        <option value="SIGIR" data-category="The Web & Information Retrieval">SIGIR</option>
+                        <option value="WWW" data-category="The Web & Information Retrieval">WWW</option>
+                    </optgroup>
                 </select>
             </div>
 

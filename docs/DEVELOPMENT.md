@@ -455,7 +455,7 @@ This makes theming and dark mode implementation straightforward.
 ### Abstract Fetching System
 
 **Overview:**
-The project uses a three-tier approach to enrich paper data with abstracts, supporting both DOI-based papers and OpenReview-based conferences. The system automatically detects the paper source and uses the appropriate API.
+The project uses a multi-tier approach (4 tiers) to enrich paper data with abstracts, supporting DOI-based papers, OpenReview-based conferences, and conference-specific proceedings websites. The system automatically detects the paper source and uses the appropriate API or fetcher.
 
 **Why Abstracts?**
 - Improves keyword extraction quality
@@ -465,8 +465,15 @@ The project uses a three-tier approach to enrich paper data with abstracts, supp
 
 #### Architecture
 
+**Tier 0: OpenReview ID Search (For OpenReview-based Conferences)**
+- **Purpose**: Find OpenReview forum IDs by paper title search
+- **Use Case**: Papers with OpenReview URLs but missing forum IDs
+- **Coverage**: Supplements Tier 1 for OpenReview conferences
+- **Speed**: ~1 second per paper (rate limited)
+- **API**: OpenReview search API
+
 **Tier 1: OpenReview API (For OpenReview-based Conferences)**
-- **Purpose**: Fetch abstracts for conferences using OpenReview platform (ICLR, NeurIPS, ICML)
+- **Purpose**: Fetch abstracts for conferences using OpenReview platform (ICLR, ICML)
 - **Detection**: Automatic detection based on OpenReview URL in DBLP HTML
 - **Coverage**: ~100% for OpenReview-hosted conferences
 - **Speed**: ~1 second per paper (rate limited)
@@ -491,7 +498,17 @@ The project uses a three-tier approach to enrich paper data with abstracts, supp
 - **Rate Limit**: 1 request per 3 seconds (free tier)
 - **Data Format**: Plain text abstracts
 
-**Combined Coverage**: 98-99% of all papers
+**Tier 4: NeurIPS Proceedings (Custom Fetcher for NeurIPS 2020-2024)**
+- **Purpose**: Direct HTML parsing from proceedings.neurips.cc
+- **Use Case**: NeurIPS 2020-2024 papers (before OpenReview migration)
+- **Coverage**: ~60-70% (only papers with proceedings URLs)
+- **Speed**: ~1-2 seconds per paper (rate limited)
+- **Rate Limit**: 1 request per second (polite rate limiting)
+- **Data Format**: Plain text abstracts extracted from HTML
+- **Hash Extraction**: Extracts 32-character hexadecimal hashes from DBLP proceedings URLs
+- **Tracks Supported**: "Conference" and "Datasets_and_Benchmarks"
+
+**Combined Coverage**: 95-99% of all papers
 
 #### Implementation Details
 
@@ -500,10 +517,12 @@ The project uses a three-tier approach to enrich paper data with abstracts, supp
 **Key Methods**:
 
 1. **`enrich_papers_with_abstracts(papers)`**
-   - Main orchestration method for three-tier approach
+   - Main orchestration method for multi-tier approach
+   - Tier 0: Searches OpenReview by title for papers with OpenReview URLs but missing forum IDs
    - Tier 1: Fetches from OpenReview for papers with `openreview_id`
    - Tier 2: Calls OpenAlex for bulk DOI-based fetching
    - Tier 3: Falls back to Semantic Scholar for missing DOI abstracts
+   - Tier 4: Fetches from NeurIPS Proceedings for NeurIPS 2020-2024 papers with proceedings URLs
    - Returns papers with abstract fields added
 
 2. **`_extract_openreview_id(url)`**
@@ -538,6 +557,19 @@ The project uses a three-tier approach to enrich paper data with abstracts, supp
    - Maps positions to words
    - Sorts by position and joins
 
+7. **`_extract_hash_from_proceedings_url(url)`**
+   - Extracts 32-character hexadecimal hash and track type from DBLP proceedings URLs
+   - Parses URL pattern: `papers.nips.cc/paper_files/paper/{year}/hash/{hash}-Abstract-{track}.html`
+   - Tracks supported: "Conference", "Datasets_and_Benchmarks"
+   - Returns (hash, track_type) tuple or (None, None) if not found
+
+8. **`fetch_neurips_proceedings_abstract(year, paper_hash, track)`**
+   - Fetches abstract directly from proceedings.neurips.cc
+   - Constructs URL from year, hash, and track type
+   - Parses HTML to extract title, authors, abstract, PDF URL
+   - Rate-limited with 1-second delay
+   - Returns dict with abstract, source='neurips_proceedings', and metadata
+
 #### Data Structure
 
 **Paper Object (after enrichment)**:
@@ -551,11 +583,12 @@ The project uses a three-tier approach to enrich paper data with abstracts, supp
     'doi': str,                           # DOI URL (for DOI-based papers)
     'openreview_url': str,                # OpenReview URL (for OpenReview papers)
     'openreview_id': str or None,         # OpenReview forum ID
+    'neurips_proceedings_url': str or None,  # NeurIPS proceedings URL (for NeurIPS 2020-2024)
     # ENRICHED FIELDS:
     'abstract': str or None,              # Plain text abstract
-    'abstract_source': str or None,       # 'openreview', 'openalex', 'semantic_scholar', or None
-    'citation_count': int or None,        # Citation count from API (None for OpenReview)
-    'source_id': str or None              # Forum ID, OpenAlex ID, or S2 paper ID
+    'abstract_source': str or None,       # 'openreview', 'openalex', 'semantic_scholar', 'neurips_proceedings', or None
+    'citation_count': int or None,        # Citation count from API (None for OpenReview/NeurIPS)
+    'source_id': str or None              # Forum ID, OpenAlex ID, S2 paper ID, or None
 }
 ```
 
@@ -589,6 +622,16 @@ Parameters:
   - fields: "abstract,citationCount"
 ```
 
+**NeurIPS Proceedings**:
+```
+GET https://proceedings.neurips.cc/paper_files/paper/{year}/hash/{hash}-Abstract-{track}.html
+Example: https://proceedings.neurips.cc/paper_files/paper/2022/hash/002262941c9edfd472a79298b2ac5e17-Abstract-Conference.html
+Tracks: "Conference", "Datasets_and_Benchmarks"
+Method: HTML parsing with BeautifulSoup
+  - Meta tags: citation_title, citation_author, citation_pdf_url
+  - Abstract: <h4>Abstract</h4> followed by <p><p>text</p></p>
+```
+
 #### Configuration
 
 **File**: `scripts/config.py`
@@ -602,11 +645,17 @@ OPENREVIEW_TIMEOUT = 10
 OPENREVIEW_API_V2_YEAR_THRESHOLD = 2024  # Conferences from 2024+ use API v2
 
 # Map conferences to OpenReview venue IDs
+# Note: NeurIPS 2020-2024 use custom Tier 4 fetcher (proceedings.neurips.cc)
+# NeurIPS 2025+ may use OpenReview (to be determined)
 OPENREVIEW_VENUES = {
     'iclr': 'ICLR.cc',
-    'neurips': 'NeurIPS.cc',
     'icml': 'ICML.cc',
 }
+
+# NeurIPS Proceedings Configuration (Tier 4)
+NEURIPS_PROCEEDINGS_BASE_URL = "https://proceedings.neurips.cc"
+NEURIPS_PROCEEDINGS_RATE_LIMIT = 1.0  # 1 request per second
+NEURIPS_PROCEEDINGS_TIMEOUT = 10
 
 # OpenAlex API Configuration
 OPENALEX_API_URL = "https://api.openalex.org/works"

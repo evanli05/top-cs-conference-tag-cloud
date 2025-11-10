@@ -16,7 +16,9 @@ Thank you for your interest in contributing to this project! This guide will hel
 
 There are many ways to contribute to this project:
 
-- **Add new conferences**: Implement data fetching for additional conferences (IJCAI, NeurIPS, ICLR, etc.)
+- **Add new conferences**: Implement data fetching for additional conferences (IJCAI, ICML, ACL, EMNLP, etc.)
+  - **Completed**: KDD (2020-2025), ICLR (2020-2025), AAAI (2020-2025)
+  - **In Progress**: NeurIPS (2020-2024), CVPR (2020-2025)
 - **Improve keyword extraction**: Enhance the LLM prompts or processing pipeline for better keyword quality
 - **UI/UX improvements**: Suggest or implement design enhancements
 - **Bug fixes**: Report or fix issues
@@ -306,10 +308,9 @@ Example:
 ### High Priority
 
 1. **Add new conferences**:
-   - IJCAI, AAAI (AI)
-   - NeurIPS, ICML, ICLR (ML)
-   - CVPR, ICCV, ECCV (CV)
-   - ACL, EMNLP, NAACL (NLP)
+   - **Completed**: KDD, ICLR, AAAI ✅
+   - **In Progress**: NeurIPS (2020-2024), CVPR (2020-2025) 🔄
+   - **Planned**: IJCAI (AI), ICML (ML), ICCV, ECCV (CV), ACL, EMNLP, NAACL (NLP)
 
 2. **Keyword quality improvements**:
    - Better LLM prompts

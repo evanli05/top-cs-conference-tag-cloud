@@ -62,7 +62,9 @@ class DBLPFetcher:
         for suffix in suffixes:
             # Build URL for DBLP conference page
             # Format: https://dblp.org/db/conf/kdd/kdd2020.html
-            url = f"{config.DBLP_BASE_URL}/db/conf/{venue}/{venue}{year}{suffix}.html"
+            # Special case: NeurIPS uses /conf/nips/ directory but neurips{year}.html filenames
+            dblp_dir = self.conf_config.get('dblp_dir', venue)
+            url = f"{config.DBLP_BASE_URL}/db/conf/{dblp_dir}/{venue}{year}{suffix}.html"
 
             utils.log(f"  Crawling {url}...")
 
@@ -172,6 +174,7 @@ class DBLPFetcher:
                 doi = ''
                 openreview_url = ''
                 openreview_id = None
+                neurips_proceedings_url = ''
 
                 if url_elem:
                     # Look for OpenReview link (check this first for conferences using OpenReview)
@@ -190,6 +193,12 @@ class DBLPFetcher:
                     if dblp_link:
                         paper_url = dblp_link.get('href', '')
 
+                    # Look for NeurIPS proceedings link (for NeurIPS conferences 2020-2024)
+                    # These URLs contain hashes for direct abstract access
+                    neurips_link = url_elem.find('a', href=re.compile(r'(proceedings\.neurips\.cc|papers\.nips\.cc)'))
+                    if neurips_link:
+                        neurips_proceedings_url = neurips_link.get('href', '')
+
                 # Create paper dictionary
                 paper = {
                     'title': title,
@@ -199,7 +208,8 @@ class DBLPFetcher:
                     'url': paper_url,
                     'doi': doi,
                     'openreview_url': openreview_url,
-                    'openreview_id': openreview_id
+                    'openreview_id': openreview_id,
+                    'neurips_proceedings_url': neurips_proceedings_url
                 }
 
                 papers.append(paper)
@@ -471,7 +481,7 @@ class DBLPFetcher:
         # Extract DOIs from papers
         dois = []
         for paper in papers:
-            doi = paper.get('doi', '').replace('https://doi.org/', '').strip()
+            doi = paper.get('doi', '').replace('https://doi.org/', '').strip().lower()
             if doi:
                 dois.append(doi)
 
@@ -512,7 +522,7 @@ class DBLPFetcher:
 
                 # Process results
                 for work in data.get("results", []):
-                    doi = work.get("doi", "").replace("https://doi.org/", "")
+                    doi = work.get("doi", "").replace("https://doi.org/", "").lower()
                     inv_index = work.get("abstract_inverted_index")
                     citation_count = work.get("cited_by_count", 0)
                     openalex_id = work.get("id", "").replace("https://openalex.org/", "")
@@ -572,6 +582,81 @@ class DBLPFetcher:
             return (None, None, None)
         except Exception as e:
             utils.log(f"    Error fetching DOI {doi}: {e}", 'WARNING')
+            return (None, None, None)
+
+    def _extract_hash_from_proceedings_url(self, url: str) -> tuple:
+        """
+        Extract hash and track type from NeurIPS proceedings URL
+
+        Args:
+            url (str): Proceedings URL from DBLP
+
+        Returns:
+            tuple: (hash, track_type) or (None, None) if not found
+
+        Example:
+            Input: "http://papers.nips.cc/paper_files/paper/2022/hash/002262941c9edfd472a79298b2ac5e17-Abstract-Conference.html"
+            Output: ("002262941c9edfd472a79298b2ac5e17", "Conference")
+        """
+        match = re.search(
+            r'/hash/([a-f0-9]{32})-Abstract-(Conference|Datasets_and_Benchmarks)',
+            url
+        )
+        if match:
+            return match.group(1), match.group(2)
+        return None, None
+
+    def fetch_neurips_proceedings_abstract(self, year: int, paper_hash: str, track: str = "Conference") -> tuple:
+        """
+        Fetch abstract and metadata from NeurIPS proceedings website
+
+        Args:
+            year (int): Conference year (e.g., 2022)
+            paper_hash (str): 32-character hexadecimal hash
+            track (str): "Conference" or "Datasets_and_Benchmarks"
+
+        Returns:
+            tuple: (abstract, None, proceedings_url) or (None, None, None) if fetch fails
+            Note: citation_count is None because proceedings doesn't provide it
+        """
+        if not paper_hash:
+            return (None, None, None)
+
+        try:
+            # Rate limiting for proceedings site
+            time.sleep(1.0 / config.NEURIPS_PROCEEDINGS_RATE_LIMIT)
+
+            # Build URL
+            url = f"{config.NEURIPS_PROCEEDINGS_BASE_URL}/paper_files/paper/{year}/hash/{paper_hash}-Abstract-{track}.html"
+
+            response = requests.get(url, timeout=config.NEURIPS_PROCEEDINGS_TIMEOUT)
+            response.raise_for_status()
+
+            soup = BeautifulSoup(response.text, 'html.parser')
+
+            # Extract abstract from HTML (nested <p> tags after <h4>Abstract</h4>)
+            abstract = None
+            abstract_h4 = soup.find('h4', string='Abstract')
+            if abstract_h4:
+                abstract_p = abstract_h4.find_next('p')
+                if abstract_p:
+                    # Abstract is in nested <p> tags
+                    inner_p = abstract_p.find('p')
+                    if inner_p:
+                        abstract = inner_p.get_text().strip()
+
+            if abstract:
+                return (abstract, None, url)  # citation_count is None
+            return (None, None, None)
+
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                # Paper not found on proceedings site
+                return (None, None, None)
+            utils.log(f"    HTTP error for hash {paper_hash}: {e}", 'WARNING')
+            return (None, None, None)
+        except Exception as e:
+            utils.log(f"    Error fetching hash {paper_hash}: {e}", 'WARNING')
             return (None, None, None)
 
     def enrich_papers_with_abstracts(self, papers: List[Dict]) -> List[Dict]:
@@ -692,7 +777,7 @@ class DBLPFetcher:
             # Add abstracts from OpenAlex to papers
             abstracts_added = 0
             for paper in doi_papers:
-                doi = paper.get('doi', '').replace('https://doi.org/', '').strip()
+                doi = paper.get('doi', '').replace('https://doi.org/', '').strip().lower()
                 if doi in openalex_abstracts:
                     abstract, citation_count, source_id = openalex_abstracts[doi]
                     if abstract:
@@ -745,12 +830,57 @@ class DBLPFetcher:
             utils.log(f"  Semantic Scholar: {abstracts_fetched}/{len(missing_papers)} abstracts ({abstracts_fetched * 100 / len(missing_papers):.1f}%)")
             self._save_progress_log(f"Semantic Scholar complete: {abstracts_fetched}/{len(missing_papers)} abstracts")
 
+        # Tier 4: Fetch from NeurIPS proceedings for papers without abstracts (NeurIPS 2020-2024 only)
+        venue = self.conf_config.get('dblp_venue')
+        if venue == 'neurips':
+            neurips_proceedings_papers = [p for p in papers if p['abstract'] is None and p.get('neurips_proceedings_url')]
+
+            if neurips_proceedings_papers:
+                utils.log(f"\nFetching missing abstracts from NeurIPS Proceedings...")
+                utils.log(f"  Papers to fetch: {len(neurips_proceedings_papers)}")
+                self._save_progress_log(f"Starting NeurIPS Proceedings fetch for {len(neurips_proceedings_papers)} papers")
+
+                abstracts_fetched = 0
+                for i, paper in enumerate(neurips_proceedings_papers, 1):
+                    if i % 10 == 0 or i == len(neurips_proceedings_papers):
+                        utils.log(f"  Progress: {i}/{len(neurips_proceedings_papers)}")
+
+                    proceedings_url = paper.get('neurips_proceedings_url', '')
+                    year = paper.get('year')
+
+                    # Extract hash and track from proceedings URL
+                    paper_hash, track = self._extract_hash_from_proceedings_url(proceedings_url)
+
+                    if paper_hash and track:
+                        abstract, citation_count, source_url = self.fetch_neurips_proceedings_abstract(
+                            year, paper_hash, track
+                        )
+
+                        if abstract:
+                            paper['abstract'] = abstract
+                            paper['citation_count'] = citation_count  # Will be None
+                            paper['abstract_source'] = 'neurips_proceedings'
+                            paper['source_id'] = source_url
+                            abstracts_fetched += 1
+
+                    # Progress logging and incremental saves
+                    if config.ABSTRACT_PROGRESS_LOG_INTERVAL > 0 and abstracts_fetched > 0 and abstracts_fetched % config.ABSTRACT_PROGRESS_LOG_INTERVAL == 0:
+                        self._save_progress_log(f"NeurIPS Proceedings: {abstracts_fetched} abstracts fetched (progress: {i}/{len(neurips_proceedings_papers)})")
+
+                        if config.ENABLE_INCREMENTAL_SAVES and abstracts_fetched % config.INCREMENTAL_SAVE_INTERVAL == 0:
+                            utils.log(f"  [INCREMENTAL SAVE] Saving progress... ({abstracts_fetched} abstracts)")
+                            self.save_papers(papers)
+
+                utils.log(f"  NeurIPS Proceedings: {abstracts_fetched}/{len(neurips_proceedings_papers)} abstracts ({abstracts_fetched * 100 / len(neurips_proceedings_papers):.1f}%)")
+                self._save_progress_log(f"NeurIPS Proceedings complete: {abstracts_fetched}/{len(neurips_proceedings_papers)} abstracts")
+
         # Calculate final statistics
         total_papers = len(papers)
         papers_with_abstracts = len([p for p in papers if p.get('abstract')])
         openreview_count = len([p for p in papers if p.get('abstract_source') == 'openreview'])
         openalex_count = len([p for p in papers if p.get('abstract_source') == 'openalex'])
         semantic_scholar_count = len([p for p in papers if p.get('abstract_source') == 'semantic_scholar'])
+        neurips_proceedings_count = len([p for p in papers if p.get('abstract_source') == 'neurips_proceedings'])
 
         utils.log("\n" + "=" * 50)
         utils.log("Abstract Fetching Summary:")
@@ -760,6 +890,8 @@ class DBLPFetcher:
         utils.log(f"  - From OpenReview: {openreview_count} ({openreview_count * 100 / total_papers:.1f}%)")
         utils.log(f"  - From OpenAlex: {openalex_count} ({openalex_count * 100 / total_papers:.1f}%)")
         utils.log(f"  - From Semantic Scholar: {semantic_scholar_count} ({semantic_scholar_count * 100 / total_papers:.1f}%)")
+        if neurips_proceedings_count > 0:
+            utils.log(f"  - From NeurIPS Proceedings: {neurips_proceedings_count} ({neurips_proceedings_count * 100 / total_papers:.1f}%)")
         utils.log(f"Papers without abstracts: {total_papers - papers_with_abstracts} ({(total_papers - papers_with_abstracts) * 100 / total_papers:.1f}%)")
 
         self._save_progress_log(f"Abstract enrichment complete: {papers_with_abstracts}/{total_papers} papers ({papers_with_abstracts * 100 / total_papers:.1f}%)")
