@@ -21,6 +21,10 @@ RAW_DATA_DIR = os.path.join(DATA_DIR, 'raw')
 PROCESSED_DATA_DIR = os.path.join(DATA_DIR, 'processed')
 SAMPLE_DATA_DIR = os.path.join(DATA_DIR, 'sample')
 
+# Log directories
+LOG_DIR = os.path.join(PROJECT_ROOT, 'logs')
+PROGRESS_LOG_DIR = os.path.join(LOG_DIR, 'progress')
+
 # Output files
 # Note: RAW_PAPERS_FILE is now dynamically generated per conference
 # Use get_raw_papers_file(conference_key) to get the correct path
@@ -225,6 +229,7 @@ OPENALEX_EMAIL = "yli05@yahoo.com"  # For polite pool access
 
 # Semantic Scholar API Configuration (Fallback for missing abstracts)
 SEMANTIC_SCHOLAR_API_URL = "https://api.semanticscholar.org/graph/v1/paper"
+SEMANTIC_SCHOLAR_SEARCH_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
 SEMANTIC_SCHOLAR_RATE_LIMIT = 0.33  # 1 request per 3 seconds (free tier)
 SEMANTIC_SCHOLAR_FIELDS = "abstract,citationCount"
 SEMANTIC_SCHOLAR_TIMEOUT = 10  # API request timeout in seconds
@@ -414,6 +419,22 @@ def ensure_directories():
     os.makedirs(RAW_DATA_DIR, exist_ok=True)
     os.makedirs(PROCESSED_DATA_DIR, exist_ok=True)
     os.makedirs(SAMPLE_DATA_DIR, exist_ok=True)
+    os.makedirs(LOG_DIR, exist_ok=True)
+    os.makedirs(PROGRESS_LOG_DIR, exist_ok=True)
+
+
+def get_progress_log_file(conference_key: str) -> str:
+    """
+    Get progress log file path for a conference
+
+    Args:
+        conference_key (str): Conference identifier (e.g., 'neurips', 'cvpr')
+
+    Returns:
+        str: Full path to progress log file
+    """
+    ensure_directories()  # Ensure logs directory exists
+    return os.path.join(PROGRESS_LOG_DIR, f'{conference_key}_progress.log')
 
 
 if __name__ == '__main__':

@@ -299,7 +299,7 @@ class DBLPFetcher:
         Args:
             message (str): Progress message to log
         """
-        log_file = config.get_raw_papers_file(self.conference_key).replace('.json', '_progress.log')
+        log_file = config.get_progress_log_file(self.conference_key)
         timestamp = utils.get_current_timestamp()
 
         try:
@@ -585,6 +585,60 @@ class DBLPFetcher:
             return (None, None, None)
         except Exception as e:
             utils.log(f"    Error fetching DOI {doi}: {e}", 'WARNING')
+            return (None, None, None)
+
+    def fetch_abstract_semantic_scholar_by_title(self, title: str) -> tuple:
+        """
+        Fetch abstract from Semantic Scholar API by paper title (for papers without DOI)
+
+        This is a fallback method for papers that don't have DOIs (e.g., IJCAI 2024).
+        Uses Semantic Scholar's search endpoint to find papers by title.
+
+        Args:
+            title (str): Paper title to search for
+
+        Returns:
+            tuple: (abstract, citation_count, s2_paper_id) or (None, None, None)
+        """
+        if not title or len(title) < 10:  # Skip very short titles
+            return (None, None, None)
+
+        try:
+            # Rate limiting (same as DOI-based fetch)
+            time.sleep(1.0 / config.SEMANTIC_SCHOLAR_RATE_LIMIT)
+
+            # Query Semantic Scholar search API
+            url = config.SEMANTIC_SCHOLAR_SEARCH_URL
+            params = {
+                "query": title,
+                "limit": 1,  # Only get best match
+                "fields": config.SEMANTIC_SCHOLAR_FIELDS
+            }
+
+            response = requests.get(url, params=params, timeout=config.SEMANTIC_SCHOLAR_TIMEOUT)
+            response.raise_for_status()
+            data = response.json()
+
+            results = data.get("data", [])
+            if not results:
+                return (None, None, None)
+
+            # Get first result (best match)
+            paper = results[0]
+            abstract = paper.get("abstract")
+            citation_count = paper.get("citationCount", 0)
+            s2_paper_id = paper.get("paperId")
+
+            return (abstract, citation_count, s2_paper_id)
+
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                # Paper not found
+                return (None, None, None)
+            utils.log(f"    HTTP error searching for title '{title[:50]}...': {e}", 'WARNING')
+            return (None, None, None)
+        except Exception as e:
+            utils.log(f"    Error searching for title '{title[:50]}...': {e}", 'WARNING')
             return (None, None, None)
 
     def fetch_abstract_openalex_by_title(self, title: str) -> tuple:
@@ -940,6 +994,44 @@ class DBLPFetcher:
 
             utils.log(f"  Semantic Scholar: {abstracts_fetched}/{len(missing_papers)} abstracts ({abstracts_fetched * 100 / len(missing_papers):.1f}%)")
             self._save_progress_log(f"Semantic Scholar complete: {abstracts_fetched}/{len(missing_papers)} abstracts")
+
+        # Tier 4.5: Fetch missing abstracts from Semantic Scholar by title (for papers without DOIs)
+        # This is specifically for conferences like IJCAI 2024 where papers lack DOIs
+        # Slower API (1 req per 3 seconds), runs after Semantic Scholar DOI method
+        no_doi_papers = [p for p in papers if p['abstract'] is None and not p.get('doi')]
+
+        if no_doi_papers:
+            utils.log(f"\nFetching missing abstracts from Semantic Scholar (title search)...")
+            utils.log(f"  Papers to fetch: {len(no_doi_papers)}")
+            utils.log(f"  Note: This is a fallback for papers without DOIs (e.g., IJCAI 2024)")
+            self._save_progress_log(f"Starting Semantic Scholar title search for {len(no_doi_papers)} papers")
+
+            abstracts_fetched = 0
+            for i, paper in enumerate(no_doi_papers, 1):
+                title = paper.get('title', '').strip()
+
+                if i % 10 == 0 or i == len(no_doi_papers):
+                    utils.log(f"  Progress: {i}/{len(no_doi_papers)} | Fetched: {abstracts_fetched}")
+
+                abstract, citation_count, s2_paper_id = self.fetch_abstract_semantic_scholar_by_title(title)
+
+                if abstract:
+                    paper['abstract'] = abstract
+                    paper['citation_count'] = citation_count
+                    paper['abstract_source'] = 'semantic_scholar_title'
+                    paper['source_id'] = s2_paper_id
+                    abstracts_fetched += 1
+
+                # Progress logging and incremental saves
+                if config.ABSTRACT_PROGRESS_LOG_INTERVAL > 0 and abstracts_fetched > 0 and abstracts_fetched % config.ABSTRACT_PROGRESS_LOG_INTERVAL == 0:
+                    self._save_progress_log(f"Semantic Scholar (title): {abstracts_fetched} abstracts fetched (progress: {i}/{len(no_doi_papers)})")
+
+                    if config.ENABLE_INCREMENTAL_SAVES and abstracts_fetched % config.INCREMENTAL_SAVE_INTERVAL == 0:
+                        utils.log(f"  [INCREMENTAL SAVE] Saving progress... ({abstracts_fetched} abstracts)")
+                        self.save_papers(papers)
+
+            utils.log(f"  Semantic Scholar (title search): {abstracts_fetched}/{len(no_doi_papers)} abstracts ({abstracts_fetched * 100 / len(no_doi_papers):.1f}%)")
+            self._save_progress_log(f"Semantic Scholar title search complete: {abstracts_fetched}/{len(no_doi_papers)} abstracts")
 
         # Tier 5: Fetch from NeurIPS proceedings for papers without abstracts (NeurIPS 2020-2024 only)
         venue = self.conf_config.get('dblp_venue')
