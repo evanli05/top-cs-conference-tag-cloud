@@ -1,0 +1,191 @@
+{
+  "conferences": {
+    "KDD": {
+      "total_papers": 3016,
+      "papers_with_abstracts": 3010,
+      "abstract_coverage": 99.80106100795756,
+      "by_year": {
+        "2020": {
+          "total": 418,
+          "with_abstract": 418
+        },
+        "2021": {
+          "total": 482,
+          "with_abstract": 482
+        },
+        "2022": {
+          "total": 534,
+          "with_abstract": 534
+        },
+        "2023": {
+          "total": 564,
+          "with_abstract": 561
+        },
+        "2024": {
+          "total": 642,
+          "with_abstract": 642
+        },
+        "2025": {
+          "total": 376,
+          "with_abstract": 373
+        }
+      }
+    },
+    "ICLR": {
+      "total_papers": 10184,
+      "papers_with_abstracts": 10177,
+      "abstract_coverage": 99.93126472898665,
+      "by_year": {
+        "2020": {
+          "total": 688,
+          "with_abstract": 686
+        },
+        "2021": {
+          "total": 861,
+          "with_abstract": 860
+        },
+        "2022": {
+          "total": 1095,
+          "with_abstract": 1094
+        },
+        "2023": {
+          "total": 1574,
+          "with_abstract": 1573
+        },
+        "2024": {
+          "total": 2261,
+          "with_abstract": 2260
+        },
+        "2025": {
+          "total": 3705,
+          "with_abstract": 3704
+        }
+      }
+    },
+    "AAAI": {
+      "total_papers": 13828,
+      "papers_with_abstracts": 13803,
+      "abstract_coverage": 99.81920740526468,
+      "by_year": {
+        "2020": {
+          "total": 1865,
+          "with_abstract": 1860
+        },
+        "2021": {
+          "total": 1962,
+          "with_abstract": 1959
+        },
+        "2022": {
+          "total": 1625,
+          "with_abstract": 1614
+        },
+        "2023": {
+          "total": 2022,
+          "with_abstract": 2020
+        },
+        "2024": {
+          "total": 2867,
+          "with_abstract": 2865
+        },
+        "2025": {
+          "total": 3487,
+          "with_abstract": 3485
+        }
+      }
+    },
+    "NeurIPS": {
+      "total_papers": 15105,
+      "papers_with_abstracts": 15099,
+      "abstract_coverage": 99.96027805362463,
+      "by_year": {
+        "2020": {
+          "total": 1899,
+          "with_abstract": 1898
+        },
+        "2021": {
+          "total": 2335,
+          "with_abstract": 2334
+        },
+        "2022": {
+          "total": 2835,
+          "with_abstract": 2833
+        },
+        "2023": {
+          "total": 3541,
+          "with_abstract": 3540
+        },
+        "2024": {
+          "total": 4495,
+          "with_abstract": 4494
+        }
+      }
+    },
+    "CVPR": {
+      "total_papers": 13145,
+      "papers_with_abstracts": 12692,
+      "abstract_coverage": 96.55382274629136,
+      "by_year": {
+        "2020": {
+          "total": 1466,
+          "with_abstract": 1465
+        },
+        "2021": {
+          "total": 1661,
+          "with_abstract": 1660
+        },
+        "2022": {
+          "total": 2073,
+          "with_abstract": 2072
+        },
+        "2023": {
+          "total": 2357,
+          "with_abstract": 2357
+        },
+        "2024": {
+          "total": 2716,
+          "with_abstract": 2283
+        },
+        "2025": {
+          "total": 2872,
+          "with_abstract": 2855
+        }
+      }
+    },
+    "IJCAI": {
+      "total_papers": 5536,
+      "papers_with_abstracts": 5103,
+      "abstract_coverage": 92.1784682080925,
+      "by_year": {
+        "2020": {
+          "total": 778,
+          "with_abstract": 776
+        },
+        "2021": {
+          "total": 721,
+          "with_abstract": 720
+        },
+        "2022": {
+          "total": 863,
+          "with_abstract": 862
+        },
+        "2023": {
+          "total": 846,
+          "with_abstract": 846
+        },
+        "2024": {
+          "total": 1048,
+          "with_abstract": 619
+        },
+        "2025": {
+          "total": 1280,
+          "with_abstract": 1280
+        }
+      }
+    }
+  },
+  "overall": {
+    "total_papers": 60814,
+    "papers_with_abstracts": 59884,
+    "coverage": 98.47074686749761
+  }
+}

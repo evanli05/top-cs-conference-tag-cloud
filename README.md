@@ -17,10 +17,11 @@ This project helps CS researchers understand trending topics and research areas 
 
 ## Current Status
 
-- **Conferences Covered**: KDD (Knowledge Discovery and Data Mining)
+- **Conferences Covered**: 6 (KDD, ICLR, AAAI, NeurIPS, CVPR, IJCAI)
 - **Years**: 2020-2025
-- **Papers Analyzed**: 3,016
-- **Keywords Extracted**: 200+ unique research terms
+- **Total Papers**: 60,814 papers from top-tier CS conferences
+- **Abstract Coverage**: 98.5% (59,884 papers with abstracts)
+- **Data Quality**: Multi-tier fetching system ensuring high-quality abstracts
 
 ## Quick Start
 
@@ -82,17 +83,70 @@ This will:
 
 ### Currently Supported
 
-| Conference | Full Name | Category | Years |
-|------------|-----------|----------|-------|
-| **KDD** | ACM SIGKDD Conference on Knowledge Discovery and Data Mining | Data Mining | 2020-2025 |
+| Conference | Full Name | Category | Years | Papers |
+|------------|-----------|----------|-------|--------|
+| **KDD** | ACM SIGKDD Conference on Knowledge Discovery and Data Mining | Machine Learning | 2020-2025 | 3,016 |
+| **ICLR** | International Conference on Learning Representations | Machine Learning | 2020-2025 | 10,184 |
+| **AAAI** | AAAI Conference on Artificial Intelligence | Artificial Intelligence | 2020-2025 | 13,828 |
+| **NeurIPS** | Conference on Neural Information Processing Systems | Machine Learning | 2020-2024 | 15,105 |
+| **CVPR** | IEEE/CVF Conference on Computer Vision and Pattern Recognition | Computer Vision | 2020-2025 | 13,145 |
+| **IJCAI** | International Joint Conference on Artificial Intelligence | Artificial Intelligence | 2020-2025 | 5,536 |
 
 ### Planned
 
-**Data Mining**: ICDM, SDM, WSDM
-**Artificial Intelligence**: IJCAI, AAAI
-**Machine Learning**: NeurIPS, ICML, ICLR
-**Computer Vision**: CVPR, ICCV, ECCV
+**Machine Learning**: ICML
+**Computer Vision**: ICCV, ECCV
 **Natural Language Processing**: ACL, EMNLP, NAACL
+**Data Mining**: ICDM, SDM, WSDM
+
+## Data Coverage & Quality
+
+### Abstract Coverage by Conference
+
+Our multi-tier abstract fetching system achieves excellent coverage across all conferences:
+
+| Conference | Total Papers | With Abstracts | Coverage | Notes |
+|------------|--------------|----------------|----------|-------|
+| **NeurIPS** | 15,105 | 15,099 | **100.0%** | Custom proceedings fetcher + OpenAlex |
+| **ICLR** | 10,184 | 10,177 | **99.9%** | OpenReview API (primary source) |
+| **AAAI** | 13,828 | 13,803 | **99.8%** | OpenAlex + Semantic Scholar |
+| **KDD** | 3,016 | 3,010 | **99.8%** | OpenAlex batch fetching |
+| **CVPR** | 13,145 | 12,692 | **96.6%** | OpenAlex + title-based search + Semantic Scholar (known issue: For the missing abstract papers, OpenAlex API returns abstract field as "Null", and Semantic Scholar blocked me to fetch some CVPR paper abstract due to copyright policy) |
+| **IJCAI** | 5,536 | 5,103 | **92.2%** | OpenAlex + Semantic Scholar (known issue: some IJCAI 2024 papers don't have DOI, leading to failures of fetching abstracts from OpenAlex and Semantic Scholar) |
+| **Overall** | **60,814** | **59,884** | **98.5%** | Across all 6 conferences |
+
+### Year-by-Year Coverage Highlights
+
+**Best Coverage (100.0%)**:
+- NeurIPS 2021, 2023, 2024
+- CVPR 2022, 2023
+- AAAI 2023
+- IJCAI 2023, 2025
+- KDD 2020, 2021, 2022, 2024
+
+**Coverage Challenges**:
+- IJCAI 2024: 59.1% (429 papers missing abstracts - ongoing fetch)
+- CVPR 2024: 84.1% (433 papers missing abstracts)
+
+### Abstract Fetching Architecture
+
+We use a sophisticated **6-tier fallback system** to maximize abstract coverage:
+
+1. **Tier 0**: OpenReview ID search (for papers with OpenReview URLs)
+2. **Tier 1**: OpenReview API (ICLR, ICML) - ~100% coverage
+3. **Tier 2**: OpenAlex batch API (DOI-based) - ~95% coverage
+4. **Tier 3**: OpenAlex title search (fallback) - ~50% additional recovery
+5. **Tier 4**: Semantic Scholar DOI lookup - ~90% coverage
+6. **Tier 4.5**: Semantic Scholar title search - for papers without DOIs
+7. **Tier 5**: NeurIPS Proceedings (custom HTML parser) - ~60-70% for NeurIPS 2020-2024
+
+**Rate Limiting & API Management**:
+- OpenAlex: 10 req/sec (polite pool)
+- Semantic Scholar: 1 req/sec
+- OpenReview: 1 req/sec
+- NeurIPS Proceedings: 2 req/sec
+
+**Recovery Mode**: Intelligent incremental fetching that skips papers already having abstracts, enabling efficient re-runs.
 
 ## Documentation
 

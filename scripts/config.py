@@ -230,7 +230,7 @@ OPENALEX_EMAIL = "yli05@yahoo.com"  # For polite pool access
 # Semantic Scholar API Configuration (Fallback for missing abstracts)
 SEMANTIC_SCHOLAR_API_URL = "https://api.semanticscholar.org/graph/v1/paper"
 SEMANTIC_SCHOLAR_SEARCH_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
-SEMANTIC_SCHOLAR_RATE_LIMIT = 0.33  # 1 request per 3 seconds (free tier)
+SEMANTIC_SCHOLAR_RATE_LIMIT = 0.1  # 1 request per second (aligns with authenticated search endpoint limit)
 SEMANTIC_SCHOLAR_FIELDS = "abstract,citationCount"
 SEMANTIC_SCHOLAR_TIMEOUT = 10  # API request timeout in seconds
 
