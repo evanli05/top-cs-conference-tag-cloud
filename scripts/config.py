@@ -195,7 +195,7 @@ CONFERENCES = {
 # - WWW: The Web Conference
 
 # Default conference for initial implementation
-DEFAULT_CONFERENCE = 'neurips'  # Fetching NeurIPS data with OpenReview title search
+DEFAULT_CONFERENCE = 'cvpr'  # Currently fetching CVPR abstracts with title-based fallback
 
 # ===================================
 # API Request Settings
@@ -247,7 +247,7 @@ OPENREVIEW_VENUES = {
 # NeurIPS publishes conference proceedings at proceedings.nips.cc
 # Papers can be accessed directly using hash extracted from DBLP links
 NEURIPS_PROCEEDINGS_BASE_URL = "https://proceedings.nips.cc"
-NEURIPS_PROCEEDINGS_RATE_LIMIT = 10  # 10 requests per second
+NEURIPS_PROCEEDINGS_RATE_LIMIT = 2  # 2 requests per second (reduced from 4 for more conservative rate limiting)
 NEURIPS_PROCEEDINGS_TIMEOUT = 10  # API request timeout in seconds
 
 # ===================================

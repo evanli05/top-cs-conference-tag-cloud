@@ -13,6 +13,9 @@ from typing import List, Dict
 import sys
 from bs4 import BeautifulSoup
 import re
+import argparse
+import json
+import os
 
 # Import local modules
 import config
@@ -584,6 +587,58 @@ class DBLPFetcher:
             utils.log(f"    Error fetching DOI {doi}: {e}", 'WARNING')
             return (None, None, None)
 
+    def fetch_abstract_openalex_by_title(self, title: str) -> tuple:
+        """
+        Fetch abstract from OpenAlex by searching for paper title
+
+        This is a fallback for papers where DOI-based lookup failed (e.g., IEEE papers).
+        OpenAlex DOI indexing for IEEE papers is incomplete, but title search works.
+
+        Args:
+            title (str): Paper title to search for
+
+        Returns:
+            tuple: (abstract, citation_count, openalex_id) or (None, None, None)
+        """
+        if not title or len(title) < 10:  # Skip very short titles
+            return (None, None, None)
+
+        try:
+            # Rate limiting (same as OpenAlex batch)
+            time.sleep(1.0 / config.OPENALEX_RATE_LIMIT)
+
+            # Query OpenAlex API by title
+            url = config.OPENALEX_API_URL
+            params = {
+                "filter": f"title.search:{title}",
+                "per-page": 1,
+                "mailto": config.OPENALEX_EMAIL
+            }
+
+            response = requests.get(url, params=params, timeout=config.REQUEST_TIMEOUT)
+            response.raise_for_status()
+            data = response.json()
+
+            results = data.get("results", [])
+            if not results:
+                return (None, None, None)
+
+            # Get first result (best match)
+            work = results[0]
+            inv_index = work.get("abstract_inverted_index")
+            citation_count = work.get("cited_by_count", 0)
+            openalex_id = work.get("id", "").replace("https://openalex.org/", "")
+
+            if inv_index:
+                abstract = self.reconstruct_abstract_from_inverted_index(inv_index)
+                return (abstract, citation_count, openalex_id)
+            else:
+                return (None, citation_count, openalex_id)
+
+        except Exception as e:
+            utils.log(f"    Error fetching by title '{title[:50]}...': {e}", 'WARNING')
+            return (None, None, None)
+
     def _extract_hash_from_proceedings_url(self, url: str) -> tuple:
         """
         Extract hash and track type from NeurIPS proceedings URL
@@ -594,26 +649,39 @@ class DBLPFetcher:
         Returns:
             tuple: (hash, track_type) or (None, None) if not found
 
-        Example:
+        Examples:
             Input: "http://papers.nips.cc/paper_files/paper/2022/hash/002262941c9edfd472a79298b2ac5e17-Abstract-Conference.html"
             Output: ("002262941c9edfd472a79298b2ac5e17", "Conference")
+
+            Input: "https://proceedings.neurips.cc/paper/2020/hash/0004d0b59e19461ff126e3a08a814c33-Abstract.html"
+            Output: ("0004d0b59e19461ff126e3a08a814c33", "Conference")  # Default to Conference
         """
+        # Try to match with explicit track type first
         match = re.search(
             r'/hash/([a-f0-9]{32})-Abstract-(Conference|Datasets_and_Benchmarks)',
             url
         )
         if match:
             return match.group(1), match.group(2)
+
+        # Fall back to matching without track type (default to Conference)
+        match = re.search(
+            r'/hash/([a-f0-9]{32})-Abstract',
+            url
+        )
+        if match:
+            return match.group(1), "Conference"
+
         return None, None
 
-    def fetch_neurips_proceedings_abstract(self, year: int, paper_hash: str, track: str = "Conference") -> tuple:
+    def fetch_neurips_proceedings_abstract(self, year: int, paper_hash: str, track: str = None) -> tuple:
         """
         Fetch abstract and metadata from NeurIPS proceedings website
 
         Args:
             year (int): Conference year (e.g., 2022)
             paper_hash (str): 32-character hexadecimal hash
-            track (str): "Conference" or "Datasets_and_Benchmarks"
+            track (str): Deprecated parameter (kept for backward compatibility, not used)
 
         Returns:
             tuple: (abstract, None, proceedings_url) or (None, None, None) if fetch fails
@@ -626,8 +694,9 @@ class DBLPFetcher:
             # Rate limiting for proceedings site
             time.sleep(1.0 / config.NEURIPS_PROCEEDINGS_RATE_LIMIT)
 
-            # Build URL
-            url = f"{config.NEURIPS_PROCEEDINGS_BASE_URL}/paper_files/paper/{year}/hash/{paper_hash}-Abstract-{track}.html"
+            # Build URL (correct format for proceedings.neurips.cc)
+            # Note: URLs don't include track type suffix, just -Abstract.html
+            url = f"{config.NEURIPS_PROCEEDINGS_BASE_URL}/paper/{year}/hash/{paper_hash}-Abstract.html"
 
             response = requests.get(url, timeout=config.NEURIPS_PROCEEDINGS_TIMEOUT)
             response.raise_for_status()
@@ -640,10 +709,13 @@ class DBLPFetcher:
             if abstract_h4:
                 abstract_p = abstract_h4.find_next('p')
                 if abstract_p:
-                    # Abstract is in nested <p> tags
+                    # Abstract may be in nested <p> tags or directly in the <p>
                     inner_p = abstract_p.find('p')
                     if inner_p:
                         abstract = inner_p.get_text().strip()
+                    else:
+                        # Fallback: use direct text if no nested <p>
+                        abstract = abstract_p.get_text().strip()
 
             if abstract:
                 return (abstract, None, url)  # citation_count is None
@@ -795,7 +867,46 @@ class DBLPFetcher:
                 utils.log(f"  [INCREMENTAL SAVE] Saving progress after OpenAlex batch...")
                 self.save_papers(papers)
 
-        # Tier 3: Fetch missing abstracts from Semantic Scholar
+        # Tier 3: OpenAlex title-based search for papers still missing abstracts
+        # This is a fallback for papers where DOI lookup failed (e.g., IEEE CVPR papers)
+        # Grouped with Tier 2 (OpenAlex DOI) for logical API grouping
+        title_search_papers = [p for p in papers if p['abstract'] is None and p.get('title')]
+
+        if title_search_papers:
+            utils.log(f"\nFetching missing abstracts from OpenAlex (title search)...")
+            utils.log(f"  Papers to fetch: {len(title_search_papers)}")
+            utils.log(f"  Note: This is a fallback for papers where DOI lookup failed (e.g., IEEE papers)")
+            self._save_progress_log(f"Starting OpenAlex title search for {len(title_search_papers)} papers")
+
+            abstracts_fetched = 0
+            for i, paper in enumerate(title_search_papers, 1):
+                title = paper.get('title', '')
+
+                if i % 50 == 0 or i == len(title_search_papers):
+                    utils.log(f"  Progress: {i}/{len(title_search_papers)} | Fetched: {abstracts_fetched}")
+
+                abstract, citation_count, openalex_id = self.fetch_abstract_openalex_by_title(title)
+
+                if abstract:
+                    paper['abstract'] = abstract
+                    paper['citation_count'] = citation_count
+                    paper['abstract_source'] = 'openalex_title'
+                    paper['source_id'] = openalex_id
+                    abstracts_fetched += 1
+
+                # Progress logging and incremental saves
+                if config.ABSTRACT_PROGRESS_LOG_INTERVAL > 0 and abstracts_fetched > 0 and abstracts_fetched % config.ABSTRACT_PROGRESS_LOG_INTERVAL == 0:
+                    self._save_progress_log(f"OpenAlex title search: {abstracts_fetched} abstracts fetched (progress: {i}/{len(title_search_papers)})")
+
+                    if config.ENABLE_INCREMENTAL_SAVES and abstracts_fetched % config.INCREMENTAL_SAVE_INTERVAL == 0:
+                        utils.log(f"  [INCREMENTAL SAVE] Saving progress... ({abstracts_fetched} abstracts)")
+                        self.save_papers(papers)
+
+            utils.log(f"  OpenAlex (title search): {abstracts_fetched}/{len(title_search_papers)} abstracts ({abstracts_fetched * 100 / len(title_search_papers):.1f}%)")
+            self._save_progress_log(f"OpenAlex title search complete: {abstracts_fetched}/{len(title_search_papers)} abstracts")
+
+        # Tier 4: Fetch missing abstracts from Semantic Scholar
+        # Slower API (1 req per 3 seconds), runs after exhausting both OpenAlex methods
         missing_papers = [p for p in papers if p['abstract'] is None and p.get('doi')]
 
         if missing_papers:
@@ -830,7 +941,7 @@ class DBLPFetcher:
             utils.log(f"  Semantic Scholar: {abstracts_fetched}/{len(missing_papers)} abstracts ({abstracts_fetched * 100 / len(missing_papers):.1f}%)")
             self._save_progress_log(f"Semantic Scholar complete: {abstracts_fetched}/{len(missing_papers)} abstracts")
 
-        # Tier 4: Fetch from NeurIPS proceedings for papers without abstracts (NeurIPS 2020-2024 only)
+        # Tier 5: Fetch from NeurIPS proceedings for papers without abstracts (NeurIPS 2020-2024 only)
         venue = self.conf_config.get('dblp_venue')
         if venue == 'neurips':
             neurips_proceedings_papers = [p for p in papers if p['abstract'] is None and p.get('neurips_proceedings_url')]
@@ -838,20 +949,37 @@ class DBLPFetcher:
             if neurips_proceedings_papers:
                 utils.log(f"\nFetching missing abstracts from NeurIPS Proceedings...")
                 utils.log(f"  Papers to fetch: {len(neurips_proceedings_papers)}")
+                utils.log(f"  Rate limit: {config.NEURIPS_PROCEEDINGS_RATE_LIMIT} requests/second ({1.0 / config.NEURIPS_PROCEEDINGS_RATE_LIMIT:.2f}s delay between requests)")
+                utils.log(f"  Estimated time: ~{len(neurips_proceedings_papers) / config.NEURIPS_PROCEEDINGS_RATE_LIMIT / 60:.1f} minutes")
                 self._save_progress_log(f"Starting NeurIPS Proceedings fetch for {len(neurips_proceedings_papers)} papers")
 
                 abstracts_fetched = 0
+                failed_count = 0
+                start_time = time.time()
+
                 for i, paper in enumerate(neurips_proceedings_papers, 1):
+                    # Log progress every 10 papers
                     if i % 10 == 0 or i == len(neurips_proceedings_papers):
-                        utils.log(f"  Progress: {i}/{len(neurips_proceedings_papers)}")
+                        elapsed = time.time() - start_time
+                        avg_time_per_paper = elapsed / i if i > 0 else 0
+                        remaining_papers = len(neurips_proceedings_papers) - i
+                        estimated_remaining_time = avg_time_per_paper * remaining_papers / 60  # in minutes
+                        utils.log(f"  Progress: {i}/{len(neurips_proceedings_papers)} | "
+                                 f"Success: {abstracts_fetched} | Failed: {failed_count} | "
+                                 f"Elapsed: {elapsed/60:.1f}m | ETA: ~{estimated_remaining_time:.1f}m")
 
                     proceedings_url = paper.get('neurips_proceedings_url', '')
                     year = paper.get('year')
+                    title = paper.get('title', 'Unknown')
 
                     # Extract hash and track from proceedings URL
                     paper_hash, track = self._extract_hash_from_proceedings_url(proceedings_url)
 
                     if paper_hash and track:
+                        # Log the URL being fetched (for debugging)
+                        if config.VERBOSE and i <= 5:  # Log first 5 URLs for debugging
+                            utils.log(f"    Fetching: {proceedings_url[:80]}...")
+
                         abstract, citation_count, source_url = self.fetch_neurips_proceedings_abstract(
                             year, paper_hash, track
                         )
@@ -863,6 +991,19 @@ class DBLPFetcher:
                             paper['source_id'] = source_url
                             abstracts_fetched += 1
 
+                            # Log successful fetches for first few papers
+                            if config.VERBOSE and abstracts_fetched <= 3:
+                                utils.log(f"    ✓ Successfully fetched abstract for: {title[:60]}...")
+                        else:
+                            failed_count += 1
+                            # Log failures (helpful for debugging)
+                            if config.VERBOSE and failed_count <= 5:
+                                utils.log(f"    ✗ Failed to fetch abstract for: {title[:60]}...", 'WARNING')
+                    else:
+                        failed_count += 1
+                        if config.VERBOSE and failed_count <= 5:
+                            utils.log(f"    ✗ Could not extract hash from URL for: {title[:60]}...", 'WARNING')
+
                     # Progress logging and incremental saves
                     if config.ABSTRACT_PROGRESS_LOG_INTERVAL > 0 and abstracts_fetched > 0 and abstracts_fetched % config.ABSTRACT_PROGRESS_LOG_INTERVAL == 0:
                         self._save_progress_log(f"NeurIPS Proceedings: {abstracts_fetched} abstracts fetched (progress: {i}/{len(neurips_proceedings_papers)})")
@@ -871,14 +1012,23 @@ class DBLPFetcher:
                             utils.log(f"  [INCREMENTAL SAVE] Saving progress... ({abstracts_fetched} abstracts)")
                             self.save_papers(papers)
 
-                utils.log(f"  NeurIPS Proceedings: {abstracts_fetched}/{len(neurips_proceedings_papers)} abstracts ({abstracts_fetched * 100 / len(neurips_proceedings_papers):.1f}%)")
-                self._save_progress_log(f"NeurIPS Proceedings complete: {abstracts_fetched}/{len(neurips_proceedings_papers)} abstracts")
+                # Final statistics
+                total_time = time.time() - start_time
+                success_rate = abstracts_fetched / len(neurips_proceedings_papers) * 100 if len(neurips_proceedings_papers) > 0 else 0
+                utils.log(f"\n  NeurIPS Proceedings Fetch Complete:")
+                utils.log(f"    Total attempted: {len(neurips_proceedings_papers)}")
+                utils.log(f"    Successfully fetched: {abstracts_fetched} ({success_rate:.1f}%)")
+                utils.log(f"    Failed: {failed_count} ({failed_count * 100 / len(neurips_proceedings_papers):.1f}%)")
+                utils.log(f"    Total time: {total_time / 60:.1f} minutes")
+                utils.log(f"    Average time per paper: {total_time / len(neurips_proceedings_papers):.2f} seconds")
+                self._save_progress_log(f"NeurIPS Proceedings complete: {abstracts_fetched}/{len(neurips_proceedings_papers)} abstracts ({success_rate:.1f}%)")
 
         # Calculate final statistics
         total_papers = len(papers)
         papers_with_abstracts = len([p for p in papers if p.get('abstract')])
         openreview_count = len([p for p in papers if p.get('abstract_source') == 'openreview'])
         openalex_count = len([p for p in papers if p.get('abstract_source') == 'openalex'])
+        openalex_title_count = len([p for p in papers if p.get('abstract_source') == 'openalex_title'])
         semantic_scholar_count = len([p for p in papers if p.get('abstract_source') == 'semantic_scholar'])
         neurips_proceedings_count = len([p for p in papers if p.get('abstract_source') == 'neurips_proceedings'])
 
@@ -888,7 +1038,9 @@ class DBLPFetcher:
         utils.log(f"Total papers: {total_papers}")
         utils.log(f"Papers with abstracts: {papers_with_abstracts} ({papers_with_abstracts * 100 / total_papers:.1f}%)")
         utils.log(f"  - From OpenReview: {openreview_count} ({openreview_count * 100 / total_papers:.1f}%)")
-        utils.log(f"  - From OpenAlex: {openalex_count} ({openalex_count * 100 / total_papers:.1f}%)")
+        utils.log(f"  - From OpenAlex (DOI): {openalex_count} ({openalex_count * 100 / total_papers:.1f}%)")
+        if openalex_title_count > 0:
+            utils.log(f"  - From OpenAlex (title): {openalex_title_count} ({openalex_title_count * 100 / total_papers:.1f}%)")
         utils.log(f"  - From Semantic Scholar: {semantic_scholar_count} ({semantic_scholar_count * 100 / total_papers:.1f}%)")
         if neurips_proceedings_count > 0:
             utils.log(f"  - From NeurIPS Proceedings: {neurips_proceedings_count} ({neurips_proceedings_count * 100 / total_papers:.1f}%)")
@@ -898,36 +1050,101 @@ class DBLPFetcher:
 
         return papers
 
+    def load_papers(self) -> List[Dict]:
+        """
+        Load papers from existing JSON file
+
+        Returns:
+            List[Dict]: List of papers loaded from JSON
+        """
+        json_file = config.get_raw_papers_file(self.conference_key)
+
+        if not os.path.exists(json_file):
+            utils.log(f"Error: File not found: {json_file}", 'ERROR')
+            sys.exit(1)
+
+        utils.log(f"Loading papers from: {json_file}")
+
+        with open(json_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        papers = data.get('papers', [])
+        utils.log(f"Loaded {len(papers)} papers from JSON file")
+
+        return papers
+
 
 def main():
     """Main execution function"""
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(
+        description='Fetch paper data from DBLP and enrich with abstracts'
+    )
+    parser.add_argument(
+        '--refetch-abstracts',
+        action='store_true',
+        help='Load existing papers from JSON and only re-fetch missing abstracts (skip DBLP fetching)'
+    )
+    parser.add_argument(
+        '--conference',
+        type=str,
+        default=None,
+        help='Specify conference to fetch (e.g., neurips, cvpr, kdd). If not specified, uses DEFAULT_CONFERENCE from config'
+    )
+    args = parser.parse_args()
+
     utils.log("CS Conference Tag Cloud - Data Fetcher")
     utils.log("=" * 50)
 
     # Ensure directories exist
     config.ensure_directories()
 
+    # Determine which conference to use
+    conference_key = args.conference if args.conference else config.DEFAULT_CONFERENCE
+    utils.log(f"Conference: {conference_key.upper()}")
+
     # Initialize fetcher
-    fetcher = DBLPFetcher(config.DEFAULT_CONFERENCE)
+    fetcher = DBLPFetcher(conference_key)
 
-    # Fetch papers
-    papers = fetcher.fetch_all_years()
+    if args.refetch_abstracts:
+        # Refetch abstracts mode: Load existing papers from JSON
+        utils.log("\n[REFETCH MODE] Loading existing papers from JSON...")
+        utils.log("Skipping DBLP fetching - will only re-fetch missing abstracts")
+        utils.log("=" * 50)
+        papers = fetcher.load_papers()
 
-    # Validate papers
-    is_valid, message, stats = utils.validate_papers(papers)
+        # Log current state
+        papers_with_abstracts = len([p for p in papers if p.get('abstract')])
+        papers_without_abstracts = len(papers) - papers_with_abstracts
+        utils.log(f"\nCurrent state:")
+        utils.log(f"  Total papers: {len(papers)}")
+        utils.log(f"  Papers with abstracts: {papers_with_abstracts} ({papers_with_abstracts * 100 / len(papers):.1f}%)")
+        utils.log(f"  Papers missing abstracts: {papers_without_abstracts} ({papers_without_abstracts * 100 / len(papers):.1f}%)")
+        utils.log(f"  Rate limit: {config.NEURIPS_PROCEEDINGS_RATE_LIMIT} requests/second")
 
-    if not is_valid:
-        utils.log(f"Validation failed: {message}", 'ERROR')
-        utils.log(f"Stats: {stats}", 'ERROR')
-        sys.exit(1)
+    else:
+        # Normal mode: Fetch papers from DBLP
+        utils.log("\n[NORMAL MODE] Fetching papers from DBLP...")
+        utils.log("=" * 50)
 
-    utils.log(f"Validation passed: {message}")
+        # Fetch papers
+        papers = fetcher.fetch_all_years()
 
-    # Save papers after DBLP phase (for recovery if abstract fetching fails)
-    if config.ENABLE_INCREMENTAL_SAVES:
-        utils.log("\n[INCREMENTAL SAVE] Saving papers after DBLP phase...")
-        fetcher.save_papers(papers)
-        fetcher._save_progress_log(f"DBLP phase complete: {len(papers)} papers saved")
+        # Validate papers
+        is_valid, message, stats = utils.validate_papers(papers)
+
+        if not is_valid:
+            utils.log(f"Validation failed: {message}", 'ERROR')
+            utils.log(f"Stats: {stats}", 'ERROR')
+            sys.exit(1)
+
+        utils.log(f"Validation passed: {message}")
+
+        # Save papers after DBLP phase (for recovery if abstract fetching fails)
+        if config.ENABLE_INCREMENTAL_SAVES:
+            utils.log("\n[INCREMENTAL SAVE] Saving papers after DBLP phase...")
+            fetcher.save_papers(papers)
+            fetcher._save_progress_log(f"DBLP phase complete: {len(papers)} papers saved")
 
     # Enrich papers with abstracts
     papers = fetcher.enrich_papers_with_abstracts(papers)
